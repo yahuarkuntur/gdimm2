@@ -99,6 +99,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
                     #cell = gtk.CellRendererText()
                     #combo.pack_start(cell, False)
                     #combo.add_attribute(cell, "text", 0)
+                    #combo.add_attribute(cell, "text", 1)
                     list_store = gtk.ListStore(str, str)
                     combo.set_model(list_store)
 
@@ -148,7 +149,12 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 elif obj.__class__ is gtk.ComboBox:
                     campo = etree.SubElement(detalle, "campo")
                     campo.set('numero', num )
-                    campo.text = str(obj.get_active())
+                    aiter = obj.get_active_iter()
+                    model = obj.get_model()
+                    if aiter is not None:
+                        campo.text = str(model.get_value(aiter, 1))
+                    else:
+                        campo.text = '0'
             
             f = open(os.path.join('tests','out.xml'), 'w+')
             f.write(etree.tostring(root, encoding='utf8', pretty_print=True))
