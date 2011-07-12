@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parametros>
+	<!-- PARAMETROS UTILIZADOS EN LA CREACION Y DESPLIEGUE DE PANTALLAS DEL PANTALLAs:-->
+	<pantallas>
+		<!-- frmSeleccionDeFormulario-->
+		<seleccionFormularios posision_tope_inicial="200" separacion="400"/>
+		<seleccionIce posision_tope_inicial="400" separacion="300"/>
+		<PantallaNavegacion mostrar="SI"/>
+		<PantallaAyuda mostrar="SI"/>
+		<PantallaRuc mostrar="SI"/>
+		<PantallaImpresion mostrar="SI"/>
+		<Actualizar Url="https://declaraciones.sri.gob.ec/descargas/declaraciones.jsp"/>
+		<enviarDeclaracion Url="https://declaraciones.sri.gob.ec/tuportal-internet/"/>
+	</pantallas>
+</parametros>

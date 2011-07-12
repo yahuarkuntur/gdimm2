@@ -1,0 +1,7 @@
+gDimm2
+======
+
+Requiere:
+
+- PyGtk 2.0
+- lxml
