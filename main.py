@@ -96,9 +96,17 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 combo.set_tooltip_text(mensajeAyuda)
                 if tablaReferencial != "-1":
                     # llenar combo segun XML
+                    #cell = gtk.CellRendererText()
+                    #combo.pack_start(cell, False)
+                    #combo.add_attribute(cell, "text", 0)
+                    list_store = gtk.ListStore(str, str)
+                    combo.set_model(list_store)
+
                     lista_datos = get_data_list(tablaReferencial)
-                    for elemento in lista_datos:
-                        combo.append_text(elemento[1])
+
+                    for code, name in lista_datos:
+                        list_store.append([name, code])
+
                     combo.set_active(0)
                 self.fixed1.put(combo, left/10, top/10)
                 self.widget_container.append((numero, combo))
@@ -136,11 +144,11 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 if obj.__class__ is gtk.Entry:
                     campo = etree.SubElement(detalle, "campo")
                     campo.set('numero', num )
-                    campo.text = obj.get_text()
+                    campo.text = str(obj.get_text())
                 elif obj.__class__ is gtk.ComboBox:
                     campo = etree.SubElement(detalle, "campo")
                     campo.set('numero', num )
-                    campo.text = obj.get_active_text()
+                    campo.text = str(obj.get_active())
             
             f = open(os.path.join('tests','out.xml'), 'w+')
             f.write(etree.tostring(root, encoding='utf8', pretty_print=True))
