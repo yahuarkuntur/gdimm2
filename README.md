@@ -18,3 +18,15 @@ Requerimientos
 
 - PyGtk 2.0
 - lxml
+
+Status
+------
+
+Por ahora sólo es posible cargar el formulario 104A.
+
+Pendientes
+----------
+
+- Generar el archivo XML
+- Aplicar transformaciones XSLT para validaciones y cálculos
+

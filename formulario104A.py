@@ -83,7 +83,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 combo.set_size_request(width/10, height/10)
                 if tablaReferencial != "-1":
                     # llenar combo segun XML
-                    lista_datos = get_datos_by_id(tablaReferencial)
+                    lista_datos = get_data_list(tablaReferencial)
                     for elemento in lista_datos:
                         combo.append_text(elemento[1])
                 self.fixed1.put(combo, left/10, top/10)
