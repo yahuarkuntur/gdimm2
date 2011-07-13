@@ -501,8 +501,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                         <child>
                           <widget class="GtkVBox" id="vbPeriodo">
                             <child>
-                              <widget class="GtkHBox" id="hbox2">
-                                <property name="visible">True</property>
+                              <widget class="GtkHBox" id="hbPeriodo">
                                 <child>
                                   <widget class="GtkRadioButton" id="rbMensual">
                                     <property name="label" translatable="yes">Mensual</property>

@@ -71,14 +71,16 @@ class wndDeclaracion(ezGlade.BaseWindow):
         
         codigo_formulario = self.declaracion.get_formulario()
 
-        print 'Formulario =', codigo_formulario
-
         if codigo_formulario is None:
             ezGlade.DialogBox("Código de formulario no definido", "error")
             return
 
         # formulario 104A
         form = tree.find("version[@codigo='"+codigo_formulario+"']") 
+
+        if form is None:
+            ezGlade.DialogBox("Error al cargar el formulario", "error")
+            return
 
         self.widget_container = dict()
 
