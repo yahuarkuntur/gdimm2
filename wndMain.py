@@ -198,7 +198,7 @@ class wndMain(ezGlade.BaseWindow):
         lista_datos = []
 
         if widget.get_active() :
-            lista_datos = [['1', 'ENERO - JUNIO'], ['2', 'JULIO - DICIEMBRE']]
+            lista_datos = get_data_list(40) # periodos
         else:
             lista_datos = get_data_list(20) # meses
 
@@ -232,11 +232,11 @@ class wndMain(ezGlade.BaseWindow):
         elif periodicidad == "MENSUAL_SEMESTRAL":
             self.hbPeriodo.show()
             if self.rbSemestral.get_active() :
-                lista_datos = [['1', 'ENERO - JUNIO'], ['2', 'JULIO - DICIEMBRE']]
+                lista_datos = get_data_list(40) # periodos 
             else:
                 lista_datos = get_data_list(20) # meses
         else: # anual
-            lista_datos = [['1', 'ENERO - JUNIO'], ['2', 'JULIO - DICIEMBRE']]
+            lista_datos = get_data_list(40) # periodos
 
         for code, name in lista_datos:
             list_store.append([name, code])  
