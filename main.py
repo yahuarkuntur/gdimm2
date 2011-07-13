@@ -158,10 +158,6 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 else:
                     campo.text = '0'
             
-        #f = open(os.path.join('tests','out.xml'), 'w+')
-        #f.write(etree.tostring(root, encoding='utf8', pretty_print=True))
-        #f.close()
-
         self.xml = root
         
 
@@ -172,9 +168,12 @@ class wndDeclaracion(ezGlade.BaseWindow):
         calcs.calc(self.xml)
         calculations = calcs.get_calculations()
 
-        # se modifica el valor del widget con el valor calculado desde el XML
+        # se modifica el valor del widget y el XML con el valor calculado por la XSLT
         for item in calculations:
             widget = self.widget_container[item['campo']]
+            campo = self.xml.find('detalle/campo[@numero="'+item['campo']+'"]')
+            campo.text = item['calculo']
+            
             if widget.__class__ is gtk.Entry:
                 widget.set_text(item['calculo'])
 
@@ -214,7 +213,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
             outfile = dialog.get_filename() # archivo destino
             outfile = outfile + '.xml'
             self.generate_xml_from_container() # generar XML
-            #self.do_calculations()  # TODO recalcular datos del XML
+            self.do_calculations()  # realizar calculos
             f = open(outfile, 'w+')
             f.write(etree.tostring(self.xml, encoding='utf8', pretty_print=True))
             f.close()
