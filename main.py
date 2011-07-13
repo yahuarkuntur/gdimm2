@@ -187,12 +187,40 @@ class wndDeclaracion(ezGlade.BaseWindow):
             return True
 
 
-    def on_btnCancel_clicked(self, widget, *args):
+    def on_btnCancelar_clicked(self, widget, *args):
         # verificar si se han guardado los cambios!!!
         error_dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, message_format="Los datos no guardados se perderan. Salir?", buttons=gtk.BUTTONS_OK_CANCEL)
         if error_dlg.run() == gtk.RESPONSE_OK:
             self.win.destroy()
         error_dlg.destroy()
+
+    
+    def on_btnGuardar_clicked(self, widget, *args):
+        dialog = gtk.FileChooserDialog("Guardar ...", None, gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_SAVE, gtk.RESPONSE_OK))
+        dialog.set_default_response(gtk.RESPONSE_OK)
+        dialog.set_current_name('test') # TODO generar nombre en base al periodo
+        dialog.set_current_folder(os.path.join('XML_Declaraciones'))
+
+
+        filter = gtk.FileFilter()
+        filter.set_name("Archivos XML")
+        filter.add_mime_type("application/xml")
+        filter.add_pattern("*.xml")
+        dialog.add_filter(filter)
+
+        response = dialog.run()
+
+        if response == gtk.RESPONSE_OK:
+            outfile = dialog.get_filename() # archivo destino
+            outfile = outfile + '.xml'
+            self.generate_xml_from_container() # generar XML
+            #self.do_calculations()  # TODO recalcular datos del XML
+            f = open(outfile, 'w+')
+            f.write(etree.tostring(self.xml, encoding='utf8', pretty_print=True))
+            f.close()
+
+        dialog.destroy()
+
         
         
     def destroy(self, *args):
