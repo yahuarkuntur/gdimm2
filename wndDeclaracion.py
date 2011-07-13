@@ -95,20 +95,21 @@ class wndDeclaracion(ezGlade.BaseWindow):
             editable = c.attrib.get("editable")
             tablaReferencial = c.attrib.get("tablaReferencial")
             mensajeAyuda = c.attrib.get("mensajeAyuda")
-            
-
 
             # campos escritos desde la configuracion
-            if numero in [ '101', '102', '104', '31', '198', '199', '201', '202' ]:
-                if numero == '202':
+            if numero in [ '101', '102', '198', '199', '201', '202' ]:
+                if numero == '202': # razon social
                     self.load_widget_contribuyente(numero, contribuyente.get_nombre(), width, height, left, top, mensajeAyuda)
-                elif numero == '201':
+                elif numero == '201': # RUC
                     self.load_widget_contribuyente(numero, contribuyente.get_ruc(), width, height, left, top, mensajeAyuda)
                 elif numero == '101': # mes
-                    pass
+                    self.load_widget_contribuyente(numero, self.declaracion.get_mes(), width, height, left, top, mensajeAyuda)
                 elif numero == '102': # año
-                    pass
-
+                    self.load_widget_contribuyente(numero, self.declaracion.get_anio(), width, height, left, top, mensajeAyuda)
+                elif numero == '198': # cedula rep. legal
+                    self.load_widget_contribuyente(numero, contribuyente.get_documento(), width, height, left, top, mensajeAyuda)
+                elif numero == '199': # RUC contador NULO
+                    self.load_widget_contribuyente(numero, "", width, height, left, top, mensajeAyuda)
                 continue
 
             if c.attrib.get("tipoControl") == "L": # etiqueta

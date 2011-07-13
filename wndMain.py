@@ -97,7 +97,6 @@ class wndMain(ezGlade.BaseWindow):
         
         self.cmbFormularios.set_active(0)
 
-
         # combo de anios
         self.cmbAnio.clear()
         list_store = gtk.ListStore(str, str)
@@ -114,8 +113,6 @@ class wndMain(ezGlade.BaseWindow):
         self.cmbAnio.set_active(0)
 
         self.wndMain.maximize()
-
-
 
 
     def destroy(self, *args):
@@ -194,6 +191,30 @@ class wndMain(ezGlade.BaseWindow):
         sys.exit(0)
 
 
+    def on_rbSemestral_toggled(self, widget, *args):
+        self.cmbPeriodo.clear()
+        list_store = gtk.ListStore(str, str)
+        self.cmbPeriodo.set_model(list_store)
+        lista_datos = []
+
+        if widget.get_active() :
+            lista_datos = [['1', 'ENERO - JUNIO'], ['2', 'JULIO - DICIEMBRE']]
+        else:
+            lista_datos = get_data_list(20) # meses
+
+        for code, name in lista_datos:
+            list_store.append([name, code])  
+
+        cell_periodo = gtk.CellRendererText()
+        self.cmbPeriodo.pack_start(cell_periodo, False)
+        self.cmbPeriodo.add_attribute(cell_periodo, 'text', 0)
+
+        self.cmbPeriodo.set_active(0)   
+
+        self.vbPeriodo.show() 
+        
+    
+
     def on_cmbFormularios_changed(self, widget, *args):
         modelo = widget.get_model()
         iter = widget.get_active_iter()
@@ -209,8 +230,11 @@ class wndMain(ezGlade.BaseWindow):
         if periodicidad == "MENSUAL":
             lista_datos = get_data_list(20) # meses
         elif periodicidad == "MENSUAL_SEMESTRAL":
-            # TODO el usuario selecciona mensual o semestral
             self.hbPeriodo.show()
+            if self.rbSemestral.get_active() :
+                lista_datos = [['1', 'ENERO - JUNIO'], ['2', 'JULIO - DICIEMBRE']]
+            else:
+                lista_datos = get_data_list(20) # meses
         else: # anual
             lista_datos = [['1', 'ENERO - JUNIO'], ['2', 'JULIO - DICIEMBRE']]
 
@@ -249,6 +273,7 @@ class wndMain(ezGlade.BaseWindow):
         model = self.cmbPeriodo.get_model()
         if aiter is not None:
             self.declaracion.set_mes(str(model.get_value(aiter, 1)))
+        
 
         # crear ventana del formulario de declaracion
         vDeclaracion = wndDeclaracion()

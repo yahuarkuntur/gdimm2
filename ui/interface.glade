@@ -526,6 +526,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                                     <property name="active">True</property>
                                     <property name="draw_indicator">True</property>
                                     <property name="group">rbMensual</property>
+                                    <signal name="toggled" handler="on_rbSemestral_toggled"/>
                                   </widget>
                                   <packing>
                                     <property name="expand">False</property>
