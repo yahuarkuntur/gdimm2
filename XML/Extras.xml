@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extras>
+    <mapeo_validaciones>
+        <mapeo formulario="04200901">0402</mapeo> <!-- 104 mensual -->
+        <mapeo formulario="04200902">0405</mapeo> <!-- 104 semestral -->
+    </mapeo_validaciones>
+</extras>

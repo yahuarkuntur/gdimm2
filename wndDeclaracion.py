@@ -33,14 +33,9 @@ ezGlade.set_file(configuration.GLADE_FILE)
 
 class wndDeclaracion(ezGlade.BaseWindow):
     
-    #codigo = None
     widget_container = dict()
     xml = None
     declaracion = None
-
-    #def set_codigo_formulario(self, codigo):
-    #    self.codigo = codigo 
-    
 
     def set_declaracion(self, declaracion):
         self.declaracion = declaracion 
@@ -176,15 +171,15 @@ class wndDeclaracion(ezGlade.BaseWindow):
         self.xml = None
     
         root = etree.Element("formulario")
-        root.set('version', '0.2' ) # TODO
+        root.set('version', '0.2' )
 
         cabecera = etree.SubElement(root, "cabecera")
         codigo_version_formulario = etree.SubElement(cabecera, "codigo_version_formulario")
-        codigo_version_formulario.text = '04200903' # TODO
+        codigo_version_formulario.text = self.declaracion.get_formulario()
         ruc = etree.SubElement(cabecera, "ruc")
-        ruc.text = '1002003004001' # TODO
+        ruc.text = self.declaracion.get_contribuyente().get_ruc()
         codigo_moneda = etree.SubElement(cabecera, "codigo_moneda")
-        codigo_moneda.text = '1' # TODO
+        codigo_moneda.text = '1'
 
         detalle = etree.SubElement(root, "detalle")
 
@@ -208,7 +203,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
     def do_calculations(self):
         calcs = Calculator()
-        calcs.load_xml('CAL0402.xml')
+        calcs.load_xml('CAL0402.xml') # TODO obtener del mapeo
         calcs.load_xsl('calculos.xsl')
         calcs.calc(self.xml)
         calculations = calcs.get_calculations()
@@ -221,7 +216,6 @@ class wndDeclaracion(ezGlade.BaseWindow):
             
             if widget.__class__ is gtk.Entry:
                 widget.set_text(item['calculo'])
-
 
 
     def _onTabKeyReleased(self, widget, event, *args):
@@ -242,9 +236,8 @@ class wndDeclaracion(ezGlade.BaseWindow):
     def on_btnGuardar_clicked(self, widget, *args):
         dialog = gtk.FileChooserDialog("Guardar ...", None, gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_SAVE, gtk.RESPONSE_OK))
         dialog.set_default_response(gtk.RESPONSE_OK)
-        dialog.set_current_name('test') # TODO generar nombre en base al periodo
+        dialog.set_current_name('test') # TODO generar nombre en base al periodo y declaracion
         dialog.set_current_folder(os.path.join('XML_Declaraciones'))
-
 
         filter = gtk.FileFilter()
         filter.set_name("Archivos XML")

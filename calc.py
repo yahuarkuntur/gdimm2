@@ -71,7 +71,7 @@ if __name__ == '__main__':
     declaracion = etree.parse(os.path.join('tests','104ORI_JUN2011.xml'), parser)
 
     calcs = Calculator()
-    calcs.load_xml('CAL0402.xml')
+    calcs.load_xml('CAL0402.xml') # TODO obtener del mapeo
     calcs.load_xsl('calculos.xsl')
 
     calcs.calc(declaracion)
