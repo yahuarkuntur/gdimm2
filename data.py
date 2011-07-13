@@ -22,6 +22,55 @@ from lxml import etree
 from exceptions import *
 
 
+class Declaracion:
+    _mes = None
+    _anio = None
+    _tipo = None
+    _formulario = None
+    _contribuyente = None
+    _anticipada = False
+    
+    def __init__(self):
+        pass
+
+    def set_mes(self, mes):
+        self._mes = mes
+
+    def set_anio(self, anio):
+        self._anio = anio
+
+    def set_tipo(self, tipo):
+        self._tipo = tipo
+
+    def set_formulario(self, formulario):
+        self._formulario = formulario
+
+    def set_contribuyente(self, contribuyente):
+        self._contribuyente = contribuyente
+
+    def set_anticipada(self, anticipada):
+        self._anticipada = anticipada
+
+    def get_mes(self):
+        return self._mes
+
+    def get_anio(self):
+        return self._anio
+
+    def get_tipo(self):
+        return self._tipo
+
+    def get_formulario(self):
+        return self._formulario
+
+    def get_contribuyente(self):
+        return self._contribuyente
+
+    def get_anticipada(self):
+        return self._anticipada
+
+
+
 class Contribuyente:
     _ruc = None
     _nombre = None
@@ -102,6 +151,7 @@ class ListaContribuyentes:
         for item in self.lista:
             if item.get_ruc() == ruc :
                 return item
+        return None
 
 
     def add(self, contribuyente):

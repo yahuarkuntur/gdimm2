@@ -25,6 +25,37 @@ def get_data_list(code):
     return list
 
 
+def get_datos_formularios():
+    list = []
+    nodes = get_xpath_nodes(5)
+    
+    if nodes is None:
+        return None
+
+    for node in nodes:
+        codigo = node.attrib.get('codigo')
+        nombre = node.attrib.get('nombre')
+        periodicidad = node.attrib.get('periodicidad')
+        version = node.attrib.get('version')
+        desc = node.attrib.get('descripcion_impuesto')
+        list.append([version, nombre + ' - '  + desc])
+
+    return list
+
+
+def get_periodicidad(version):
+    nodes = get_xpath_nodes(5)
+    
+    if nodes is None:
+        return None
+   
+    # TODO use XPath?
+    for node in nodes:
+        if node.attrib.get('version') == version :
+            return node.attrib.get('periodicidad')
+
+    return None
+
 
 
 

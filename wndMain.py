@@ -31,8 +31,10 @@ except:
     sys.exit(1)
 
 from data import *
+from ref_data import *
 import configuration
 from wndDeclaracion import wndDeclaracion
+from wndContribuyente import wndContribuyente
 
 ezGlade.set_file(configuration.GLADE_FILE)
 
@@ -47,7 +49,9 @@ class wndAcerca(ezGlade.BaseWindow):
 
 
 class wndMain(ezGlade.BaseWindow):
+
     lista_contribuyentes = None
+    declaracion   = None
 
     def load_contribuyentes(self):
         "Carga el combobox con la lista de contribuyentes e incluye la opción de editar"
@@ -62,6 +66,8 @@ class wndMain(ezGlade.BaseWindow):
 
 
     def post_init(self):
+        self.declaracion = Declaracion()
+        
         self.lista_contribuyentes = gtk.ListStore(str, str)
         self.load_contribuyentes()
 
@@ -77,30 +83,39 @@ class wndMain(ezGlade.BaseWindow):
         self.cmbContribuyente.add_attribute(cell_nombre, 'text', 1)
 
         #Combo para el manejo de formularios
-        formularios = gtk.ListStore(str, str)
-        self.cmbFormularios.set_model(formularios)
-        # TODO obtener desde los datos referenciales
-        lista_formularios = [
-                            ["102", "Formulario 102: Impuesto a la renta personas naturales"],
-                            ["102a", "Formulario 102A: Impuesto a la renta peronas naturales (no obligados a llevar contabilidad)"],
-                            ["103", "Formulario 103: Retenciones en la fuente del impuesto a la renta"],
-                            ["104", "Formulario 104: Impuesto al Valor Agregado"],
-                            ["104a", "Formulario 104A:  Impuesto al Valor Agregado (No obligados a llevar contabilidad)"],
-                            ["105", "Formulario 105: Impuesto a los Consumos Especiales"],
-                            ["106", "Formulario 106: Formulario Múltiple de Pago"],
-                            ["108", "Formulario 108: I.R. sobre ingresos de herencias, legados y donaciones"]
-                            ]
+        self.cmbFormularios.clear()
+        lista_formularios = gtk.ListStore(str, str)
+        self.cmbFormularios.set_model(lista_formularios)
+        lista_datos = get_datos_formularios()
 
-        for elemento in lista_formularios:
-            formularios.append(elemento)
-
-        cell_imagen = gtk.CellRendererPixbuf()
-        cell_imagen.set_property("stock-id", "gtk-edit")
-        self.cmbFormularios.pack_start(cell_imagen, False)
-
+        for code, name in lista_datos:
+            lista_formularios.append([name, code])
+        
         cell_formularios = gtk.CellRendererText()
         self.cmbFormularios.pack_start(cell_formularios, False)
-        self.cmbFormularios.add_attribute(cell_formularios, 'text', 1)
+        self.cmbFormularios.add_attribute(cell_formularios, 'text', 0)
+        
+        self.cmbFormularios.set_active(0)
+
+
+        # combo de anios
+        self.cmbAnio.clear()
+        list_store = gtk.ListStore(str, str)
+        self.cmbAnio.set_model(list_store)
+        lista_datos = get_data_list(30) # anios
+
+        for code, name in lista_datos:
+            list_store.append([name, code])
+
+        cell_anios = gtk.CellRendererText()
+        self.cmbAnio.pack_start(cell_anios, False)
+        self.cmbAnio.add_attribute(cell_anios, 'text', 0)
+
+        self.cmbAnio.set_active(0)
+
+        self.wndMain.maximize()
+
+
 
 
     def destroy(self, *args):
@@ -130,6 +145,12 @@ class wndMain(ezGlade.BaseWindow):
             frmContribuyentes.set_parent(self)
             frmContribuyentes.set_modal(True)
             frmContribuyentes.show()
+        else:
+            lstContribuyentes = ListaContribuyentes() # TODO cargar una sola vez?
+            lstContribuyentes.load()
+            contribuyente = lstContribuyentes.find_by_ruc(codigo_contribuyente)
+            if contribuyente is not None:
+                self.declaracion.set_contribuyente(contribuyente)
 
 
     def on_btnNuevaDeclaracion_clicked(self, *args):
@@ -145,6 +166,7 @@ class wndMain(ezGlade.BaseWindow):
                 if filename:
                     if os.path.isfile(filename):
                         pass
+                        # TODO cargar declaracion XML
                         # Hay que verificar el archivo antes de intentar abrirlo
                 else:
                     ezGlade.DialogBox("Debe seleccionar un archivo", "error")
@@ -175,17 +197,61 @@ class wndMain(ezGlade.BaseWindow):
     def on_cmbFormularios_changed(self, widget, *args):
         modelo = widget.get_model()
         iter = widget.get_active_iter()
-
         codigo_formulario = modelo.get_value(iter, 0)
 
-        if codigo_formulario == "104" or "104a":
-            self.vbPeriodo.show()
+        self.cmbPeriodo.clear()
+        list_store = gtk.ListStore(str, str)
+        self.cmbPeriodo.set_model(list_store)
+        
+        periodicidad = get_periodicidad(codigo_formulario)
+
+        if periodicidad == "MENSUAL":
+            lista_datos = get_data_list(20) # meses
+        elif periodicidad == "MENSUAL_SEMESTRAL":
+            pass
+        else:
+            lista_datos = [['1', 'ENERO - JUNIO'], ['2', 'JULIO - DICIEMBRE']]
+
+        for code, name in lista_datos:
+            list_store.append([name, code])  
+
+        cell_periodo = gtk.CellRendererText()
+        self.cmbPeriodo.pack_start(cell_periodo, False)
+        self.cmbPeriodo.add_attribute(cell_periodo, 'text', 0)
+
+        self.cmbPeriodo.set_active(0)   
+
+        self.vbPeriodo.show()   
+
 
 
     def on_btnAceptar_clicked(self, *args):
-        # TODO pasar la informacion del contribuyente y el formulario seleccionado 
+        if self.declaracion.get_contribuyente() is None:
+            ezGlade.DialogBox("No se ha seleccionado el contribuyente", "error")
+            return
+
+        # obtener formulario TODO factorize
+        aiter = self.cmbFormularios.get_active_iter()
+        model = self.cmbFormularios.get_model()
+        if aiter is not None:
+            self.declaracion.set_formulario(str(model.get_value(aiter, 1)))
+
+        # obtener anio
+        aiter = self.cmbAnio.get_active_iter()
+        model = self.cmbAnio.get_model()
+        if aiter is not None:
+            self.declaracion.set_anio(str(model.get_value(aiter, 1)))
+
+        # obtener mes o periodo
+        aiter = self.cmbPeriodo.get_active_iter()
+        model = self.cmbPeriodo.get_model()
+        if aiter is not None:
+            self.declaracion.set_mes(str(model.get_value(aiter, 1)))
+
+        # crear ventana del formulario de declaracion
         vDeclaracion = wndDeclaracion()
-        vDeclaracion.set_codigo_formulario('04200901')
+        #vDeclaracion.set_codigo_formulario('04200901')
+        vDeclaracion.set_declaracion(self.declaracion)
         vDeclaracion.load_widgets_from_xml()
         vDeclaracion.show()
 

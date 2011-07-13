@@ -501,20 +501,16 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                         <child>
                           <widget class="GtkVBox" id="vbPeriodo">
                             <child>
-                              <widget class="GtkHBox" id="hbox8">
+                              <widget class="GtkHBox" id="hbox2">
                                 <property name="visible">True</property>
-                                <property name="border_width">12</property>
-                                <property name="spacing">12</property>
                                 <child>
                                   <widget class="GtkRadioButton" id="rbMensual">
                                     <property name="label" translatable="yes">Mensual</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
-                                    <property name="use_underline">True</property>
                                     <property name="active">True</property>
                                     <property name="draw_indicator">True</property>
-                                    <signal name="toggled" handler="on_rbMensual_toggled"/>
                                   </widget>
                                   <packing>
                                     <property name="expand">False</property>
@@ -528,11 +524,9 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
-                                    <property name="use_underline">True</property>
+                                    <property name="active">True</property>
                                     <property name="draw_indicator">True</property>
                                     <property name="group">rbMensual</property>
-                                    <signal name="toggled" handler="on_rbSemestral_toggled"/>
-                                    <signal name="group_changed" handler="on_rbSemestral_group_changed"/>
                                   </widget>
                                   <packing>
                                     <property name="expand">False</property>

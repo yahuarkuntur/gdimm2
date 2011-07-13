@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import os
 import ezGlade
 
@@ -31,33 +33,57 @@ ezGlade.set_file(configuration.GLADE_FILE)
 
 class wndDeclaracion(ezGlade.BaseWindow):
     
-    codigo = None
+    #codigo = None
     widget_container = dict()
     xml = None
+    declaracion = None
 
-    def set_codigo_formulario(self, codigo):
-        self.codigo = codigo 
+    #def set_codigo_formulario(self, codigo):
+    #    self.codigo = codigo 
     
+
+    def set_declaracion(self, declaracion):
+        self.declaracion = declaracion 
+
+
+    def load_widget_contribuyente(self, number, text, width, height, left, top, tooltip):
+        entry = gtk.Entry(max=0)
+        entry.set_size_request(width/10, height/10)
+        entry.set_tooltip_text(tooltip)
+        entry.set_editable(False)
+        entry.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse("#cccccc")) # color deshabilitado ;)
+        entry.set_text(text)
+        entry.set_property('xalign', 1)
+        self.fixed1.put(entry, left/10, top/10)
+        self.widget_container[number] = entry
+        entry.show()
+
     
     def load_widgets_from_xml(self):
-        if not self.codigo :
-            print 'Codigo de formulario no definido.'
-            return;
+        
+        contribuyente = self.declaracion.get_contribuyente()
+
+        if contribuyente is None:
+            ezGlade.DialogBox("No existen datos del contribuyente", "error")
+            return
+
         tree = etree.parse(os.path.join('XML','CMPFRM-GNU.xml'))
         
+        codigo_formulario = self.declaracion.get_formulario()
+
+        print 'Formulario =', codigo_formulario
+
+        if codigo_formulario is None:
+            ezGlade.DialogBox("Código de formulario no definido", "error")
+            return
+
         # formulario 104A
-        form = tree.find("version[@codigo='"+self.codigo+"']") 
+        form = tree.find("version[@codigo='"+codigo_formulario+"']") 
 
         self.widget_container = dict()
 
         for c in form:
-            # campos escritos desde la configuracion
-            numero = c.attrib.get("numero")
-            if numero in ['0101', '0102', '0104', '0031', '0198', '0199', '0201', '0202']:
-                continue
-            # conversion a numero de campo entero
-            numero = int(numero)
-            numero = str(numero)
+            numero = str(int(c.attrib.get("numero"))) # se eliminan ceros de la izq
             top = int(c.attrib.get("top"))
             left = int(c.attrib.get("left"))
             width = int(c.attrib.get("width"))
@@ -67,6 +93,22 @@ class wndDeclaracion(ezGlade.BaseWindow):
             editable = c.attrib.get("editable")
             tablaReferencial = c.attrib.get("tablaReferencial")
             mensajeAyuda = c.attrib.get("mensajeAyuda")
+            
+
+
+            # campos escritos desde la configuracion
+            if numero in [ '101', '102', '104', '31', '198', '199', '201', '202' ]:
+                if numero == '202':
+                    self.load_widget_contribuyente(numero, contribuyente.get_nombre(), width, height, left, top, mensajeAyuda)
+                elif numero == '201':
+                    self.load_widget_contribuyente(numero, contribuyente.get_ruc(), width, height, left, top, mensajeAyuda)
+                elif numero == '101': # mes
+                    pass
+                elif numero == '102': # año
+                    pass
+
+                continue
+
             if c.attrib.get("tipoControl") == "L": # etiqueta
                 lbl = gtk.Label(label)
                 if bold != "Falso":
