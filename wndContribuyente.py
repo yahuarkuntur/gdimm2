@@ -50,6 +50,7 @@ class wndEditContribuyente(ezGlade.BaseWindow):
         self.modeloTipo.append(['Pasaporte', "P"])
 
         self.cmbTipoDocumento.set_model(self.modeloTipo)
+        self.cmbTipoDocumento.set_active(0)
 
     def set_data(self, oContribuyente):
         def search(user_data):
