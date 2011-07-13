@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<datos_ruc>
-	<ruc numero="1001690237001">
+<datos_ruc><ruc numero="1001690237001">
     <razon_social>DEBUIRE ENRIQUEZ BRIAN DANIEL</razon_social>
     <tipoDocRepLegal>C</tipoDocRepLegal>
     <identificacionRepLegal>1001690237</identificacionRepLegal>
     <tipoIdentificacion>R</tipoIdentificacion>
     </ruc>
 </datos_ruc>
-

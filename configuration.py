@@ -2,9 +2,8 @@
 
 import os, sys
 
-
 CURRENT_PATH = sys.path[0]
 
-GLADE_FILE = CURRENT_PATH + os.sep + "ui/interface.glade"
+GLADE_FILE = os.path.join(CURRENT_PATH, "ui", "interface.glade")
 
-TEXT_DOMAIN = "gDIMM"
+TEXT_DOMAIN = "gDIMM2"

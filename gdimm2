@@ -1,0 +1,4 @@
+#!/bin/bash
+
+current_path=`dirname $0`
+python $current_path/main.py

@@ -16,25 +16,17 @@
 #
 ###
 
+#<Actualizar Url="https://declaraciones.sri.gov.ec/rec-declaraciones-internet/login/indexAction.jspa?m=5"/>
+#<enviarDeclaracion Url="https://declaraciones.sri.gov.ec/rec-declaraciones-internet"/>
+
+
 import sys
 import logging
-from wndMain import *
-
-
-class gDIMM2:
-
-    def __init__(self):
-        pass
-
-    def start(self):
-        mainWindow = wndMain()
-        mainWindow.show()
-        gtk.main()
-
+from windows import gDIMM
 
 def main(argv):
 	logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
-	app = gDIMM2()
+	app = gDIMM()
 	app.start()
 
 if __name__ == '__main__':
