@@ -23,6 +23,7 @@ except:
 
 import configuration
 from ref_data import get_data_list
+from calc import Calculator
 
 
 ezGlade.set_file(configuration.GLADE_FILE)
@@ -31,7 +32,8 @@ ezGlade.set_file(configuration.GLADE_FILE)
 class wndDeclaracion(ezGlade.BaseWindow):
     
     codigo = None
-    widget_container = []
+    widget_container = dict()
+    xml = None
 
     def set_codigo_formulario(self, codigo):
         self.codigo = codigo 
@@ -46,13 +48,16 @@ class wndDeclaracion(ezGlade.BaseWindow):
         # formulario 104A
         form = tree.find("version[@codigo='"+self.codigo+"']") 
 
-        self.widget_container = []
+        self.widget_container = dict()
 
         for c in form:
             # campos escritos desde la configuracion
-            if c.attrib.get("numero") in ['0101', '0102', '0104', '0031', '0198', '0199', '0201', '0202']:
-                continue
             numero = c.attrib.get("numero")
+            if numero in ['0101', '0102', '0104', '0031', '0198', '0199', '0201', '0202']:
+                continue
+            # conversion a numero de campo entero
+            numero = int(numero)
+            numero = str(numero)
             top = int(c.attrib.get("top"))
             left = int(c.attrib.get("left"))
             width = int(c.attrib.get("width"))
@@ -74,11 +79,12 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 entry.set_tooltip_text(mensajeAyuda)
                 if editable != "SI":
                     entry.set_editable(False)
+                    entry.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse("#cccccc")) # color deshabilitado ;)
                 entry.set_text("0.0")
                 entry.set_property('xalign', 1)
                 self.fixed1.put(entry, left/10, top/10)
                 entry.connect("key-release-event", self._onTabKeyReleased) # bind TAB event
-                self.widget_container.append((numero, entry))
+                self.widget_container[numero] = entry
                 entry.show()
             #elif c.attrib.get("tipoControl") == "M":# monetario
             #    adjustment = gtk.Adjustment(value=0, lower=0, upper=1000000000, step_incr=1, page_incr=1, page_size=0)
@@ -95,13 +101,9 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 combo.set_size_request(width/10, height/10)
                 combo.set_tooltip_text(mensajeAyuda)
                 if tablaReferencial != "-1":
-                    # llenar combo segun XML
-                    #cell = gtk.CellRendererText()
-                    #combo.pack_start(cell, False)
-                    #combo.add_attribute(cell, "text", 0)
-                    #combo.add_attribute(cell, "text", 1)
                     list_store = gtk.ListStore(str, str)
                     combo.set_model(list_store)
+                    # llenar combo segun datos referenciales
 
                     lista_datos = get_data_list(tablaReferencial)
 
@@ -110,7 +112,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
                     combo.set_active(0)
                 self.fixed1.put(combo, left/10, top/10)
-                self.widget_container.append((numero, combo))
+                self.widget_container[numero] = combo
                 combo.show()
     
         
@@ -122,44 +124,66 @@ class wndDeclaracion(ezGlade.BaseWindow):
         subtitle = self.lblNombreFormulario.get_text()
         self.lblNombreFormulario.set_markup("<b>"+subtitle+"</b>")
         self.wndDeclaracion.maximize()
+   
+
+    def generate_xml_from_container(self):
+
+        self.xml = None
+    
+        root = etree.Element("formulario")
+        root.set('version', '0.2' ) # TODO
+
+        cabecera = etree.SubElement(root, "cabecera")
+        codigo_version_formulario = etree.SubElement(cabecera, "codigo_version_formulario")
+        codigo_version_formulario.text = '04200903' # TODO
+        ruc = etree.SubElement(cabecera, "ruc")
+        ruc.text = '1002003004001' # TODO
+        codigo_moneda = etree.SubElement(cabecera, "codigo_moneda")
+        codigo_moneda.text = '1' # TODO
+
+        detalle = etree.SubElement(root, "detalle")
+
+        for num, obj in self.widget_container.iteritems():
+            if obj.__class__ is gtk.Entry:
+                campo = etree.SubElement(detalle, "campo")
+                campo.set('numero', num )
+                campo.text = str(obj.get_text())
+            elif obj.__class__ is gtk.ComboBox:
+                campo = etree.SubElement(detalle, "campo")
+                campo.set('numero', num )
+                aiter = obj.get_active_iter()
+                model = obj.get_model()
+                if aiter is not None:
+                    campo.text = str(model.get_value(aiter, 1))
+                else:
+                    campo.text = '0'
+            
+        #f = open(os.path.join('tests','out.xml'), 'w+')
+        #f.write(etree.tostring(root, encoding='utf8', pretty_print=True))
+        #f.close()
+
+        self.xml = root
         
+
+    def do_calculations(self):
+        calcs = Calculator()
+        calcs.load_xml('CAL0402.xml')
+        calcs.load_xsl('calculos.xsl')
+        calcs.calc(self.xml)
+        calculations = calcs.get_calculations()
+
+        # se modifica el valor del widget con el valor calculado desde el XML
+        for item in calculations:
+            widget = self.widget_container[item['campo']]
+            if widget.__class__ is gtk.Entry:
+                widget.set_text(item['calculo'])
+
+
 
     def _onTabKeyReleased(self, widget, event, *args):
         if event.keyval == gtk.keysyms.Tab:
-
-            root = etree.Element("formulario")
-            root.set('version', '0.2' ) # TODO
-
-            cabecera = etree.SubElement(root, "cabecera")
-            codigo_version_formulario = etree.SubElement(cabecera, "codigo_version_formulario")
-            codigo_version_formulario.text = '04200903' # TODO
-            ruc = etree.SubElement(cabecera, "ruc")
-            ruc.text = '1002003004001' # TODO
-            codigo_moneda = etree.SubElement(cabecera, "codigo_moneda")
-            codigo_moneda.text = '1' # TODO
-            
-
-            detalle = etree.SubElement(root, "detalle")
-
-            for num, obj in self.widget_container:
-                if obj.__class__ is gtk.Entry:
-                    campo = etree.SubElement(detalle, "campo")
-                    campo.set('numero', num )
-                    campo.text = str(obj.get_text())
-                elif obj.__class__ is gtk.ComboBox:
-                    campo = etree.SubElement(detalle, "campo")
-                    campo.set('numero', num )
-                    aiter = obj.get_active_iter()
-                    model = obj.get_model()
-                    if aiter is not None:
-                        campo.text = str(model.get_value(aiter, 1))
-                    else:
-                        campo.text = '0'
-            
-            f = open(os.path.join('tests','out.xml'), 'w+')
-            f.write(etree.tostring(root, encoding='utf8', pretty_print=True))
-            f.close()
-                    
+            self.generate_xml_from_container()
+            self.do_calculations()
             return True
 
 
