@@ -102,6 +102,7 @@ class wndMain(ezGlade.BaseWindow):
         list_store = gtk.ListStore(str, str)
         self.cmbAnio.set_model(list_store)
         lista_datos = get_data_list(30) # anios
+        lista_datos.reverse()
 
         for code, name in lista_datos:
             list_store.append([name, code])
