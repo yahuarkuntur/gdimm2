@@ -110,10 +110,7 @@ class wndMain(ezGlade.BaseWindow):
         cell_anios = gtk.CellRendererText()
         self.cmbAnio.pack_start(cell_anios, False)
         self.cmbAnio.add_attribute(cell_anios, 'text', 0)
-
         self.cmbAnio.set_active(0)
-
-        self.wndMain.maximize()
 
 
     def destroy(self, *args):

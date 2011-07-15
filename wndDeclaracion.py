@@ -53,6 +53,23 @@ class wndDeclaracion(ezGlade.BaseWindow):
         self.widget_container[number] = entry
         entry.show()
 
+
+    def load_combo_contribuyente(self, number, value, width, height, left, top, tooltip, ref_table):
+        combo = gtk.combo_box_new_text()
+        combo.set_size_request(width/10, height/10)
+        combo.set_tooltip_text(tooltip)
+        if ref_table != "-1":
+            list_store = gtk.ListStore(str, str)
+            combo.set_model(list_store)
+            lista_datos = get_data_list(ref_table)
+            for code, name in lista_datos:
+                if value == code :
+                    list_store.append([name, code])
+            combo.set_active(0)
+        self.fixed1.put(combo, left/10, top/10)
+        self.widget_container[number] = combo
+        combo.show()
+
     
     def load_widgets_from_xml(self):
         
@@ -98,9 +115,9 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 elif numero == '201': # RUC
                     self.load_widget_contribuyente(numero, contribuyente.get_ruc(), width, height, left, top, mensajeAyuda)
                 elif numero == '101': # mes
-                    self.load_widget_contribuyente(numero, self.declaracion.get_mes(), width, height, left, top, mensajeAyuda)
+                    self.load_combo_contribuyente(numero, self.declaracion.get_mes(), width, height, left, top, mensajeAyuda, tablaReferencial)
                 elif numero == '102': # año
-                    self.load_widget_contribuyente(numero, self.declaracion.get_anio(), width, height, left, top, mensajeAyuda)
+                    self.load_combo_contribuyente(numero, self.declaracion.get_anio(), width, height, left, top, mensajeAyuda, tablaReferencial)
                 elif numero == '198': # cedula rep. legal
                     self.load_widget_contribuyente(numero, contribuyente.get_documento(), width, height, left, top, mensajeAyuda)
                 elif numero == '199': # RUC contador NULO
