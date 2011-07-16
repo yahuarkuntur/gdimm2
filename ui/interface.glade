@@ -225,7 +225,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                         <property name="yalign">0</property>
                         <property name="label" translatable="yes">&lt;b&gt;Declaraci&#xF3;n de Impuestos en Medio Magn&#xE9;tico&lt;/b&gt;
 &lt;i&gt;Versi&#xF3;n &lt;b&gt;GTK+&lt;/b&gt;&lt;/i&gt;
-&lt;b&gt;Release&lt;/b&gt; 0.1a</property>
+&lt;b&gt;Release&lt;/b&gt; 0.2</property>
                         <property name="use_markup">True</property>
                         <property name="use_underline">True</property>
                         <property name="justify">center</property>
@@ -328,7 +328,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                                 <child>
                                   <widget class="GtkLabel" id="label12">
                                     <property name="visible">True</property>
-                                    <property name="label" translatable="yes">_Editar Declaraci&#xF3;n</property>
+                                    <property name="label" translatable="yes">_Abrir declaraci&#xF3;n</property>
                                     <property name="use_underline">True</property>
                                   </widget>
                                   <packing>
@@ -425,23 +425,8 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                         <property name="column_spacing">6</property>
                         <property name="row_spacing">32</property>
                         <child>
-                          <widget class="GtkButton" id="btnAceptar">
-                            <property name="label">gtk-ok</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="use_stock">True</property>
-                            <signal name="clicked" handler="on_btnAceptar_clicked"/>
-                          </widget>
-                          <packing>
-                            <property name="top_attach">5</property>
-                            <property name="bottom_attach">6</property>
-                            <property name="x_options">GTK_FILL</property>
-                            <property name="y_options">GTK_FILL</property>
-                          </packing>
-                        </child>
-                        <child>
                           <widget class="GtkComboBox" id="cmbAnio">
+                            <property name="width_request">10</property>
                             <property name="visible">True</property>
                             <property name="items" translatable="yes"></property>
                           </widget>
@@ -450,7 +435,8 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                             <property name="right_attach">2</property>
                             <property name="top_attach">4</property>
                             <property name="bottom_attach">5</property>
-                            <property name="y_options">GTK_SHRINK | GTK_FILL</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
                           </packing>
                         </child>
                         <child>
@@ -471,6 +457,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                         </child>
                         <child>
                           <widget class="GtkComboBox" id="cmbFormularios">
+                            <property name="width_request">10</property>
                             <property name="visible">True</property>
                             <signal name="changed" handler="on_cmbFormularios_changed"/>
                           </widget>
@@ -485,7 +472,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                         </child>
                         <child>
                           <widget class="GtkComboBox" id="cmbContribuyente">
-                            <property name="width_request">100</property>
+                            <property name="width_request">10</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="border_width">1</property>
@@ -541,7 +528,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                             </child>
                             <child>
                               <widget class="GtkComboBox" id="cmbPeriodo">
-                                <property name="width_request">100</property>
+                                <property name="width_request">10</property>
                                 <property name="visible">True</property>
                                 <property name="items" translatable="yes"></property>
                               </widget>
@@ -631,6 +618,8 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                           <packing>
                             <property name="top_attach">3</property>
                             <property name="bottom_attach">4</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
                           </packing>
                         </child>
                         <child>
@@ -663,6 +652,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                                     <property name="active">True</property>
                                     <property name="draw_indicator">True</property>
                                     <property name="group">rbOriginal</property>
+                                    <signal name="toggled" handler="on_rbSustitutiva_toggled"/>
                                   </widget>
                                   <packing>
                                     <property name="expand">False</property>
@@ -678,7 +668,6 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                             </child>
                             <child>
                               <widget class="GtkHBox" id="hbSustituye">
-                                <property name="visible">True</property>
                                 <child>
                                   <widget class="GtkLabel" id="lblSustituye">
                                     <property name="visible">True</property>
@@ -722,6 +711,57 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                             <property name="bottom_attach">4</property>
                             <property name="x_options">GTK_FILL</property>
                             <property name="y_options">GTK_FILL</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkButton" id="btnAceptar">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="can_default">True</property>
+                            <property name="receives_default">True</property>
+                            <signal name="clicked" handler="on_btnAceptar_clicked"/>
+                            <child>
+                              <widget class="GtkAlignment" id="alignment1">
+                                <property name="visible">True</property>
+                                <property name="xscale">0</property>
+                                <property name="yscale">0</property>
+                                <child>
+                                  <widget class="GtkHBox" id="hbox1">
+                                    <property name="visible">True</property>
+                                    <property name="spacing">2</property>
+                                    <child>
+                                      <widget class="GtkImage" id="image1">
+                                        <property name="visible">True</property>
+                                        <property name="stock">gtk-yes</property>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <widget class="GtkLabel" id="label1">
+                                        <property name="visible">True</property>
+                                        <property name="label" translatable="yes">Aceptar</property>
+                                        <property name="use_underline">True</property>
+                                      </widget>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">False</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                  </widget>
+                                </child>
+                              </widget>
+                            </child>
+                          </widget>
+                          <packing>
+                            <property name="top_attach">5</property>
+                            <property name="bottom_attach">6</property>
+                            <property name="x_options">GTK_FILL</property>
+                            <property name="y_options"></property>
                           </packing>
                         </child>
                         <child>
@@ -1053,14 +1093,7 @@ Ej: N&#xFA;mero de c&#xE9;dula o pasaporte</property>
               </widget>
             </child>
             <child>
-              <widget class="GtkLabel" id="lblNombreFormulario">
-                <property name="visible">True</property>
-                <property name="xalign">0</property>
-                <property name="yalign">0</property>
-                <property name="label" translatable="yes">&lt;b&gt;Formulario #&lt;/b&gt;</property>
-                <property name="use_markup">True</property>
-                <property name="single_line_mode">True</property>
-              </widget>
+              <placeholder/>
               <packing>
                 <property name="type">label_item</property>
               </packing>

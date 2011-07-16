@@ -98,7 +98,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
         for c in form:
             numero = str(int(c.attrib.get("numero"))) # se eliminan ceros de la izq
-            top = int(c.attrib.get("top"))
+            top = int(c.attrib.get("top")) - 1200
             left = int(c.attrib.get("left"))
             width = int(c.attrib.get("width"))
             height = int(c.attrib.get("height"))
@@ -109,7 +109,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
             mensajeAyuda = c.attrib.get("mensajeAyuda")
 
             # campos escritos desde la configuracion
-            if numero in [ '101', '102', '198', '199', '201', '202' ]:
+            if numero in [ '101', '102', '198', '199', '201', '202', '31', '104' ]:
                 if numero == '202': # razon social
                     self.load_widget_contribuyente(numero, contribuyente.get_nombre(), width, height, left, top, mensajeAyuda)
                 elif numero == '201': # RUC
@@ -122,6 +122,10 @@ class wndDeclaracion(ezGlade.BaseWindow):
                     self.load_widget_contribuyente(numero, contribuyente.get_documento(), width, height, left, top, mensajeAyuda)
                 elif numero == '199': # RUC contador NULO
                     self.load_widget_contribuyente(numero, "", width, height, left, top, mensajeAyuda)
+                elif numero == '31': # original o sustitutiva
+                    self.load_combo_contribuyente(numero, self.declaracion.get_original(), width, height, left, top, mensajeAyuda, tablaReferencial)
+                elif numero == '104': # formulario sustituye
+                    self.load_widget_contribuyente(numero, self.declaracion.get_sustituye(), width, height, left, top, mensajeAyuda)
                 continue
 
             if c.attrib.get("tipoControl") == "L": # etiqueta
@@ -176,10 +180,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
     def post_init(self):
         # poner el titulo de la ventana
         title = self.wndDeclaracion.get_title()
-        self.wndDeclaracion.set_title(title)
-        # ponel la etiqueta del formulario
-        subtitle = self.lblNombreFormulario.get_text()
-        self.lblNombreFormulario.set_markup("<b>"+subtitle+"</b>")
+        self.wndDeclaracion.set_title(title) # TODO obtener el alias del formulario
         self.wndDeclaracion.maximize()
    
 

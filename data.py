@@ -29,6 +29,8 @@ class Declaracion:
     _formulario = None
     _contribuyente = None
     _anticipada = False
+    _original   = '1'
+    _sustituye  = ''
     
     def __init__(self):
         pass
@@ -51,6 +53,13 @@ class Declaracion:
     def set_anticipada(self, anticipada):
         self._anticipada = anticipada
 
+    def set_original(self, original):
+        self._original = original
+
+    def set_sustituye(self, sustituye):
+        self._sustituye = sustituye
+
+
     def get_mes(self):
         return self._mes
 
@@ -68,6 +77,12 @@ class Declaracion:
 
     def get_anticipada(self):
         return self._anticipada
+
+    def get_original(self):
+        return self._original
+
+    def get_sustituye(self):
+        return self._sustituye
 
 
 

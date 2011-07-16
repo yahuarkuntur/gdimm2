@@ -92,9 +92,9 @@ class wndMain(ezGlade.BaseWindow):
             lista_formularios.append([name, code])
         
         cell_formularios = gtk.CellRendererText()
-        self.cmbFormularios.pack_start(cell_formularios, False)
+        self.cmbFormularios.pack_start(cell_formularios, True)
         self.cmbFormularios.add_attribute(cell_formularios, 'text', 0)
-        
+        self.cmbFormularios.add_attribute(cell_formularios, 'text', 1)
         self.cmbFormularios.set_active(0)
 
         # combo de anios
@@ -188,6 +188,14 @@ class wndMain(ezGlade.BaseWindow):
         gtk.main_quit()
         sys.exit(0)
 
+    
+    def on_rbSustitutiva_toggled(self, widget, *args):
+        if widget.get_active() :
+            self.hbSustituye.show()
+        else:
+            self.hbSustituye.hide() 
+
+
 
     def on_rbSemestral_toggled(self, widget, *args):
         self.cmbPeriodo.clear()
@@ -271,11 +279,17 @@ class wndMain(ezGlade.BaseWindow):
         model = self.cmbPeriodo.get_model()
         if aiter is not None:
             self.declaracion.set_mes(str(model.get_value(aiter, 1)))
-        
+
+        # original o sustitutiva
+        if self.rbSustitutiva.get_active():
+            self.declaracion.set_original('2')
+            self.declaracion.set_sustituye(self.txtSustituye.get_text())
+        else:
+            self.declaracion.set_original('1')
+            self.declaracion.set_sustituye('')        
 
         # crear ventana del formulario de declaracion
         vDeclaracion = wndDeclaracion()
-        #vDeclaracion.set_codigo_formulario('04200901')
         vDeclaracion.set_declaracion(self.declaracion)
         vDeclaracion.load_widgets_from_xml()
         vDeclaracion.show()
