@@ -5,12 +5,17 @@
 
 <xsl:template match="/">
     <root>
+    <xsl:choose>
 
-    <value>
-    <xsl:if test="$condicion">
-        <xsl:value-of select="$formula"/>
-    </xsl:if>
-    </value>
+    <xsl:when test="$condicion">
+        <value><xsl:value-of select="$formula"/></value>
+    </xsl:when>
+
+    <xsl:otherwise>
+        <value></value>
+    </xsl:otherwise>
+
+    </xsl:choose>
 
     </root>
     

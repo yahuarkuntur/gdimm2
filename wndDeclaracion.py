@@ -26,6 +26,7 @@ except:
 import configuration
 from ref_data import RefData
 from calc import Calculator
+from val import Validator
 
 
 ezGlade.set_file(configuration.GLADE_FILE)
@@ -38,17 +39,25 @@ class wndDeclaracion(ezGlade.BaseWindow):
     declaracion = None
     ref_data = None
     calcs = None
+    validations = None
 
 
     def set_declaracion(self, declaracion):
         self.declaracion = declaracion 
         self.calcs = Calculator()
-        if not self.calcs.load_xml(self.declaracion.get_formulario()):
-            ezGlade.DialogBox("ERROR: No se pudo cargar el XML de cálculos", "error")
+        if not self.calcs.load_xml(self.declaracion.get_version()):
+            ezGlade.DialogBox("ERROR: No se pudo cargar el XML de cálculos para " + self.declaracion.get_version(), "error")
             self.calcs = None
             return
-            
-        self.calcs.load_xsl('calculos.xsl')
+        
+        self.validations = Validator()
+        if not self.validations.load_xml(self.declaracion.get_version()):
+            ezGlade.DialogBox("ERROR: No se pudo cargar el XML de validaciones para " + self.declaracion.get_version(), "error")
+            self.validations = None
+            return
+        
+        self.calcs.load_xsl('calculos.xsl')    
+        self.validations.load_xsl('validaciones.xsl')
 
 
     def load_widget_contribuyente(self, number, text, width, height, left, top, tooltip):
@@ -91,13 +100,13 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
         tree = etree.parse(os.path.join('XML','CMPFRM.xml'))
         
-        codigo_formulario = self.declaracion.get_formulario()
+        version = self.declaracion.get_codigo_version()
 
-        if codigo_formulario is None:
+        if version is None:
             ezGlade.DialogBox("Código de formulario no definido", "error")
             return
 
-        form = tree.find("version[@codigo='"+codigo_formulario+"']") 
+        form = tree.find("version[@codigo='"+version+"']") 
 
         if form is None:
             ezGlade.DialogBox("Error al cargar el formulario", "error")
@@ -191,7 +200,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
         cabecera = etree.SubElement(root, "cabecera")
         codigo_version_formulario = etree.SubElement(cabecera, "codigo_version_formulario")
-        codigo_version_formulario.text = self.declaracion.get_formulario()
+        codigo_version_formulario.text = self.declaracion.get_version()
         ruc = etree.SubElement(cabecera, "ruc")
         ruc.text = self.declaracion.get_contribuyente().get_ruc()
         codigo_moneda = etree.SubElement(cabecera, "codigo_moneda")
@@ -216,6 +225,17 @@ class wndDeclaracion(ezGlade.BaseWindow):
             
         self.xml = root
         
+    
+    def do_validations(self):
+        if self.validations is None:
+            ezGlade.DialogBox("ERROR: El motor de validaciones no fué creado.", "error")
+            return
+
+        self.validations.validate(self.xml)
+        validations = self.validations.get_validations()
+
+        return validations
+
 
     def do_calculations(self):
         if self.calcs is None:
@@ -272,6 +292,20 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
     
     def on_btnGuardar_clicked(self, widget, *args):
+        validations = self.do_validations()
+
+        text = "El formulario presenta los siguientes errores: \n"
+        for item in validations:
+            text += item['severidad'] + ': ' + item['error'] + "\n"
+
+        text += "Desea continuar de todas formas? \n"
+
+        error_dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, message_format=text, buttons=gtk.BUTTONS_OK_CANCEL)
+        if error_dlg.run() != gtk.RESPONSE_OK:
+            error_dlg.destroy()    
+            return
+        error_dlg.destroy()
+
         dialog = gtk.FileChooserDialog("Guardar ...", None, gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_SAVE, gtk.RESPONSE_OK))
         dialog.set_default_response(gtk.RESPONSE_OK)
         dialog.set_current_name(self._generar_nombre_archivo())

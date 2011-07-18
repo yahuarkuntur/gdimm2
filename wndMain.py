@@ -209,7 +209,8 @@ class wndMain(ezGlade.BaseWindow):
 
 
     def on_rbSemestral_toggled(self, widget, *args):
-        codigo_formulario = get_active_text(self.cmbFormularios)
+        version = get_active_text(self.cmbFormularios)
+        nombre = self.ref_data.get_nombre_formulario(version)
     
         self.cmbPeriodo.clear()
         list_store = gtk.ListStore(str, str)
@@ -219,11 +220,15 @@ class wndMain(ezGlade.BaseWindow):
         if widget.get_active() :
             lista_datos = self.ref_data.get_data_list(40) # periodos
             self.declaracion.set_periodicidad("SEMESTRAL")
+            codigo_version = self.ref_data.get_codigo_version_formulario(nombre, "SEMESTRAL")
         else:
             lista_datos = self.ref_data.get_data_list(20) # meses
             self.declaracion.set_periodicidad("MENSUAL")
+            codigo_version = self.ref_data.get_codigo_version_formulario(nombre, "MENSUAL")
 
-        self.declaracion.set_formulario(codigo_formulario)
+        self.declaracion.set_version(version)
+        self.declaracion.set_codigo_version(codigo_version)
+        
 
         for code, name in lista_datos:
             list_store.append([name, code])  
@@ -238,31 +243,37 @@ class wndMain(ezGlade.BaseWindow):
     
 
     def on_cmbFormularios_changed(self, widget, *args):
-        codigo_formulario = get_active_text(widget)
+        version = get_active_text(widget)
+        nombre = self.ref_data.get_nombre_formulario(version)
 
         self.cmbPeriodo.clear()
         list_store = gtk.ListStore(str, str)
         self.cmbPeriodo.set_model(list_store)
         lista_datos = []
 
-        periodicidad = self.ref_data.get_periodicidad(codigo_formulario)
+        periodicidad = self.ref_data.get_periodicidad(version)
 
         if periodicidad == "MENSUAL_SEMESTRAL":
             self.hbPeriodo.show()
             if self.rbSemestral.get_active() :
                 lista_datos = self.ref_data.get_data_list(40) # periodos 
                 self.declaracion.set_periodicidad("SEMESTRAL")
+                codigo_version = self.ref_data.get_codigo_version_formulario(nombre, "SEMESTRAL")
             else:
                 lista_datos = self.ref_data.get_data_list(20) # meses
                 self.declaracion.set_periodicidad("MENSUAL")
+                codigo_version = self.ref_data.get_codigo_version_formulario(nombre, "MENSUAL")
         elif periodicidad == "MENSUAL":
             self.hbPeriodo.hide()
             lista_datos = self.ref_data.get_data_list(20) # meses
             self.declaracion.set_periodicidad("MENSUAL")
+            codigo_version = self.ref_data.get_codigo_version_formulario(nombre, "MENSUAL")
         else:
             self.declaracion.set_periodicidad("ANUAL")
+            codigo_version = self.ref_data.get_codigo_version_formulario(nombre, "ANUAL")
 
-        self.declaracion.set_formulario(codigo_formulario)
+        self.declaracion.set_version(version)
+        self.declaracion.set_codigo_version(codigo_version)
 
         for code, name in lista_datos:
             list_store.append([name, code])  
@@ -283,8 +294,9 @@ class wndMain(ezGlade.BaseWindow):
             return
 
         # alias del formulario
-        nombre_formulario = get_active_text(self.cmbFormularios)
-        alias = nombre_formulario.replace("FORMULARIO ", "")
+        version = get_active_text(self.cmbFormularios)
+        alias = self.ref_data.get_nombre_formulario(version)
+        alias = alias.replace("FORMULARIO ", "")
         self.declaracion.set_alias_formulario(alias)
 
         # obtener anio

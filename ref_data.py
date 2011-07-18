@@ -41,11 +41,20 @@ class RefData:
         for node in nodes:
             periodicidad = node.attrib.get('periodicidad')
             nombre = node.attrib.get('nombre')
-            codigo = node.attrib.get('version')
+            version = node.attrib.get('version')
             desc = node.attrib.get('descripcion_impuesto')
-            list.append([codigo, nombre + ' .- '  + desc])
+            list.append([version, nombre + ' .- '  + desc])
 
         return list
+
+
+    def get_codigo_version_formulario(self, nombre, periodicidad):
+        nodes = self.tree.findall('datosFormulariosVersiones/formularioVersion[@nombre="'+nombre+'"]')
+
+        for node in nodes:
+            if node.attrib.get('periodicidad') == periodicidad:
+                return node.attrib.get('versionVigente')
+        return None
 
 
     def get_periodicidad(self, version):
@@ -59,6 +68,20 @@ class RefData:
             codigo = node.attrib.get('version')
             if codigo == version:
                 return periodicidad
+        return None
+
+
+    def get_nombre_formulario(self, version):
+        nodes = self.get_xpath_nodes(5)
+    
+        if nodes is None:
+            return None
+
+        for node in nodes:
+            nombre = node.attrib.get('nombre')
+            codigo = node.attrib.get('version')
+            if codigo == version:
+                return nombre
         return None
 
 

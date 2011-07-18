@@ -27,7 +27,8 @@ class Declaracion:
     _anio = None
     #_tipo = None
     _periodicidad = None
-    _formulario = None
+    _codigo_version = None  # referencia al XML con widgets del formulario  
+    _version = None         # referencia a los XMLs de calculos y validaciones
     _contribuyente = None
     _anticipada = False
     _original   = '1'
@@ -49,9 +50,11 @@ class Declaracion:
     def set_periodicidad(self, periodicidad):
         self._periodicidad = periodicidad
 
+    def set_codigo_version(self, codigo_version):
+        self._codigo_version = codigo_version
 
-    def set_formulario(self, formulario):
-        self._formulario = formulario
+    def set_version(self, version):
+        self._version = version
 
     def set_contribuyente(self, contribuyente):
         self._contribuyente = contribuyente
@@ -78,8 +81,11 @@ class Declaracion:
     def get_tipo(self):
         return self._tipo
 
-    def get_formulario(self):
-        return self._formulario
+    def get_codigo_version(self):
+        return self._codigo_version
+
+    def get_version(self):
+        return self._version
 
     def get_contribuyente(self):
         return self._contribuyente

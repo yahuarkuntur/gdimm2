@@ -61,6 +61,11 @@ class Calculator:
 
             # iterar y aplicar cada formula de calculo
             for formula in campos:
+                tipo    = formula.attrib.get('tipoFormula') 
+
+                if tipo != "C":
+                    continue
+
                 validacion = formula.attrib.get('validacion') 
                 mensajeError = formula.attrib.get('mensajeError') 
                 condicionFormulaCalculo = formula.attrib.get('condicionFormulaCalculo') 
@@ -68,10 +73,10 @@ class Calculator:
                 result = self.calc_xsl(test_xml, formula=validacion, condicion=condicionFormulaCalculo)
 
                 new_val = result.find('value').text
-
+                
                 if new_val is not None:
                     #    print 'Campo:', numero, 'Valor:', valor, 'Calculo:', new_val, 'Error:', mensajeError
-                    self.calculations.append({'campo': numero, 'valor': valor, 'calculo': new_val})
+                    self.calculations.append({'campo': numero, 'valor': valor, 'calculo': new_val, 'error': mensajeError})
 
 
 
@@ -81,7 +86,7 @@ if __name__ == '__main__':
     declaracion = etree.parse(os.path.join('tests','104ORI_JUN2011.xml'), parser)
 
     calcs = Calculator()
-    calcs.load_xml('04200903') 
+    calcs.load_xml('04200902') 
     calcs.load_xsl('calculos.xsl')
 
     calcs.calc(declaracion)
