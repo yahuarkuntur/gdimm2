@@ -25,12 +25,14 @@ from exceptions import *
 class Declaracion:
     _mes = None
     _anio = None
-    _tipo = None
+    #_tipo = None
+    _periodicidad = None
     _formulario = None
     _contribuyente = None
     _anticipada = False
     _original   = '1'
     _sustituye  = ''
+    _alias_formulario = ''
     
     def __init__(self):
         pass
@@ -43,6 +45,10 @@ class Declaracion:
 
     def set_tipo(self, tipo):
         self._tipo = tipo
+
+    def set_periodicidad(self, periodicidad):
+        self._periodicidad = periodicidad
+
 
     def set_formulario(self, formulario):
         self._formulario = formulario
@@ -58,6 +64,9 @@ class Declaracion:
 
     def set_sustituye(self, sustituye):
         self._sustituye = sustituye
+
+    def set_alias_formulario(self, alias_formulario):
+        self._alias_formulario = alias_formulario
 
 
     def get_mes(self):
@@ -83,6 +92,13 @@ class Declaracion:
 
     def get_sustituye(self):
         return self._sustituye
+
+    def get_alias_formulario(self):
+        return self._alias_formulario
+
+    def get_periodicidad(self):
+        return self._periodicidad
+
 
 
 

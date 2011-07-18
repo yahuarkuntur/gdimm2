@@ -89,7 +89,6 @@ class wndDeclaracion(ezGlade.BaseWindow):
             ezGlade.DialogBox("Código de formulario no definido", "error")
             return
 
-        # formulario 104A
         form = tree.find("version[@codigo='"+codigo_formulario+"']") 
 
         if form is None:
@@ -174,13 +173,14 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 self.fixed1.put(combo, left/10, top/10)
                 self.widget_container[numero] = combo
                 combo.show()
+
+        # poner el titulo de la ventana
+        title = self.wndDeclaracion.get_title()
+        self.wndDeclaracion.set_title(title + self.declaracion.get_alias_formulario())
     
         
     def post_init(self):
         self.ref_data = RefData()
-        # poner el titulo de la ventana
-        title = self.wndDeclaracion.get_title()
-        self.wndDeclaracion.set_title(title) # TODO obtener el alias del formulario
         self.wndDeclaracion.maximize()
    
 
@@ -250,11 +250,32 @@ class wndDeclaracion(ezGlade.BaseWindow):
             self.win.destroy()
         error_dlg.destroy()
 
+
+    def _generar_nombre_archivo(self):
+        alias = self.declaracion.get_alias_formulario()
+        filename = alias
+        if self.declaracion.get_original():
+            filename += 'ORI_'
+        else:
+            filename += 'SUS_'
+    
+        if self.declaracion.get_periodicidad() == "SEMESTRAL":
+            mes = self.ref_data.get_semestre_por_codigo(self.declaracion.get_mes())
+        elif self.declaracion.get_periodicidad() == "MENSUAL":
+            mes = self.ref_data.get_mes_por_codigo(self.declaracion.get_mes())
+            mes = mes[:3]
+        else:
+            mes = ''
+
+        filename += mes + str(self.declaracion.get_anio())
+
+        return filename
+
     
     def on_btnGuardar_clicked(self, widget, *args):
         dialog = gtk.FileChooserDialog("Guardar ...", None, gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_SAVE, gtk.RESPONSE_OK))
         dialog.set_default_response(gtk.RESPONSE_OK)
-        dialog.set_current_name('test') # TODO generar nombre en base al periodo y declaracion
+        dialog.set_current_name(self._generar_nombre_archivo())
         dialog.set_current_folder(os.path.join('XML_Declaraciones'))
 
         filter = gtk.FileFilter()
