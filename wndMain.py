@@ -31,12 +31,20 @@ except:
     sys.exit(1)
 
 from data import *
-from ref_data import *
+from ref_data import RefData
 import configuration
 from wndDeclaracion import wndDeclaracion
 from wndContribuyente import wndContribuyente
 
 ezGlade.set_file(configuration.GLADE_FILE)
+
+
+def get_active_text(combobox):
+    iter = combobox.get_active_iter()
+    model = combobox.get_model()
+    if iter is None:
+        return None
+    return str(model.get_value(iter, 1))
 
 
 class wndAcerca(ezGlade.BaseWindow):
@@ -52,6 +60,7 @@ class wndMain(ezGlade.BaseWindow):
 
     lista_contribuyentes = None
     declaracion   = None
+    ref_data    = None
 
     def load_contribuyentes(self):
         "Carga el combobox con la lista de contribuyentes e incluye la opción de editar"
@@ -66,6 +75,8 @@ class wndMain(ezGlade.BaseWindow):
 
 
     def post_init(self):
+        self.ref_data = RefData()
+
         self.declaracion = Declaracion()
         
         self.lista_contribuyentes = gtk.ListStore(str, str)
@@ -77,31 +88,31 @@ class wndMain(ezGlade.BaseWindow):
         cell_ruc = gtk.CellRendererText()
         cell_nombre = gtk.CellRendererText()
 
-        self.cmbContribuyente.pack_end(cell_ruc, False)
         self.cmbContribuyente.pack_start(cell_nombre, False)
+        self.cmbContribuyente.pack_end(cell_ruc, False)
+        
         self.cmbContribuyente.add_attribute(cell_ruc, 'text', 0)
         self.cmbContribuyente.add_attribute(cell_nombre, 'text', 1)
 
         #Combo para el manejo de formularios
         self.cmbFormularios.clear()
-        lista_formularios = gtk.ListStore(str, str)
-        self.cmbFormularios.set_model(lista_formularios)
-        lista_datos = get_datos_formularios()
+        list_store = gtk.ListStore(str, str)
+        self.cmbFormularios.set_model(list_store)
+        lista_datos = self.ref_data.get_datos_formularios()
 
         for code, name in lista_datos:
-            lista_formularios.append([name, code])
+            list_store.append([name, code])
         
-        cell_formularios = gtk.CellRendererText()
-        self.cmbFormularios.pack_start(cell_formularios, True)
-        self.cmbFormularios.add_attribute(cell_formularios, 'text', 0)
-        self.cmbFormularios.add_attribute(cell_formularios, 'text', 1)
+        cell_formulario = gtk.CellRendererText()
+        self.cmbFormularios.pack_start(cell_formulario, False)
+        self.cmbFormularios.add_attribute(cell_formulario, 'text', 0)
         self.cmbFormularios.set_active(0)
 
         # combo de anios
         self.cmbAnio.clear()
         list_store = gtk.ListStore(str, str)
         self.cmbAnio.set_model(list_store)
-        lista_datos = get_data_list(30) # anios
+        lista_datos = self.ref_data.get_data_list(30) # anios
         lista_datos.reverse()
 
         for code, name in lista_datos:
@@ -204,9 +215,9 @@ class wndMain(ezGlade.BaseWindow):
         lista_datos = []
 
         if widget.get_active() :
-            lista_datos = get_data_list(40) # periodos
+            lista_datos = self.ref_data.get_data_list(40) # periodos
         else:
-            lista_datos = get_data_list(20) # meses
+            lista_datos = self.ref_data.get_data_list(20) # meses
 
         for code, name in lista_datos:
             list_store.append([name, code])  
@@ -222,27 +233,25 @@ class wndMain(ezGlade.BaseWindow):
     
 
     def on_cmbFormularios_changed(self, widget, *args):
-        modelo = widget.get_model()
-        iter = widget.get_active_iter()
-        codigo_formulario = modelo.get_value(iter, 1)
+        codigo_formulario = get_active_text(widget)
 
         self.cmbPeriodo.clear()
         list_store = gtk.ListStore(str, str)
         self.cmbPeriodo.set_model(list_store)
         lista_datos = []
 
-        periodicidad = get_periodicidad(codigo_formulario)
+        periodicidad = self.ref_data.get_periodicidad(codigo_formulario)
 
         if periodicidad == "MENSUAL":
-            lista_datos = get_data_list(20) # meses
+            lista_datos = self.ref_data.get_data_list(20) # meses
         elif periodicidad == "MENSUAL_SEMESTRAL":
             self.hbPeriodo.show()
             if self.rbSemestral.get_active() :
-                lista_datos = get_data_list(40) # periodos 
+                lista_datos = self.ref_data.get_data_list(40) # periodos 
             else:
-                lista_datos = get_data_list(20) # meses
+                lista_datos = self.ref_data.get_data_list(20) # meses
         else: # anual
-            lista_datos = get_data_list(40) # periodos
+            lista_datos = self.ref_data.get_data_list(40) # periodos
 
         for code, name in lista_datos:
             list_store.append([name, code])  
@@ -258,27 +267,22 @@ class wndMain(ezGlade.BaseWindow):
 
 
     def on_btnAceptar_clicked(self, *args):
+        # contribuyente
         if self.declaracion.get_contribuyente() is None:
             ezGlade.DialogBox("No se ha seleccionado el contribuyente", "error")
             return
 
-        # obtener formulario TODO factorize
-        aiter = self.cmbFormularios.get_active_iter()
-        model = self.cmbFormularios.get_model()
-        if aiter is not None:
-            self.declaracion.set_formulario(str(model.get_value(aiter, 1)))
+        # obtener formulario 
+        formulario = get_active_text(self.cmbFormularios)
+        self.declaracion.set_formulario(formulario)
 
         # obtener anio
-        aiter = self.cmbAnio.get_active_iter()
-        model = self.cmbAnio.get_model()
-        if aiter is not None:
-            self.declaracion.set_anio(str(model.get_value(aiter, 1)))
+        anio = get_active_text(self.cmbAnio)
+        self.declaracion.set_anio(anio)
 
         # obtener mes o periodo
-        aiter = self.cmbPeriodo.get_active_iter()
-        model = self.cmbPeriodo.get_model()
-        if aiter is not None:
-            self.declaracion.set_mes(str(model.get_value(aiter, 1)))
+        periodo = get_active_text(self.cmbPeriodo)
+        self.declaracion.set_mes(periodo)
 
         # original o sustitutiva
         if self.rbSustitutiva.get_active():

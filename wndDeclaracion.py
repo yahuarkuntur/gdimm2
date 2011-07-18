@@ -24,7 +24,7 @@ except:
 
 
 import configuration
-from ref_data import get_data_list
+from ref_data import RefData
 from calc import Calculator
 
 
@@ -36,6 +36,8 @@ class wndDeclaracion(ezGlade.BaseWindow):
     widget_container = dict()
     xml = None
     declaracion = None
+    ref_data = None
+
 
     def set_declaracion(self, declaracion):
         self.declaracion = declaracion 
@@ -61,7 +63,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
         if ref_table != "-1":
             list_store = gtk.ListStore(str, str)
             combo.set_model(list_store)
-            lista_datos = get_data_list(ref_table)
+            lista_datos = self.ref_data.get_data_list(ref_table)
             for code, name in lista_datos:
                 if value == code :
                     list_store.append([name, code])
@@ -165,12 +167,9 @@ class wndDeclaracion(ezGlade.BaseWindow):
                     list_store = gtk.ListStore(str, str)
                     combo.set_model(list_store)
                     # llenar combo segun datos referenciales
-
-                    lista_datos = get_data_list(tablaReferencial)
-
+                    lista_datos = self.ref_data.get_data_list(tablaReferencial)
                     for code, name in lista_datos:
                         list_store.append([name, code])
-
                     combo.set_active(0)
                 self.fixed1.put(combo, left/10, top/10)
                 self.widget_container[numero] = combo
@@ -178,6 +177,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
     
         
     def post_init(self):
+        self.ref_data = RefData()
         # poner el titulo de la ventana
         title = self.wndDeclaracion.get_title()
         self.wndDeclaracion.set_title(title) # TODO obtener el alias del formulario
