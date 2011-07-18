@@ -144,7 +144,7 @@ class wndContribuyente(ezGlade.BaseWindow):
         treeselection = self.trContribuyentes.get_selection()
         (model, iter) = treeselection.get_selected()
         if not iter:
-            ezGlade.DialogBox("Debe seleccionar al menos un item", tipo = 'warning', window = self.win)
+            ezGlade.DialogBox("Debe seleccionar al menos un item", type = 'warning', window = self.win)
             return (None,None)
         else:
             return (model, iter)

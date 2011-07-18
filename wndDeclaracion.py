@@ -148,16 +148,6 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 entry.connect("key-release-event", self._onTabKeyReleased) # bind TAB event
                 self.widget_container[numero] = entry
                 entry.show()
-            #elif c.attrib.get("tipoControl") == "M":# monetario
-            #    adjustment = gtk.Adjustment(value=0, lower=0, upper=1000000000, step_incr=1, page_incr=1, page_size=0)
-            #    spin = gtk.SpinButton(adjustment=adjustment, climb_rate=0.1, digits=2)
-            #    spin.set_numeric(True)
-            #    spin.set_size_request(width/10, height/10)
-            #    spin.set_tooltip_text(mensajeAyuda)
-            #    if editable != "SI":
-            #        spin.set_editable(False)
-            #    self.fixed1.put(spin, left/10, top/10)
-            #    spin.show()
             elif c.attrib.get("tipoControl") == "C":# combo
                 combo = gtk.combo_box_new_text()
                 combo.set_size_request(width/10, height/10)

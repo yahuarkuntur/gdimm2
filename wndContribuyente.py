@@ -35,9 +35,6 @@ import configuration
 
 ezGlade.set_file(configuration.GLADE_FILE)
 
-
-
-
 class wndEditContribuyente(ezGlade.BaseWindow):
 
     def set_model(self, modelo):
@@ -51,6 +48,7 @@ class wndEditContribuyente(ezGlade.BaseWindow):
 
         self.cmbTipoDocumento.set_model(self.modeloTipo)
         self.cmbTipoDocumento.set_active(0)
+
 
     def set_data(self, oContribuyente):
         def search(user_data):
@@ -66,6 +64,7 @@ class wndEditContribuyente(ezGlade.BaseWindow):
         myIter = search( oContribuyente.get_tipo_documento() )
         if myIter:
             self.cmbTipoDocumento.set_active_iter(myIter)
+
 
     def on_btnSave_clicked(self, widget, *args):
         contrib = Contribuyente()
@@ -100,6 +99,7 @@ class wndContribuyente(ezGlade.BaseWindow):
 
     lista_contribuyentes = None
 
+
     def load_list(self):
         cont = 1
 
@@ -107,6 +107,7 @@ class wndContribuyente(ezGlade.BaseWindow):
         for item in self.lstContribuyentes.get_elements():
             self.lista_contribuyentes.append([item.get_ruc(),item.get_nombre()])
             cont+=1
+
 
     def post_init(self):
         self.lista_contribuyentes = gtk.ListStore(str, str)
@@ -141,14 +142,16 @@ class wndContribuyente(ezGlade.BaseWindow):
         self.columna_ruc.set_sort_column_id(0)
         self.columna_nombre.set_sort_column_id(1)
 
+
     def get_selected(self):
         treeselection = self.trContribuyentes.get_selection()
         (model, iter) = treeselection.get_selected()
         if not iter:
-            ezGlade.DialogBox("Debe seleccionar al menos un item", tipo = 'warning', window = self.win)
+            ezGlade.DialogBox("Debe seleccionar al menos un item", type = 'warning', window = self.win)
             return (None,None)
         else:
             return (model, iter)
+
 
     def on_btnNuevo_clicked(self, widget, *args):
         wNuevo = wndNuevoContribuyente()
@@ -156,6 +159,7 @@ class wndContribuyente(ezGlade.BaseWindow):
         wNuevo.set_modal(True)
         wNuevo.set_model(self.lstContribuyentes)
         wNuevo.show()
+
 
     def on_btnEditar_clicked(self, widget, *args):
         (model, iter) = self.get_selected()
@@ -169,6 +173,7 @@ class wndContribuyente(ezGlade.BaseWindow):
             wEditar.set_model(self.lstContribuyentes)
             wEditar.set_data(contrib)
             wEditar.show()
+
 
     def on_btnBorrar_clicked(self, widget, *args):
         error_dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, message_format="Está seguro de eliminar?", buttons=gtk.BUTTONS_OK_CANCEL)
@@ -190,8 +195,10 @@ class wndContribuyente(ezGlade.BaseWindow):
     def on_trContribuyentes_select_cursor_row(self, widget, *args):
         pass
 
+
     def on_btnClose_clicked(self, widget, *args):
         self.win.destroy()
+
 
     def on_btnSave_clicked(self, widget, *args):
         self.lstContribuyentes.save()
