@@ -2,6 +2,7 @@
 
 import os
 from lxml import etree
+import glob
 
 
 class Calculator:
@@ -15,14 +16,25 @@ class Calculator:
         self.parser = etree.XMLParser(remove_comments=True, encoding='utf8')
         self.calculations = []
 
-    def load_xml(self, filename): 
-        self.calc_xml = etree.parse(os.path.join('XML', filename), self.parser)
+
+    def load_xml(self, version): 
+        files = glob.glob(os.path.join('XSL', 'CAL*.xml'))
+        for filename in files:
+            xml = etree.parse(filename, self.parser)
+            root = xml.find('/')
+            if root.attrib.get('version') == version:
+                self.calc_xml = xml
+                return True
+        return False
+        
 
     def load_xsl(self, filename):
-        self.calc_xsl = etree.XSLT(etree.parse(os.path.join('XSL', filename), self.parser))
+        self.calc_xsl = etree.XSLT(etree.parse(os.path.join('XSLT', filename), self.parser))
+
 
     def get_calculations(self):
         return self.calculations
+
 
     def calc(self, test_xml):
         if self.calc_xml is None:
@@ -34,8 +46,6 @@ class Calculator:
             return
 
         self.calculations = []
-
-        #print etree.tostring(test_xml, encoding='utf8', pretty_print=True)
 
         # iteramos los campos de la declaracion
         for node in test_xml.find('detalle'):
@@ -71,13 +81,15 @@ if __name__ == '__main__':
     declaracion = etree.parse(os.path.join('tests','104ORI_JUN2011.xml'), parser)
 
     calcs = Calculator()
-    calcs.load_xml('CAL0402.xml') # TODO obtener del mapeo
+    calcs.load_xml('04200903') 
     calcs.load_xsl('calculos.xsl')
 
     calcs.calc(declaracion)
 
     for x in calcs.get_calculations():
         print x
+
+
 
         
         

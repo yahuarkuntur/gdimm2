@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSPY v5 rel. 3 U (http://www.xmlspy.com) by TEAM (RENEGADE) -->
-
 <formulasCalculo version="04200902">
 	<campo numero="409">
 		<formula validacion="round ((sum(//campo[@numero='401']) + sum(//campo[@numero='402']) + sum(//campo[@numero='403'])+sum(//campo[@numero='404'])+sum(//campo[@numero='405'])+sum(//campo[@numero='406'])+sum(//campo[@numero='407'])+sum(//campo[@numero='408'])) * 100)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="C" severidad="ERROR" mensajeError="Operación Incorrecta, campo 409 'Opción Corregir'" condicionFormulaCalculo="(sum(//campo[@numero='401']) + sum(//campo[@numero='402']) + sum(//campo[@numero='403'])+sum(//campo[@numero='404'])+sum(//campo[@numero='405'])+sum(//campo[@numero='406'])+sum(//campo[@numero='407'])+sum(//campo[@numero='408']))&gt;=0"/>

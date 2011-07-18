@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<formulasValidacionCalculo version="06200601">
+	<campo numero="99">
+		<formula validacion="string-length(//campo[@numero='99']) &lt;= 15  " fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ADVERTENCIA" mensajeError="Verifique dimensión del campo 99, 15 dígitos" condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="101">
+		<formula validacion="(string-length(//campo[@numero='101']) = 0) or (//campo[@numero='101'] &gt;= 0 and //campo[@numero='101'] &lt;= 12)" fechaVigenciaDesde="20060301" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="El valor del mes no es válido" condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="102">
+		<formula validacion="//campo[@numero='201'] = //ruc" fechaVigenciaDesde="20020101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Campo 201 debe ser igual al RUC" condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="203">
+		<formula validacion="string-length(//campo[@numero='203']) &gt; 0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ADVERTENCIA" mensajeError="El campo Ciudad (203) es obligatorio." condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="204">
+		<formula validacion="string-length(//campo[@numero='204']) &gt; 0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ADVERTENCIA" mensajeError="El campo Calle Principal (204) es obligatorio." condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="205">
+		<formula validacion="string-length(//campo[@numero='205']) &gt; 0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ADVERTENCIA" mensajeError="El campo Numero (205) es obligatorio." condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="301">
+		<formula validacion="string-length (//campo[@numero='301'])&gt;0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="El Código de Concepto (301) es inválido." condicionFormulaCalculo="1=1"/>
+		<formula validacion="((//campo[@numero='301'] = '3023' or //campo[@numero='301'] = '3092' or //campo[@numero='301'] = '3610' or //campo[@numero='301'] = '3620' or //campo[@numero='301'] = '3630' or //campo[@numero='301'] = '3640' or //campo[@numero='301'] = '3650' or //campo[@numero='301'] = '3660' or //campo[@numero='301'] = '4580' or //campo[@numero='301'] = '3072' or //campo[@numero='301'] = '3073' or //campo[@numero='301'] = '3074' or //campo[@numero='301'] = '3075' or //campo[@numero='301'] = '3076' or //campo[@numero='301'] = '4006') and //campo[@numero='102'] &gt;= 2008) or (not(//campo[@numero='301'] = '3023' or //campo[@numero='301'] = '3092' or //campo[@numero='301'] = '3610' or //campo[@numero='301'] = '3620' or //campo[@numero='301'] = '3630' or //campo[@numero='301'] = '3640' or //campo[@numero='301'] = '3650' or //campo[@numero='301'] = '3660' or //campo[@numero='301'] = '4580' or //campo[@numero='301'] = '3072' or //campo[@numero='301'] = '3073' or //campo[@numero='301'] = '3074' or //campo[@numero='301'] = '3075' or //campo[@numero='301'] = '3076' or //campo[@numero='301'] = '4006'))" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Error campo 301, impuesto no válido para período a declarar." condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="303">
+		<formula validacion="(string-length(//campo[@numero='303']) = 0) or (//campo[@numero='101'] &gt;= 1 and //campo[@numero='101'] &lt;= 10)" fechaVigenciaDesde="20060301" fechaVigenciaHasta="" tipoFormula="V" severidad="ADVERTENCIA" mensajeError="El Codigo de Documento (303) es invalido." condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="306">
+		<formula validacion="string-length(//campo[@numero='306']) &lt;= 15" fechaVigenciaDesde="20060301" fechaVigenciaHasta="" tipoFormula="V" severidad="ADVERTENCIA" mensajeError="Verifique la dimensión del campo 306, Max. 15 dígitos." condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="905">
+		<formula validacion="round (//campo[@numero='905'] * 100) = round( (//campo[@numero='999'] - sum(//campo[@numero='906']) - sum(//campo[@numero='907'])) * 100 ) or string-length( //campo[@numero='905'])=0" fechaVigenciaDesde="19710101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Error en el Calculo de valores a pagar" condicionFormulaCalculo="1=1"/>
+		<formula validacion="sum(//campo[@numero='905'])&gt;=0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Los campos de valor a pagar, interes, multas e impuesto no deben tener valores negativos." condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="906">
+		<formula validacion="round (//campo[@numero='906'] * 100) = round ( (sum(//campo[@numero='917']) +sum(//campo[@numero='919'])) * 100 ) or string-length(//campo[@numero='906'])=0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="906: Total Compensaciones: 917 + 919" condicionFormulaCalculo="1=1"/>
+		<formula validacion="sum(//campo[@numero='906'])&gt;=0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Los campos de valor a pagar, interes, multas e impuesto no deben tener valores negativos." condicionFormulaCalculo="1=1"/>
+		<formula validacion="round ( (sum(//campo[@numero='917']) +sum(//campo[@numero='919'])) * 100 )" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="907">
+		<formula validacion="round (//campo[@numero='907'] * 100) = round ( (sum(//campo[@numero='909']) +sum(//campo[@numero='911']) + sum(//campo[@numero='913']) + sum(//campo[@numero='915'])) * 100 ) or string-length(//campo[@numero='907'])=0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="MEDIANTE NOTAS DE CREDITO" condicionFormulaCalculo="1=1"/>
+		<formula validacion="sum(//campo[@numero='907'])&gt;=0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Los campos de valor a pagar, interes, multas e impuesto no deben tener valores negativos." condicionFormulaCalculo="1=1"/>
+		<formula validacion="round ( (sum(//campo[@numero='909']) +sum(//campo[@numero='911']) + sum(//campo[@numero='913']) + sum(//campo[@numero='915'])) * 100 )" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="908">
+		<formula validacion="(string-length(//campo[@numero='908']) &gt; 0) and (sum(//campo[@numero='909']) &gt; 0) or (string-length(//campo[@numero='908']) = 0) and (sum(//campo[@numero='909']) = 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="908:Verifique el numero de Nota de Credito" condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="910">
+		<formula validacion="(string-length(//campo[@numero='910']) &gt; 0) and (sum(//campo[@numero='911']) &gt; 0) or (string-length(//campo[@numero='910']) = 0) and (sum(//campo[@numero='911']) = 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="910:Verifique el numero de Nota de Credito" condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="912">
+		<formula validacion="(string-length(//campo[@numero='912']) &gt; 0) and (sum(//campo[@numero='913']) &gt; 0) or (string-length(//campo[@numero='912']) = 0) and (sum(//campo[@numero='913']) = 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="912:Verifique el numero de Nota de Credito" condicionFormulaCalculo="1=1"/>
+	</campo>
+		<campo numero="916">
+		<formula validacion="(string-length(//campo[@numero='916']) &gt; 0) and (sum(//campo[@numero='917']) &gt; 0) or (string-length(//campo[@numero='916']) = 0) and (sum(//campo[@numero='917']) = 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="916:Verifique el numero de Compensacion" condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="918">
+		<formula validacion="(string-length(//campo[@numero='918']) &gt; 0) and (sum(//campo[@numero='919']) &gt; 0) or (string-length(//campo[@numero='918']) = 0) and (sum(//campo[@numero='919']) = 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="918:Verifique el numero de Compensacion" condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="999">
+		<formula validacion="round (//campo[@numero='999'] * 100) = round ((sum(//campo[@numero='905']) + sum(//campo[@numero='906']) + sum(//campo[@numero='907'])) * 100)" fechaVigenciaDesde="20060301" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="La suma del Total pagado es incorrecta" condicionFormulaCalculo="1=1"/>
+		<formula validacion="round (//campo[@numero='999'] * 100) = round ( ( //campo[@numero='902'] + sum(//campo[@numero='903']) + sum(//campo[@numero='904'])) * 100)" fechaVigenciaDesde="19710101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="La suma del Total pagado es incorrecta" condicionFormulaCalculo="1=1"/>
+		<formula validacion="sum (//campo[@numero='999'])&gt;0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Formulario de Pago, debe registrar un valor a pagar." condicionFormulaCalculo="1=1"/>
+		<formula validacion="round ( ( //campo[@numero='902'] + sum(//campo[@numero='903']) + sum(//campo[@numero='904'])) * 100)" fechaVigenciaDesde="19710101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="1=1"/>
+	</campo>
+</formulasValidacionCalculo>

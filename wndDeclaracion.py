@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
+import os, sys
 import ezGlade
 
 try:
@@ -37,10 +37,18 @@ class wndDeclaracion(ezGlade.BaseWindow):
     xml = None
     declaracion = None
     ref_data = None
+    calcs = None
 
 
     def set_declaracion(self, declaracion):
         self.declaracion = declaracion 
+        self.calcs = Calculator()
+        if not self.calcs.load_xml(self.declaracion.get_formulario()):
+            ezGlade.DialogBox("ERROR: No se pudo cargar el XML de cálculos", "error")
+            self.calcs = None
+            return
+            
+        self.calcs.load_xsl('calculos.xsl')
 
 
     def load_widget_contribuyente(self, number, text, width, height, left, top, tooltip):
@@ -81,7 +89,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
             ezGlade.DialogBox("No existen datos del contribuyente", "error")
             return
 
-        tree = etree.parse(os.path.join('XML','CMPFRM-GNU.xml'))
+        tree = etree.parse(os.path.join('XML','CMPFRM.xml'))
         
         codigo_formulario = self.declaracion.get_formulario()
 
@@ -142,7 +150,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 if editable != "SI":
                     entry.set_editable(False)
                     entry.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse("#cccccc")) # color deshabilitado ;)
-                entry.set_text("0.0")
+                entry.set_text("0")
                 entry.set_property('xalign', 1)
                 self.fixed1.put(entry, left/10, top/10)
                 entry.connect("key-release-event", self._onTabKeyReleased) # bind TAB event
@@ -210,11 +218,12 @@ class wndDeclaracion(ezGlade.BaseWindow):
         
 
     def do_calculations(self):
-        calcs = Calculator()
-        calcs.load_xml('CAL0402.xml') # TODO obtener del mapeo
-        calcs.load_xsl('calculos.xsl')
-        calcs.calc(self.xml)
-        calculations = calcs.get_calculations()
+        if self.calcs is None:
+            ezGlade.DialogBox("ERROR: El motor de cálculos no fué creado.", "error")
+            return
+
+        self.calcs.calc(self.xml)
+        calculations = self.calcs.get_calculations()
 
         # se modifica el valor del widget y el XML con el valor calculado por la XSLT
         for item in calculations:
@@ -235,7 +244,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
     def on_btnCancelar_clicked(self, widget, *args):
         # verificar si se han guardado los cambios!!!
-        error_dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, message_format="Los datos no guardados se perderan. Salir?", buttons=gtk.BUTTONS_OK_CANCEL)
+        error_dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, message_format="Los datos no guardados se perderán. Salir?", buttons=gtk.BUTTONS_OK_CANCEL)
         if error_dlg.run() == gtk.RESPONSE_OK:
             self.win.destroy()
         error_dlg.destroy()

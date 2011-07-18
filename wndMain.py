@@ -218,14 +218,12 @@ class wndMain(ezGlade.BaseWindow):
 
         if widget.get_active() :
             lista_datos = self.ref_data.get_data_list(40) # periodos
-            codigo_version = self.ref_data.get_codigo_version_formulario(codigo_formulario, "SEMESTRAL")
             self.declaracion.set_periodicidad("SEMESTRAL")
         else:
             lista_datos = self.ref_data.get_data_list(20) # meses
-            codigo_version = self.ref_data.get_codigo_version_formulario(codigo_formulario, "MENSUAL")
             self.declaracion.set_periodicidad("MENSUAL")
 
-        self.declaracion.set_formulario(codigo_version)
+        self.declaracion.set_formulario(codigo_formulario)
 
         for code, name in lista_datos:
             list_store.append([name, code])  
@@ -249,26 +247,22 @@ class wndMain(ezGlade.BaseWindow):
 
         periodicidad = self.ref_data.get_periodicidad(codigo_formulario)
 
-        if "SEMESTRAL" in periodicidad and "MENSUAL" in periodicidad:
+        if periodicidad == "MENSUAL_SEMESTRAL":
             self.hbPeriodo.show()
             if self.rbSemestral.get_active() :
                 lista_datos = self.ref_data.get_data_list(40) # periodos 
-                codigo_version = self.ref_data.get_codigo_version_formulario(codigo_formulario, "SEMESTRAL")
                 self.declaracion.set_periodicidad("SEMESTRAL")
             else:
                 lista_datos = self.ref_data.get_data_list(20) # meses
-                codigo_version = self.ref_data.get_codigo_version_formulario(codigo_formulario, "MENSUAL")
                 self.declaracion.set_periodicidad("MENSUAL")
-        elif "MENSUAL" in periodicidad:
+        elif periodicidad == "MENSUAL":
             self.hbPeriodo.hide()
             lista_datos = self.ref_data.get_data_list(20) # meses
-            codigo_version = self.ref_data.get_codigo_version_formulario(codigo_formulario, "MENSUAL")
             self.declaracion.set_periodicidad("MENSUAL")
         else:
             self.declaracion.set_periodicidad("ANUAL")
-            codigo_version = self.ref_data.get_codigo_version_formulario(codigo_formulario, "ANUAL")
 
-        self.declaracion.set_formulario(codigo_version)
+        self.declaracion.set_formulario(codigo_formulario)
 
         for code, name in lista_datos:
             list_store.append([name, code])  

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<formulasCalculo version="08200201">
+	<campo numero="399">
+		<formula validacion="round ( (sum(//campo[@numero='331']) + sum(//campo[@numero='332']) + sum(//campo[@numero='333']) + sum(//campo[@numero='334']) + sum(//campo[@numero='335']) + sum(//campo[@numero='336']) + sum(//campo[@numero='337']) + sum(//campo[@numero='338']) ) * 100 )" fechaVigenciaDesde="20020101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="499">
+		<formula validacion="round ( (sum(//campo[@numero='421']) + sum(//campo[@numero='422']) + sum(//campo[@numero='423']) + sum(//campo[@numero='424']) + sum(//campo[@numero='425']) ) * 100 )" fechaVigenciaDesde="20020101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="801">
+		<formula validacion="0" fechaVigenciaDesde="20020101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="(sum(//campo[@numero='399']) - sum(//campo[@numero='499']) - sum(//campo[@numero='497']) - sum(//campo[@numero='498'])) &lt; 0"/>
+		<formula validacion="round ( (sum(//campo[@numero='399']) - sum(//campo[@numero='499']) - sum(//campo[@numero='497']) - sum(//campo[@numero='498'])) * 100 )" fechaVigenciaDesde="20020101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="(sum(//campo[@numero='399']) - sum(//campo[@numero='499']) - sum(//campo[@numero='497']) - sum(//campo[@numero='498'])) &gt;= 0"/>
+	</campo>
+	<campo numero="803">
+		<formula validacion="round ( (//campo[@numero='801'] - sum(//campo[@numero='802']) ) * 100 )" fechaVigenciaDesde="20020101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="(//campo[@numero='801'] - sum(//campo[@numero='802'])) &gt;= 0"/>
+		<formula validacion="0" fechaVigenciaDesde="20020101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="(//campo[@numero='801'] - sum(//campo[@numero='802'])) &lt; 0"/>
+	</campo>
+	<campo numero="902">
+		<formula validacion="round ( (//campo[@numero='899'] - sum(//campo[@numero='901']) ) * 100 )" fechaVigenciaDesde="20020101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="(//campo[@numero='899'] - sum(//campo[@numero='901'])) &gt;= 0"/>
+		<formula validacion="0" fechaVigenciaDesde="20020101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="(//campo[@numero='899'] - sum(//campo[@numero='901'])) &lt; 0"/>
+	</campo>
+	<campo numero="907">
+		<formula validacion="round ( (sum(//campo[@numero='909']) +sum(//campo[@numero='911']) + sum(//campo[@numero='913']) + sum(//campo[@numero='915'])) * 100 )" fechaVigenciaDesde="20020101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="1=1"/>
+	</campo>
+	<campo numero="999">
+		<formula validacion="round( (//campo[@numero='902'] + sum(//campo[@numero='903']) + sum(//campo[@numero='904']) ) * 100)" fechaVigenciaDesde="20020101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="{0}: el valor ingresado ({1}) no corresponde con el valor calculado por el sistema ({2}). " condicionFormulaCalculo="1=1"/>
+	</campo>
+</formulasCalculo>
