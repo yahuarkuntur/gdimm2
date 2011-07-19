@@ -22,7 +22,7 @@ Requerimientos
 Status
 ------
 
-Por ahora sólo es posible cargar el formulario 104A.
+Beta
 
 Pendientes
 ----------
