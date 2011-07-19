@@ -236,6 +236,9 @@ class wndDeclaracion(ezGlade.BaseWindow):
             ezGlade.DialogBox("ERROR: El motor de validaciones no fué creado.", "error")
             return
 
+        self.generate_xml_from_container()
+        self.do_calculations()
+
         self.validations.validate(self.xml)
         validations = self.validations.get_validations()
 
