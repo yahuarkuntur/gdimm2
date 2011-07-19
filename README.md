@@ -28,6 +28,9 @@ Pendientes
 ----------
 
 - Cargar una declaración guardada
+- Imprimir una declaración?
+- Declaraciónes anticipadas?
+- Alguno que otro detalle...
 - Pruebas, pruebas, pruebas... ;)
 
 
