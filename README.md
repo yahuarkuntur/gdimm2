@@ -8,10 +8,10 @@ gDimm2 tiene como objetivo la generacion de los archivos XML para la
 declaración de impuestos en medio electrónico, válido principalmente 
 para Ecuador.
 
-gDimm2 está basado en ezGlade y gDimm de Iván Campaña.
+gDimm2 está basado en `ezGlade` y `gdimm` de Iván Campaña.
 
-http://code.google.com/p/ezglade/
-http://code.google.com/p/gdimm/
+- http://code.google.com/p/ezglade/
+- http://code.google.com/p/gdimm/
 
 Requerimientos
 --------------
@@ -27,8 +27,7 @@ Por ahora sólo es posible cargar el formulario 104A.
 Pendientes
 ----------
 
-- Aplicar transformaciones XSLT para validaciones
-- Generar todos los demas formularios de declaración
-- Pruebas, pruebas, pruebas...
+- Cargar una declaración guardada
+- Pruebas, pruebas, pruebas... ;)
 
 
