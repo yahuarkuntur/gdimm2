@@ -330,8 +330,6 @@ class wndDeclaracion(ezGlade.BaseWindow):
         if response == gtk.RESPONSE_OK:
             outfile = dialog.get_filename() # archivo destino
             outfile = outfile + '.xml'
-            self.generate_xml_from_container() # generar XML
-            self.do_calculations()  # realizar calculos
             f = open(outfile, 'w+')
             f.write(etree.tostring(self.xml, encoding='utf8', pretty_print=True))
             f.close()
