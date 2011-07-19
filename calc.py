@@ -21,7 +21,7 @@ class Calculator:
         files = glob.glob(os.path.join('XSL', 'CAL*.xml'))
         for filename in files:
             xml = etree.parse(filename, self.parser)
-            root = xml.find('/')
+            root = xml.getroot()
             if root.attrib.get('version') == version:
                 self.calc_xml = xml
                 return True
@@ -83,16 +83,16 @@ class Calculator:
 # test
 if __name__ == '__main__':
     parser = etree.XMLParser(remove_comments=True, encoding='utf8')
-    declaracion = etree.parse(os.path.join('tests','104ORI_JUN2011.xml'), parser)
+    #declaracion = etree.parse(os.path.join('tests','104ORI_JUN2011.xml'), parser)
 
     calcs = Calculator()
     calcs.load_xml('04200902') 
     calcs.load_xsl('calculos.xsl')
 
-    calcs.calc(declaracion)
+    #calcs.calc(declaracion)
 
-    for x in calcs.get_calculations():
-        print x
+    #for x in calcs.get_calculations():
+    #    print x
 
 
 

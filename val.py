@@ -21,7 +21,7 @@ class Validator:
         files = glob.glob(os.path.join('XSL', 'VAL*.xml'))
         for filename in files:
             xml = etree.parse(filename, self.parser)
-            root = xml.find('/')
+            root = xml.getroot()
             if root.attrib.get('version') == version:
                 self.val_xml = xml
                 return True
