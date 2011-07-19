@@ -8,9 +8,7 @@
 
     <value>
     <xsl:if test="$condicion">
-        <xsl:if test="not($formula)">
-            ERR
-        </xsl:if>
+        <xsl:value-of select="$formula"/>
     </xsl:if>
     </value>
 

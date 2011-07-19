@@ -73,45 +73,14 @@ class Calculator:
                 result = self.calc_xsl(test_xml, formula=validacion, condicion=condicionFormulaCalculo)
 
                 new_val = result.find('value').text
-                
+
+                #if numero == '409':
+                #    print validacion
+                #    print numero, new_val, valor
+
                 if new_val is not None:
-                    #    print 'Campo:', numero, 'Valor:', valor, 'Calculo:', new_val, 'Error:', mensajeError
-                    self.calculations.append({'campo': numero, 'valor': valor, 'calculo': new_val, 'error': mensajeError})
+                    self.calculations.append({'campo': numero, 'valor': valor, 'calculo': new_val})
 
-
-
-# test
-if __name__ == '__main__':
-    parser = etree.XMLParser(remove_comments=True, encoding='utf8')
-    #declaracion = etree.parse(os.path.join('tests','104ORI_JUN2011.xml'), parser)
-
-    calcs = Calculator()
-    calcs.load_xml('04200902') 
-    calcs.load_xsl('calculos.xsl')
-
-    #calcs.calc(declaracion)
-
-    #for x in calcs.get_calculations():
-    #    print x
-
-
-
-        
-        
-
-
-
-    
-    
-
-
-
-        
-
-
-
-    
-    
 
 
 

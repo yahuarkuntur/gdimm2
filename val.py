@@ -70,46 +70,24 @@ class Validator:
                 mensajeError = formula.attrib.get('mensajeError') 
                 severidad = formula.attrib.get('severidad') 
                 condicionFormulaCalculo = formula.attrib.get('condicionFormulaCalculo') 
+    
+
+                #validacion = "(round (//campo[@numero='409'] * 100))" # 50000
+                #validacion = "(round ((sum(//campo[@numero='401']) + sum(//campo[@numero='402']) + sum(//campo[@numero='403'])+sum(//campo[@numero='404'])+sum(//campo[@numero='405'])+sum(//campo[@numero='406'])+sum(//campo[@numero='407'])+sum(//campo[@numero='408'])) * 100)) "
+                #validacion = "(round (//campo[@numero='409'] * 100) = round ((sum(//campo[@numero='401']) + sum(//campo[@numero='402']) + sum(//campo[@numero='403'])+sum(//campo[@numero='404'])+sum(//campo[@numero='405'])+sum(//campo[@numero='406'])+sum(//campo[@numero='407'])+sum(//campo[@numero='408'])) * 100)) "
+                #validacion = "( //campo[@numero='409'] = 0  and (sum(//campo[@numero='401']) + sum(//campo[@numero='402']) + sum(//campo[@numero='403']) + sum(//campo[@numero='404'])+sum(//campo[@numero='405'])+sum(//campo[@numero='406'])+sum(//campo[@numero='407'])+sum(//campo[@numero='408'])) <= 0 )"
 
                 result = self.val_xsl(test_xml, formula=validacion, condicion=condicionFormulaCalculo)
 
                 new_val = str(result.find('value').text).strip()
+                
+                #if numero == '409':
+                #    print validacion
+                #    print numero, new_val, valor
 
-                if new_val == 'ERR':
-                    #print 'Campo:', numero, 'ERROR', mensajeError, 'severidad:', severidad
+                if new_val != 'true':
+                    #print validacion
                     self.validations.append({'campo': numero, 'severidad': severidad, 'error': mensajeError})
-
-
-
-# test
-if __name__ == '__main__':
-    parser = etree.XMLParser(remove_comments=True, encoding='utf8')
-    declaracion = etree.parse(os.path.join('tests','104ORI_JUN2011.xml'), parser)
-
-    valid = Validator()
-    valid.load_xml('04200902') # iva mensual
-    valid.load_xsl('validaciones.xsl')
-
-    valid.validate(declaracion)
-
-    for x in valid.get_validations():
-        print x
-
-
-
-        
-        
-
-
-
-    
-    
-
-
-
-        
-
-
 
     
     
