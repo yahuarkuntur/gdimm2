@@ -221,6 +221,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 if aiter is not None:
                     campo.text = str(model.get_value(aiter, 1))
                 else:
+                    print 'Iterador nulo para', num
                     campo.text = '0'
             
         self.xml = root
@@ -294,11 +295,11 @@ class wndDeclaracion(ezGlade.BaseWindow):
     def on_btnGuardar_clicked(self, widget, *args):
         validations = self.do_validations()
 
-        text = "El formulario presenta los siguientes errores: \n"
+        text = "El formulario presenta los siguientes errores: \n\n"
         for item in validations:
             text += item['severidad'] + ': ' + item['error'] + "\n"
 
-        text += "Desea continuar de todas formas? \n"
+        text += "\nDesea continuar de todas formas? \n"
 
         error_dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, message_format=text, buttons=gtk.BUTTONS_OK_CANCEL)
         if error_dlg.run() != gtk.RESPONSE_OK:

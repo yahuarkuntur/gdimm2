@@ -309,10 +309,10 @@ class wndMain(ezGlade.BaseWindow):
 
         # original o sustitutiva
         if self.rbSustitutiva.get_active():
-            self.declaracion.set_original('2')
+            self.declaracion.set_original('S')
             self.declaracion.set_sustituye(self.txtSustituye.get_text())
         else:
-            self.declaracion.set_original('1')
+            self.declaracion.set_original('O')
             self.declaracion.set_sustituye('')        
 
         # crear ventana del formulario de declaracion
