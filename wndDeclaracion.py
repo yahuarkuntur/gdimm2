@@ -125,6 +125,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
             editable = c.attrib.get("editable")
             tablaReferencial = c.attrib.get("tablaReferencial")
             mensajeAyuda = c.attrib.get("mensajeAyuda")
+            tipoControl = c.attrib.get("tipoControl")
 
             # campos escritos desde la configuracion
             if numero in [ '101', '102', '198', '199', '201', '202', '31', '104' ]:
@@ -146,26 +147,29 @@ class wndDeclaracion(ezGlade.BaseWindow):
                     self.load_widget_contribuyente(numero, self.declaracion.get_sustituye(), width, height, left, top, mensajeAyuda)
                 continue
 
-            if c.attrib.get("tipoControl") == "L": # etiqueta
+            if tipoControl == "L": # etiqueta
                 lbl = gtk.Label(label)
                 if bold != "Falso":
                     lbl.set_markup("<b>"+label+"</b>")
                 self.fixed1.put(lbl, left/10, top/10)
                 lbl.show()
-            elif c.attrib.get("tipoControl") in ["T", 'M']: # caja de texto
+            elif tipoControl in ["T", 'M']: # caja de texto
                 entry = gtk.Entry(max=0)
                 entry.set_size_request(width/10, height/10)
                 entry.set_tooltip_text(mensajeAyuda)
                 if editable != "SI":
                     entry.set_editable(False)
                     entry.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse("#cccccc")) # color deshabilitado ;)
-                entry.set_text("0")
+                if tipoControl == "T":
+                    entry.set_text("")
+                else:
+                    entry.set_text("0")
                 entry.set_property('xalign', 1)
                 self.fixed1.put(entry, left/10, top/10)
                 entry.connect("key-release-event", self._onTabKeyReleased) # bind TAB event
                 self.widget_container[numero] = entry
                 entry.show()
-            elif c.attrib.get("tipoControl") == "C":# combo
+            elif tipoControl == "C":# combo
                 combo = gtk.combo_box_new_text()
                 combo.set_size_request(width/10, height/10)
                 combo.set_tooltip_text(mensajeAyuda)
