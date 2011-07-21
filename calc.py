@@ -79,8 +79,9 @@ class Calculator:
                 #    print numero, new_val, valor
 
                 if new_val is not None:
-                    if float(new_val) != float(valor): # solo se toma en cuenta calculos nuevos
-                        self.calculations.append({'campo': numero, 'valor': valor, 'calculo': new_val})
+                    new_val = float(new_val) / 100.0
+                    if new_val != float(valor): # solo se toma en cuenta calculos nuevos
+                        self.calculations.append({'campo': numero, 'valor': valor, 'calculo': str(new_val) })
 
 
 
