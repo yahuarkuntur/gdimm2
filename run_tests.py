@@ -12,7 +12,7 @@ declaracion = etree.parse(os.path.join('tests','104ORI_JUN2011.xml'), parser)
 def test_calcs():
     print 'Prueba de calculos:'
     calcs = Calculator()
-    calcs.load_xml('04200902') 
+    calcs.load_xml('04200902') # iva mensual
     calcs.load_xsl('calculos.xsl')
 
     calcs.calc(declaracion)
@@ -36,7 +36,7 @@ def test_vals():
 
 
 def run_tests():
-    #test_calcs()
+    test_calcs()
     test_vals()
 
 

@@ -188,6 +188,8 @@ class wndDeclaracion(ezGlade.BaseWindow):
         # poner el titulo de la ventana
         title = self.wndDeclaracion.get_title()
         self.wndDeclaracion.set_title(title + self.declaracion.get_alias_formulario())
+
+        ezGlade.DialogBox("Use TAB para desplazarse por las celdas", "info")
     
         
     def post_init(self):
