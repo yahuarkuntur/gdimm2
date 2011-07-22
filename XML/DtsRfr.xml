@@ -461,11 +461,11 @@
 	</datos_semestre>
 	<datos_ori_sus codigo="50">
 		<ori_sus>
-			<codigo>O</codigo>
+			<codigo>1</codigo>
 			<nombre>ORIGINAL</nombre>
 		</ori_sus>
 		<ori_sus>
-			<codigo>S</codigo>
+			<codigo>2</codigo>
 			<nombre>SUSTITUTIVA</nombre>
 		</ori_sus>
 	</datos_ori_sus>
