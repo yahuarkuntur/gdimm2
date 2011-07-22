@@ -1,4 +1,4 @@
 #!/bin/bash
 
 current_path=`dirname $0`
-python $current_path/update.py
+python $current_path/updater.py
