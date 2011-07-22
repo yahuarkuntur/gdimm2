@@ -38,13 +38,13 @@ Ejecución
 
 - Arrancar el programa principal:
   - Desde el intérprete
-  $ python main.py
+    $ python main.py
   - Desde el ejecutable
-  $ ./gdimm2
+    $ ./gdimm2
 
 - Ejecutar el actualizador:
   - Desde el intérprete
-  $ python updater.py
+    $ python updater.py
   - Desde el ejecutable
-  $ ./update
+    $ ./update
 
