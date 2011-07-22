@@ -37,16 +37,10 @@ Ejecución
 ---------
 
 - Arrancar el programa principal:
-  - Desde el intérprete
-    {{{ 
-        $ python main.py
-    }}}
-  - Desde el ejecutable
-    $ ./gdimm2
+  - $ python main.py
+  - $ ./gdimm2
 
 - Ejecutar el actualizador:
-  - Desde el intérprete
-    $ python updater.py
-  - Desde el ejecutable
-    $ ./update
+  - $ python updater.py
+  - $ ./update
 
