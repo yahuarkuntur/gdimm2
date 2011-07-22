@@ -13,11 +13,11 @@ gDimm2 está basado en `ezGlade` y `gdimm` de Iván Campaña.
 - http://code.google.com/p/ezglade/
 - http://code.google.com/p/gdimm/
 
-Requerimientos
---------------
+Dependencias
+------------
 
-- PyGtk 2.0
-- lxml
+- PyGtk 2.0 ( Ubuntu/Debian sudo aptitude install python-gtk2 )
+- lxml ( Ubuntu/Debian sudo aptitude install python-lxml )
 
 Status
 ------
