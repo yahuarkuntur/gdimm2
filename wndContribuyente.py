@@ -212,3 +212,4 @@ class wndContribuyente(ezGlade.BaseWindow):
         self.win.destroy()
 
 
+
