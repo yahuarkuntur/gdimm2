@@ -73,6 +73,21 @@ class wndDeclaracion(ezGlade.BaseWindow):
         entry.show()
 
 
+    def load_combo_custom_data(self, number, value, width, height, left, top, tooltip, lista_datos):
+        combo = gtk.combo_box_new_text()
+        combo.set_size_request(width/10, height/10)
+        combo.set_tooltip_text(tooltip)
+        list_store = gtk.ListStore(str, str)
+        combo.set_model(list_store)
+        for code, name in lista_datos:
+            if value == code :
+               list_store.append([name, code])
+        combo.set_active(0)
+        self.fixed1.put(combo, left/10, top/10)
+        self.widget_container[number] = combo
+        combo.show()
+
+
     def load_combo_contribuyente(self, number, value, width, height, left, top, tooltip, ref_table):
         combo = gtk.combo_box_new_text()
         combo.set_size_request(width/10, height/10)
@@ -142,7 +157,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 elif numero == '199': # RUC contador NULO
                     self.load_widget_contribuyente(numero, "", width, height, left, top, mensajeAyuda)
                 elif numero == '31': # original o sustitutiva
-                    self.load_combo_contribuyente(numero, self.declaracion.get_original(), width, height, left, top, mensajeAyuda, tablaReferencial)
+                    self.load_combo_custom_data(numero, self.declaracion.get_original(), width, height, left, top, mensajeAyuda, self.ref_data.get_ori_sus())
                 elif numero == '104': # formulario sustituye
                     self.load_widget_contribuyente(numero, self.declaracion.get_sustituye(), width, height, left, top, mensajeAyuda)
                 continue

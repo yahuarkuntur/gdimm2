@@ -113,6 +113,21 @@ class RefData:
         return None
 
 
+    def get_ori_sus(self):
+        """ Ugly hack! """
+        list = []
+        nodes = self.get_xpath_nodes(50)
+    
+        if nodes is None:
+            return None
+    
+        for node in nodes:
+            nombre = node.find('nombre')
+            code = nombre.text[0]
+            list.append([code, nombre.text])
+
+        return list
+
 
 # tests
 if __name__ == '__main__':
@@ -120,6 +135,7 @@ if __name__ == '__main__':
 
     print ref.get_mes_por_codigo('5')
     print ref.get_semestre_por_codigo('06')
+    print ref.get_ori_sus()
 
 
 
