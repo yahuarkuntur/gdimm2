@@ -157,9 +157,110 @@ class Contribuyente:
 
     def __str__(self):
         return tostring(self._data)
-        
+    
     def get_element(self):
         return self._data
+    
+    def verify_documents(self):
+		
+		def verify(doc, tipo):
+			if tipo == 'P':
+				print "No se valida el pasaporte!!!"
+				return
+
+			if tipo == 'R':
+				if len ( doc ) != 13:
+					raise "longitud del documento no valida"
+				if doc[10:13] == "000":
+					raise "RUC terminado en 000"
+			else:
+				if len ( doc ) != 10:
+					raise "longitud del documento no valida"
+			try:
+				int(doc)
+			except:
+				raise "el documento debe contener solo caracteres numericos"
+
+			if ( int ( doc[0:2] ) < 1 or int ( doc[0:2] ) > 24 ):
+				raise "los primeros caracteres deben contener codigos de provincias validas"
+		
+			if doc[2] == '6':
+				tipo_ruc = "publico"
+				coeficiente = "32765432"
+				verificador = int ( doc[8] )
+			else:
+				if doc[2] == "9":
+					tipo_ruc = "juridico"
+					coeficiente = "432765432"
+				else:
+					if int ( doc[2] ) < 6:
+						tipo_ruc = "natural"
+						coeficiente = "212121212"
+					else:
+						print doc[2]
+						raise "Error en el tercer digito del documento"
+				verificador = int ( doc[9] )
+
+			resultado = 0
+			suma = 0
+			if tipo_ruc == "publico":
+				for i in range(8):
+					resultado += ( int ( doc[i] ) * int ( coeficiente[i] ) )
+					residuo = resultado % 11
+				if residuo == 0:
+					resultado = residuo
+				else:
+					resultado = 11 - residuo
+				
+			if tipo_ruc == "juridico":
+				for i in range(9):
+					resultado += ( int ( doc[i] ) * int ( coeficiente[i] ) )
+					residuo = resultado % 11
+					if residuo == 0:
+						resultado = residuo
+					else:
+						resultado = 11 - residuo
+		
+			if tipo_ruc == "natural":
+				for i in range(9):
+					suma = ( int ( doc[i] ) * int ( coeficiente[i] ) )
+					if suma > 10 :
+						str_suma = str ( suma )
+						suma = int ( str_suma[0] ) + int (str_suma [1])
+					resultado += suma
+				residuo = resultado % 10
+				if residuo == 0:
+					resultado = residuo
+				else:
+					resultado = 10 - residuo
+				
+			if resultado == verificador:
+				print "El documento es valido"
+				return
+			else:
+				print "El documento es valido"
+				raise "El documento no es valido"
+		
+	
+		try:
+			verify(self.get_documento(), self.get_tipo_documento())
+		except:
+			raise "Documento del representante no valido"
+			
+		if len (self.get_ruc()) == 13:
+			type = 'R'
+		else:
+			if len ( self.get_ruc()) == 10:
+				type = 'C'
+		
+		#~ print type		
+		try:
+			verify(self.get_ruc(), type)
+		except:
+			raise "Documento R.U.C. no valido"
+
+		
+		
 
 class ListaContribuyentes:
     archivo = ""
@@ -217,7 +318,7 @@ class ListaContribuyentes:
 
     def save(self):
         list_size = len(self.lista)
-        if list_size > 0:
+        if list_size >= 0:
             data = etree.Element("datos_ruc")
             
             for item in self.lista:

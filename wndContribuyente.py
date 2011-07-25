@@ -75,7 +75,13 @@ class wndEditContribuyente(ezGlade.BaseWindow):
         iter = self.cmbTipoDocumento.get_active_iter()
         if iter:
             contrib.set_tipo_documento( self.modeloTipo.get_value(iter, 1) )
-
+            
+        try:
+			contrib.verify_documents()
+        except:
+            ezGlade.DialogBox("Los documentos no son validos", type = 'error', window = self.win)
+            return None
+			
         try:
             self.model.add(contrib)
         except Warning:
@@ -204,5 +210,6 @@ class wndContribuyente(ezGlade.BaseWindow):
         self.lstContribuyentes.save()
         self.parent.load_contribuyentes()
         self.win.destroy()
+
 
 
