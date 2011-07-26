@@ -189,7 +189,11 @@ class wndMain(ezGlade.BaseWindow):
         lstContribuyentes.load()
         
         self.declaracion = Declaracion()
-        self.declaracion = self.declaracion.cargar_declaracion_guardada(xml, lstContribuyentes, self.ref_data)
+        try:
+            self.declaracion = self.declaracion.cargar_declaracion_guardada(xml, lstContribuyentes, self.ref_data)
+        except Exception as ex:
+            ezGlade.DialogBox(str(ex), 'error', self.win)
+            return
 
         # crear ventana del formulario de declaracion
         vDeclaracion = wndDeclaracion()

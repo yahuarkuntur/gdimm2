@@ -111,7 +111,10 @@ class Declaracion:
 
     def cargar_declaracion_guardada(self, xml, contribuyentes, ref_data):
         cabecera = xml.find('cabecera')
-        # codigo_version_formulario hace referencia a <datosFormulariosVersiones codigo="10">
+
+        if cabecera is None:
+            raise Exception("No se pudo cargar la cabecera")
+
         codigo_version_formulario = cabecera.find('codigo_version_formulario').text
         ruc = cabecera.find('ruc').text
         anio = xml.find('detalle/campo[@numero="102"]').text
@@ -125,7 +128,7 @@ class Declaracion:
         contribuyente = contribuyentes.find_by_ruc(ruc)
 
         if contribuyente is None:
-            raise "No existe el contribuyente: " + ruc
+            raise Exception("No existe el contribuyente: " + ruc)
 
         declaracion = ref_data.get_objeto_declaracion(codigo_version_formulario)
         declaracion.set_contribuyente(contribuyente)
