@@ -177,46 +177,25 @@ class wndMain(ezGlade.BaseWindow):
         response = dialog.run()
 
         if response == gtk.RESPONSE_OK:
-            inputfile = dialog.get_filename() # archivo destino
+            filename = dialog.get_filename() # archivo 
             parser = etree.XMLParser(remove_comments=True, encoding='utf8')
-            xml = etree.parse(inputfile, parser)
+            xml = etree.parse(filename, parser)
             dialog.destroy()
         else:
             dialog.destroy()
             return
 
-        cabecera = xml.find('cabecera')
-        # codigo_version_formulario hace referencia a <datosFormulariosVersiones codigo="10">
-        codigo_version_formulario = cabecera.find('codigo_version_formulario').text
-        ruc = cabecera.find('ruc').text
-        anio = xml.find('detalle/campo[@numero="102"]').text
-        mes = xml.find('detalle/campo[@numero="101"]').text
-        original = xml.find('detalle/campo[@numero="31"]').text
-        sustituye = xml.find('detalle/campo[@numero="104"]').text
-    
-        if sustituye is None:
-            sustituye = ""
-
         lstContribuyentes = ListaContribuyentes() # TODO cargar una sola vez?
         lstContribuyentes.load()
-        contribuyente = lstContribuyentes.find_by_ruc(ruc)
-
-        if contribuyente is None:
-            ezGlade.DialogBox("ERROR: No existe el contribuyente: " + ruc, "error")
-
-        self.declaracion = self.ref_data.get_objeto_declaracion(codigo_version_formulario)
-        self.declaracion.set_contribuyente(contribuyente)
-        self.declaracion.set_anio(anio)
-        self.declaracion.set_mes(mes)
-        self.declaracion.set_original(original)
-        self.declaracion.set_sustituye(sustituye)
+        
+        self.declaracion = Declaracion()
+        self.declaracion = self.declaracion.cargar_declaracion_guardada(xml, lstContribuyentes, self.ref_data)
 
         # crear ventana del formulario de declaracion
         vDeclaracion = wndDeclaracion()
         vDeclaracion.set_declaracion(self.declaracion)
         vDeclaracion.load_widgets_from_xml()
-        vDeclaracion.set_xml(xml)
-        vDeclaracion.update_container_from_xml()
+        vDeclaracion.update_container_from_xml(xml)
         vDeclaracion.show()
 
 

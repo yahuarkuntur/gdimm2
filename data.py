@@ -109,6 +109,32 @@ class Declaracion:
         return self._periodicidad
 
 
+    def cargar_declaracion_guardada(self, xml, contribuyentes, ref_data):
+        cabecera = xml.find('cabecera')
+        # codigo_version_formulario hace referencia a <datosFormulariosVersiones codigo="10">
+        codigo_version_formulario = cabecera.find('codigo_version_formulario').text
+        ruc = cabecera.find('ruc').text
+        anio = xml.find('detalle/campo[@numero="102"]').text
+        mes = xml.find('detalle/campo[@numero="101"]').text
+        original = xml.find('detalle/campo[@numero="31"]').text
+        sustituye = xml.find('detalle/campo[@numero="104"]').text
+    
+        if sustituye is None:
+            sustituye = ""
+
+        contribuyente = contribuyentes.find_by_ruc(ruc)
+
+        if contribuyente is None:
+            raise "No existe el contribuyente: " + ruc
+
+        declaracion = ref_data.get_objeto_declaracion(codigo_version_formulario)
+        declaracion.set_contribuyente(contribuyente)
+        declaracion.set_anio(anio)
+        declaracion.set_mes(mes)
+        declaracion.set_original(original)
+        declaracion.set_sustituye(sustituye)
+
+        return declaracion
 
 
 class Contribuyente:

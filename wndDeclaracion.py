@@ -59,10 +59,6 @@ class wndDeclaracion(ezGlade.BaseWindow):
     validations = None
 
 
-    def set_xml(self, xml):
-        self.xml = xml
-
-
     def set_declaracion(self, declaracion):
         self.declaracion = declaracion 
         self.calcs = Calculator()
@@ -225,7 +221,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
         title = self.wndDeclaracion.get_title()
         self.wndDeclaracion.set_title(title + self.declaracion.get_alias_formulario())
 
-        ezGlade.DialogBox("Use TAB para desplazarse por las celdas", "info")
+        ezGlade.DialogBox("Use TAB para desplazarse por las celdas", "info", self.win)
     
         
     def post_init(self):
@@ -283,7 +279,8 @@ class wndDeclaracion(ezGlade.BaseWindow):
         return validations
 
 
-    def update_container_from_xml(self):
+    def update_container_from_xml(self, xml):
+        self.xml = xml
         for num, obj in self.widget_container.iteritems():
             if obj.__class__ is gtk.Entry:
                 campo = self.xml.find('detalle/campo[@numero="'+str(num)+'"]')
