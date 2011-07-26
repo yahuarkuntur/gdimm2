@@ -189,6 +189,13 @@ class wndMain(ezGlade.BaseWindow):
         # codigo_version_formulario hace referencia a <datosFormulariosVersiones codigo="10">
         codigo_version_formulario = cabecera.find('codigo_version_formulario').text
         ruc = cabecera.find('ruc').text
+        anio = xml.find('detalle/campo[@numero="102"]').text
+        mes = xml.find('detalle/campo[@numero="101"]').text
+        original = xml.find('detalle/campo[@numero="31"]').text
+        sustituye = xml.find('detalle/campo[@numero="104"]').text
+    
+        if sustituye is None:
+            sustituye = ""
 
         lstContribuyentes = ListaContribuyentes() # TODO cargar una sola vez?
         lstContribuyentes.load()
@@ -199,10 +206,10 @@ class wndMain(ezGlade.BaseWindow):
 
         self.declaracion = self.ref_data.get_objeto_declaracion(codigo_version_formulario)
         self.declaracion.set_contribuyente(contribuyente)
-        self.declaracion.set_anio("2011") # TODO
-        self.declaracion.set_mes("1")  # TODO
-        self.declaracion.set_original('S')  # TODO
-        self.declaracion.set_sustituye("")  # TODO
+        self.declaracion.set_anio(anio)
+        self.declaracion.set_mes(mes)
+        self.declaracion.set_original(original)
+        self.declaracion.set_sustituye(sustituye)
 
         # crear ventana del formulario de declaracion
         vDeclaracion = wndDeclaracion()
