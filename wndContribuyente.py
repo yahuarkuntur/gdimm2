@@ -40,14 +40,18 @@ class wndEditContribuyente(ezGlade.BaseWindow):
     def set_model(self, modelo):
         self.model = modelo
 
+
     def post_init(self):
         self.modeloTipo = gtk.ListStore(str,str)
 
         self.modeloTipo.append(['Cédula', "C"])
-        self.modeloTipo.append(['Pasaporte', "P"])
-
+        #self.modeloTipo.append(['Pasaporte', "P"])
+        
         self.cmbTipoDocumento.set_model(self.modeloTipo)
         self.cmbTipoDocumento.set_active(0)
+
+        if not self.eRUC.get_editable():
+            self.eRUC.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse("#cccccc")) # color deshabilitado ;)
 
 
     def set_data(self, oContribuyente):
@@ -78,8 +82,8 @@ class wndEditContribuyente(ezGlade.BaseWindow):
             
         try:
 			contrib.verify_documents()
-        except:
-            ezGlade.DialogBox("Los documentos no son validos", type = 'error', window = self.win)
+        except gDimmDocumentException as dex:
+            ezGlade.DialogBox(dex.value, type = 'error', window = self.win)
             return None
 			
         try:
