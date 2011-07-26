@@ -27,7 +27,6 @@ Beta
 Pendientes
 ----------
 
-- Cargar una declaración guardada
 - Imprimir una declaración?
 - Declaraciónes anticipadas?
 - Alguno que otro detalle...
@@ -37,10 +36,10 @@ Ejecución
 ---------
 
 - Arrancar el programa principal:
-  - $ python main.py
+  - $ python main.py (método opcional desde el intérprete)
   - $ ./gdimm2
 
 - Ejecutar el actualizador:
-  - $ python updater.py
+  - $ python updater.py (método opcional desde el intérprete)
   - $ ./update
 
