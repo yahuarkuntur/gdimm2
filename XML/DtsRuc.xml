@@ -1,7 +1,7 @@
 <datos_ruc><ruc numero="1002003004001">
     <razon_social>JOHN DOE</razon_social>
     <tipoDocRepLegal>C</tipoDocRepLegal>
-    <identificacionRepLegal>1002003004</identificacionRepLegal>
+    <identificacionRepLegal>1002003004001</identificacionRepLegal>
     <tipoIdentificacion>R</tipoIdentificacion>
     </ruc>
 <ruc numero="1002003005001"><razon_social>abc abc</razon_social><tipoDocRepLegal>C</tipoDocRepLegal><identificacionRepLegal>1002003005</identificacionRepLegal></ruc></datos_ruc>

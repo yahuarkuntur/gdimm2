@@ -164,30 +164,53 @@ class wndMain(ezGlade.BaseWindow):
 
 
     def on_btnEditar_clicked(self, *args):
-        def myresponse(widget, response):
-            if response == 0:
-                widget.destroy()
-            else:
-                filename = widget.get_filename()
-                if filename:
-                    if os.path.isfile(filename):
-                        pass
-                        # TODO cargar declaracion XML
-                        # Hay que verificar el archivo antes de intentar abrirlo
-                else:
-                    ezGlade.DialogBox("Debe seleccionar un archivo", "error")
+        dialog = gtk.FileChooserDialog("Abrir...", self.win, gtk.FILE_CHOOSER_ACTION_OPEN, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OPEN, gtk.RESPONSE_OK))
+        dialog.set_default_response(gtk.RESPONSE_OK)
+        dialog.set_current_folder(os.path.join('XML_Declaraciones'))
 
-        fcArchivo = gtk.FileChooserDialog(title="Abrir declaración", parent=self.win, action=gtk.FILE_CHOOSER_ACTION_OPEN, buttons=(gtk.STOCK_CANCEL, 0, gtk.STOCK_OK, 1) )
+        filter = gtk.FileFilter()
+        filter.set_name("Archivos XML")
+        filter.add_mime_type("application/xml")
+        filter.add_pattern("*.xml")
+        dialog.add_filter(filter)
 
-        # Filtro de archivos
-        filtro = gtk.FileFilter()
-        filtro.set_name("Declaraciones en formato XML")
-        filtro.add_pattern("*.xml")
+        response = dialog.run()
 
-        fcArchivo.set_filter(filtro)
+        if response == gtk.RESPONSE_OK:
+            inputfile = dialog.get_filename() # archivo destino
+            parser = etree.XMLParser(remove_comments=True, encoding='utf8')
+            xml = etree.parse(inputfile, parser)
+            dialog.destroy()
+        else:
+            dialog.destroy()
+            return
 
-        fcArchivo.connect("response", myresponse)
-        fcArchivo.show()
+        cabecera = xml.find('cabecera')
+        # codigo_version_formulario hace referencia a <datosFormulariosVersiones codigo="10">
+        codigo_version_formulario = cabecera.find('codigo_version_formulario').text
+        ruc = cabecera.find('ruc').text
+
+        lstContribuyentes = ListaContribuyentes() # TODO cargar una sola vez?
+        lstContribuyentes.load()
+        contribuyente = lstContribuyentes.find_by_ruc(ruc)
+
+        if contribuyente is None:
+            ezGlade.DialogBox("ERROR: No existe el contribuyente: " + ruc, "error")
+
+        self.declaracion = self.ref_data.get_objeto_declaracion(codigo_version_formulario)
+        self.declaracion.set_contribuyente(contribuyente)
+        self.declaracion.set_anio("2011") # TODO
+        self.declaracion.set_mes("1")  # TODO
+        self.declaracion.set_original('S')  # TODO
+        self.declaracion.set_sustituye("")  # TODO
+
+        # crear ventana del formulario de declaracion
+        vDeclaracion = wndDeclaracion()
+        vDeclaracion.set_declaracion(self.declaracion)
+        vDeclaracion.load_widgets_from_xml()
+        vDeclaracion.set_xml(xml)
+        vDeclaracion.update_container_from_xml()
+        vDeclaracion.show()
 
 
     def on_btnHelp_clicked(self, *args):

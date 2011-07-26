@@ -18,6 +18,7 @@
 
 import os
 from lxml import etree
+from data import Declaracion
 
 
 class RefData:
@@ -132,7 +133,7 @@ class RefData:
 
 
     def get_ori_sus(self):
-        # TODO en el XML del SRI el valor de ORI, SUS es 0,1, pero valida como "O", "S"
+        # FIXME en el XML del SRI el valor de ORI, SUS es 0,1, pero valida como "O", "S"
         list = []
         nodes = self.get_xpath_nodes(50)
     
@@ -146,14 +147,41 @@ class RefData:
 
         return list
 
+    
+    def get_objeto_declaracion(self, codigo_version):
+        nodes = self.get_xpath_nodes(10)
+
+        if nodes is None:
+            return None
+
+        for node in nodes:
+            nombre = node.attrib.get('nombre')
+            periodicidad = node.attrib.get('periodicidad')
+            version = node.attrib.get('versionVigente')
+            if version == codigo_version:
+                declaracion = Declaracion()
+                declaracion.set_periodicidad(periodicidad)
+                formulario = self.tree.find('datosFormularios/formulario[@nombre="'+nombre+'"]')
+                declaracion.set_codigo_version(codigo_version) # se obtiene de <datosFormularios codigo="10">
+                declaracion.set_version(formulario.attrib.get('version')) # codigo version para validaciones/calculos
+                alias = nombre.replace("FORMULARIO ", "")
+                declaracion.set_alias_formulario(alias)
+                return declaracion
+        return None
+
 
 # tests
 if __name__ == '__main__':
     ref = RefData()
 
-    print ref.get_mes_por_codigo('5')
-    print ref.get_semestre_por_codigo('06')
-    print ref.get_ori_sus()
+    #print ref.get_mes_por_codigo('5')
+    #print ref.get_semestre_por_codigo('06')
+    #print ref.get_ori_sus()
+    declaracion = ref.get_objeto_declaracion('04200902')
+    print 'widgets', declaracion.get_codigo_version()
+    print 'calculos', declaracion.get_version()
+    print 'periodicidad', declaracion.get_periodicidad()
+    
 
 
 

@@ -59,6 +59,10 @@ class wndDeclaracion(ezGlade.BaseWindow):
     validations = None
 
 
+    def set_xml(self, xml):
+        self.xml = xml
+
+
     def set_declaracion(self, declaracion):
         self.declaracion = declaracion 
         self.calcs = Calculator()
@@ -238,7 +242,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
         cabecera = etree.SubElement(root, "cabecera")
         codigo_version_formulario = etree.SubElement(cabecera, "codigo_version_formulario")
-        codigo_version_formulario.text = self.declaracion.get_version()
+        codigo_version_formulario.text = self.declaracion.get_codigo_version()
         ruc = etree.SubElement(cabecera, "ruc")
         ruc.text = self.declaracion.get_contribuyente().get_ruc()
         codigo_moneda = etree.SubElement(cabecera, "codigo_moneda")
@@ -277,6 +281,14 @@ class wndDeclaracion(ezGlade.BaseWindow):
         validations = self.validations.get_validations()
 
         return validations
+
+
+    def update_container_from_xml(self):
+        for num, obj in self.widget_container.iteritems():
+            if obj.__class__ is gtk.Entry:
+                campo = self.xml.find('detalle/campo[@numero="'+str(num)+'"]')
+                if campo.text is not None:
+                    obj.set_text(campo.text)
 
 
     def do_calculations(self):
