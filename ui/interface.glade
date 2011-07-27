@@ -193,7 +193,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
     <property name="window_position">center</property>
     <property name="default_width">780</property>
     <property name="default_height">540</property>
-    <property name="icon_name">gtk-save-as</property>
+    <property name="icon_name">accessories-calculator</property>
     <signal name="delete_event" handler="gtk_main_quit"/>
     <child>
       <widget class="GtkVBox" id="vbPrincipal">

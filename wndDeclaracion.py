@@ -351,11 +351,12 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
         text += "\nDesea continuar de todas formas? \n"
 
-        error_dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, message_format=text, buttons=gtk.BUTTONS_OK_CANCEL)
-        if error_dlg.run() != gtk.RESPONSE_OK:
-            error_dlg.destroy()    
-            return
-        error_dlg.destroy()
+        if len(validations):
+            error_dlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, message_format=text, buttons=gtk.BUTTONS_OK_CANCEL)
+            if error_dlg.run() != gtk.RESPONSE_OK:
+                error_dlg.destroy()    
+                return
+            error_dlg.destroy()
 
         dialog = gtk.FileChooserDialog("Guardar ...", None, gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_SAVE, gtk.RESPONSE_OK))
         dialog.set_default_response(gtk.RESPONSE_OK)

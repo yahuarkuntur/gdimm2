@@ -3,6 +3,7 @@
 import os
 from lxml import etree
 import glob
+from datetime import date, datetime
 
 
 class Calculator:
@@ -69,14 +70,16 @@ class Calculator:
                 validacion = formula.attrib.get('validacion') 
                 mensajeError = formula.attrib.get('mensajeError') 
                 condicionFormulaCalculo = formula.attrib.get('condicionFormulaCalculo') 
+                fecha_vigencia = formula.attrib.get('fechaVigenciaHasta')
+                fecha_vigencia.strip()
+                
+                # solo calculos vigentes
+                if fecha_vigencia != "" and datetime.today() > datetime.strptime(fecha_vigencia, "%Y%m%d"):
+                    continue
 
                 result = self.calc_xsl(test_xml, formula=validacion, condicion=condicionFormulaCalculo)
 
                 new_val = result.find('value').text
-
-                #if numero == '409':
-                #    print validacion
-                #    print numero, new_val, valor
 
                 if new_val is not None:
                     new_val = float(new_val) / 100.0

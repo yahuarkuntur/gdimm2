@@ -9,7 +9,7 @@ from ref_data import RefData
 
 parser = etree.XMLParser(remove_comments=True, encoding='utf8')
 
-declaracion = etree.parse(os.path.join('tests','104ORI_JUN2011.xml'), parser)
+declaracion = etree.parse(os.path.join('tests','104ORI_MAR2011.xml'), parser)
 
 def test_calcs():
     print 'Prueba de calculos:'
@@ -90,9 +90,9 @@ def test_xml_file_load():
 
 
 def run_tests():
-    #test_calcs()
-    #test_vals()
-    test_xml_file_load()
+    test_calcs()
+    test_vals()
+    #test_xml_file_load()
 
 
 if __name__ == '__main__':

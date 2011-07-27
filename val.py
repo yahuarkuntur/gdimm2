@@ -3,6 +3,7 @@
 import os
 from lxml import etree
 import glob
+from datetime import date, datetime
 
 
 class Validator:
@@ -70,26 +71,20 @@ class Validator:
                 mensajeError = formula.attrib.get('mensajeError') 
                 severidad = formula.attrib.get('severidad') 
                 condicionFormulaCalculo = formula.attrib.get('condicionFormulaCalculo') 
-    
-
-                #validacion = "(round (//campo[@numero='409'] * 100))" # 50000
-                #validacion = "(round ((sum(//campo[@numero='401']) + sum(//campo[@numero='402']) + sum(//campo[@numero='403'])+sum(//campo[@numero='404'])+sum(//campo[@numero='405'])+sum(//campo[@numero='406'])+sum(//campo[@numero='407'])+sum(//campo[@numero='408'])) * 100)) "
-                #validacion = "(round (//campo[@numero='409'] * 100) = round ((sum(//campo[@numero='401']) + sum(//campo[@numero='402']) + sum(//campo[@numero='403'])+sum(//campo[@numero='404'])+sum(//campo[@numero='405'])+sum(//campo[@numero='406'])+sum(//campo[@numero='407'])+sum(//campo[@numero='408'])) * 100)) "
-                #validacion = "( //campo[@numero='409'] = 0  and (sum(//campo[@numero='401']) + sum(//campo[@numero='402']) + sum(//campo[@numero='403']) + sum(//campo[@numero='404'])+sum(//campo[@numero='405'])+sum(//campo[@numero='406'])+sum(//campo[@numero='407'])+sum(//campo[@numero='408'])) <= 0 )"
+                fecha_vigencia = formula.attrib.get('fechaVigenciaHasta')
+                fecha_vigencia.strip()
+                
+                # solo calculos vigentes
+                if fecha_vigencia != "" and datetime.today() > datetime.strptime(fecha_vigencia, "%Y%m%d"):
+                    continue
 
                 result = self.val_xsl(test_xml, formula=validacion, condicion=condicionFormulaCalculo)
 
                 new_val = str(result.find('value').text).strip()
                 
-                #if numero == '409':
-                #    print validacion
-                #    print numero, new_val, valor
-
                 if new_val != 'true':
-                    #print validacion
                     self.validations.append({'campo': numero, 'severidad': severidad, 'error': mensajeError})
-
-    
+   
     
 
 
