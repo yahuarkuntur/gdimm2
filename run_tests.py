@@ -9,90 +9,57 @@ from ref_data import RefData
 
 parser = etree.XMLParser(remove_comments=True, encoding='utf8')
 
-declaracion = etree.parse(os.path.join('tests','104ORI_MAR2011.xml'), parser)
+xml = etree.parse(os.path.join('tests','104ORI_MAR2011.xml'), parser)
 
-def test_calcs():
+def test_calcs(version):
     print 'Prueba de calculos:'
     calcs = Calculator()
-    calcs.load_xml('04200902') # iva mensual
+    calcs.load_xml(version)
     calcs.load_xsl('calculos.xsl')
 
-    calcs.calc(declaracion)
+    calcs.calc(xml)
 
     for x in calcs.get_calculations():
         print x
-    print 
+    print 'Listo'
 
 
-def test_vals():
+def test_vals(version):
     print 'Prueba de validaciones:'
     valid = Validator()
-    valid.load_xml('04200902') # iva mensual
+    valid.load_xml(version)
     valid.load_xsl('validaciones.xsl')
 
-    valid.validate(declaracion)
+    valid.validate(xml)
 
     for x in valid.get_validations():
         print x
-    print
+    print 'Listo'
+
 
 def test_xml_file_load():
-
-    import ezGlade
-    from wndDeclaracion import wndDeclaracion
-    import configuration
-
-    ezGlade.set_file(configuration.GLADE_FILE)
-
-    # inicializa objeto declaracion
-    #declaracion = Declaracion()
-
-    # inicializa datos de contribuyentes
-    contribuyentes = ListaContribuyentes()
-    contribuyentes.load()
-
-    # inicializa datos referenciales
+    print 'Prueba de carga:'
     ref_data = RefData()
+        
+    lstContribuyentes = ListaContribuyentes()
+    lstContribuyentes.load()
+        
+    declaracion = Declaracion()
+    try:
+        declaracion = declaracion.cargar_declaracion_guardada(xml, lstContribuyentes, ref_data)
+        print 'Listo'
+    except Exception as ex:
+        print str(ex)
+        return 
 
-    xml = etree.parse(os.path.join('tests','104ORI_JUN2011.xml'), parser)
+    test_calcs(declaracion.get_version())
 
-    cabecera = xml.find('cabecera')
+    test_vals(declaracion.get_version())
 
-    # TODO codigo_version_formulario hace referencia a <datosFormulariosVersiones codigo="10">
-    codigo_version_formulario = cabecera.find('codigo_version_formulario').text
-    ruc = cabecera.find('ruc').text
-
-    print codigo_version_formulario, ruc
-
-    contribuyente = contribuyentes.find_by_ruc(ruc)
-
-    print contribuyente.get_nombre()
-
-    if contribuyente is None:
-        print 'Error al cargar el contribuyente'
-
-    declaracion = ref_data.get_objeto_declaracion(codigo_version_formulario)
-
-    declaracion.set_contribuyente(contribuyente)
-
-    declaracion.set_anio("2011")
-
-    declaracion.set_mes("6")
-
-    declaracion.set_original('S')
-    declaracion.set_sustituye("")
-
-    # crear ventana del formulario de declaracion
-    vDeclaracion = wndDeclaracion()
-    vDeclaracion.set_declaracion(declaracion)
-    vDeclaracion.load_widgets_from_xml()
-    vDeclaracion.show()
 
 
 def run_tests():
-    test_calcs()
-    test_vals()
-    #test_xml_file_load()
+    test_xml_file_load()
 
 
 if __name__ == '__main__':
