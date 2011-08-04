@@ -43,6 +43,7 @@ class Declaracion:
     _original   = '1'
     _sustituye  = ''
     _alias_formulario = ''
+    _archivo = None # ruta del archivo de la declaracion
     
     def __init__(self):
         pass
@@ -77,6 +78,9 @@ class Declaracion:
     def set_alias_formulario(self, alias_formulario):
         self._alias_formulario = alias_formulario
 
+    def set_archivo(self, archivo):
+        self._archivo = archivo
+
 
     def get_mes(self):
         return self._mes
@@ -107,6 +111,10 @@ class Declaracion:
 
     def get_periodicidad(self):
         return self._periodicidad
+
+    def get_archivo(self):
+        return self._archivo
+
 
 
     def cargar_declaracion_guardada(self, xml, contribuyentes, ref_data):

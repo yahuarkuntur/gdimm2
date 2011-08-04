@@ -1040,18 +1040,7 @@ Ej: N&#xFA;mero de c&#xE9;dula o pasaporte</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkButton" id="btnImprimir">
-                <property name="label">gtk-print</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
-              </widget>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">3</property>
-              </packing>
+              <placeholder/>
             </child>
           </widget>
           <packing>
@@ -1104,7 +1093,7 @@ Ej: N&#xFA;mero de c&#xE9;dula o pasaporte</property>
           </packing>
         </child>
         <child>
-          <widget class="GtkStatusbar" id="statusbar2">
+          <widget class="GtkStatusbar" id="statusbar">
             <property name="visible">True</property>
           </widget>
           <packing>

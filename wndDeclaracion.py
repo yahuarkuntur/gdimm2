@@ -34,12 +34,12 @@ except:
     pass
 
 try:
-    import gtk
+    import gtk, pango
     import gtk.glade
 except:
     sys.exit(1)
 
-
+import math
 import configuration
 from ref_data import RefData
 from calc import Calculator
@@ -227,6 +227,11 @@ class wndDeclaracion(ezGlade.BaseWindow):
     def post_init(self):
         self.ref_data = RefData()
         self.wndDeclaracion.maximize()
+
+
+    def push_statusbar_info(self, text):
+        context_id = self.statusbar.get_context_id("Statusbar context")
+        self.statusbar.push(context_id, text)
    
 
     def generate_xml_from_container(self):
@@ -286,6 +291,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 campo = self.xml.find('detalle/campo[@numero="'+str(num)+'"]')
                 if campo.text is not None:
                     obj.set_text(campo.text)
+                   
 
 
     def do_calculations(self):
@@ -341,7 +347,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
         return filename
 
-    
+
     def on_btnGuardar_clicked(self, widget, *args):
         validations = self.do_validations()
 
@@ -357,6 +363,14 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 error_dlg.destroy()    
                 return
             error_dlg.destroy()
+
+
+        if self.declaracion.get_archivo() is not None:
+            curr_file = self.declaracion.get_archivo()
+            f = open(curr_file, 'w+')
+            f.write(etree.tostring(self.xml, encoding='utf8', pretty_print=True))
+            f.close()
+            return
 
         dialog = gtk.FileChooserDialog("Guardar ...", None, gtk.FILE_CHOOSER_ACTION_SAVE, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_SAVE, gtk.RESPONSE_OK))
         dialog.set_default_response(gtk.RESPONSE_OK)
@@ -377,6 +391,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
             f = open(outfile, 'w+')
             f.write(etree.tostring(self.xml, encoding='utf8', pretty_print=True))
             f.close()
+            self.declaracion.set_archivo(outfile)
 
         dialog.destroy()
 

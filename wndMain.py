@@ -191,6 +191,7 @@ class wndMain(ezGlade.BaseWindow):
         self.declaracion = Declaracion()
         try:
             self.declaracion = self.declaracion.cargar_declaracion_guardada(xml, lstContribuyentes, self.ref_data)
+            self.declaracion.set_archivo(filename)
         except Exception as ex:
             ezGlade.DialogBox(str(ex), 'error', self.win)
             return
@@ -200,6 +201,7 @@ class wndMain(ezGlade.BaseWindow):
         vDeclaracion.set_declaracion(self.declaracion)
         vDeclaracion.load_widgets_from_xml()
         vDeclaracion.update_container_from_xml(xml)
+        vDeclaracion.push_statusbar_info(filename)
         vDeclaracion.show()
 
 
@@ -332,6 +334,7 @@ class wndMain(ezGlade.BaseWindow):
         vDeclaracion = wndDeclaracion()
         vDeclaracion.set_declaracion(self.declaracion)
         vDeclaracion.load_widgets_from_xml()
+        vDeclaracion.push_statusbar_info("Nueva declaración")
         vDeclaracion.show()
 
 
