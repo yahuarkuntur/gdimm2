@@ -537,20 +537,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="GtkCheckButton" id="ckAnticipada">
-                                <property name="label" translatable="yes">Declaraci&#xF3;n anticipada</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="use_underline">True</property>
-                                <property name="draw_indicator">True</property>
-                                <signal name="toggled" handler="on_ckAnticipada_toggled"/>
-                              </widget>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">2</property>
-                              </packing>
+                              <placeholder/>
                             </child>
                           </widget>
                           <packing>

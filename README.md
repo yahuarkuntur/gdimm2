@@ -22,14 +22,11 @@ Dependencias
 Status
 ------
 
-Beta
+Release Candidate
 
 Pendientes
 ----------
 
-- Imprimir una declaración?
-- Declaraciónes anticipadas?
-- Alguno que otro detalle...
 - Pruebas, pruebas, pruebas... ;)
 
 Ejecución
