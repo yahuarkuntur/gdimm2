@@ -164,6 +164,8 @@ class wndMain(ezGlade.BaseWindow):
 
 
     def on_btnEditar_clicked(self, *args):
+        self.swMain.hide()
+
         dialog = gtk.FileChooserDialog("Abrir...", self.win, gtk.FILE_CHOOSER_ACTION_OPEN, (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OPEN, gtk.RESPONSE_OK))
         dialog.set_default_response(gtk.RESPONSE_OK)
         dialog.set_current_folder(os.path.join('XML_Declaraciones'))
@@ -313,6 +315,9 @@ class wndMain(ezGlade.BaseWindow):
         alias = self.ref_data.get_nombre_formulario(version)
         alias = alias.replace("FORMULARIO ", "")
         self.declaracion.set_alias_formulario(alias)
+
+        # archivo nulo
+        self.declaracion.set_archivo(None)
 
         # obtener anio
         anio = get_active_text(self.cmbAnio)
