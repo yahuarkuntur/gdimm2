@@ -73,7 +73,7 @@ class wndEditContribuyente(ezGlade.BaseWindow):
     def on_btnSave_clicked(self, widget, *args):
         contrib = Contribuyente()
         contrib.set_ruc(self.eRUC.get_text())
-        contrib.set_nombre(self.eRazonSocial.get_text())
+        contrib.set_nombre(self.eRazonSocial.get_text().upper())
         contrib.set_documento(self.eDocumento.get_text())
 
         iter = self.cmbTipoDocumento.get_active_iter()
@@ -157,7 +157,7 @@ class wndContribuyente(ezGlade.BaseWindow):
         treeselection = self.trContribuyentes.get_selection()
         (model, iter) = treeselection.get_selected()
         if not iter:
-            ezGlade.DialogBox("Debe seleccionar al menos un item", type = 'warning', window = self.win)
+            ezGlade.DialogBox("Debe seleccionar al menos un ítem", type = 'warning', window = self.win)
             return (None,None)
         else:
             return (model, iter)
