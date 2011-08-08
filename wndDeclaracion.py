@@ -34,16 +34,17 @@ except:
     pass
 
 try:
-    import gtk, pango
+    import gtk
     import gtk.glade
 except:
     sys.exit(1)
 
-import math
+
 import configuration
 from ref_data import RefData
 from calc import Calculator
 from val import Validator
+from utils import *
 
 
 ezGlade.set_file(configuration.GLADE_FILE)
@@ -79,20 +80,20 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
     def load_widget_contribuyente(self, number, text, width, height, left, top, tooltip):
         entry = gtk.Entry(max=0)
-        entry.set_size_request(width/10, height/10)
+        entry.set_size_request(width, height)
         entry.set_tooltip_text(tooltip)
         entry.set_editable(False)
         entry.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse("#cccccc")) # color deshabilitado ;)
         entry.set_text(text)
         entry.set_property('xalign', 1)
-        self.fixed1.put(entry, left/10, top/10)
+        self.fixed1.put(entry, left, top)
         self.widget_container[number] = entry
         entry.show()
 
 
     def load_combo_custom_data(self, number, value, width, height, left, top, tooltip, lista_datos):
         combo = gtk.combo_box_new_text()
-        combo.set_size_request(width/10, height/10)
+        combo.set_size_request(width, height)
         combo.set_tooltip_text(tooltip)
         list_store = gtk.ListStore(str, str)
         combo.set_model(list_store)
@@ -100,14 +101,14 @@ class wndDeclaracion(ezGlade.BaseWindow):
             if value == code :
                list_store.append([name, code])
         combo.set_active(0)
-        self.fixed1.put(combo, left/10, top/10)
+        self.fixed1.put(combo, left, top)
         self.widget_container[number] = combo
         combo.show()
 
 
     def load_combo_contribuyente(self, number, value, width, height, left, top, tooltip, ref_table):
         combo = gtk.combo_box_new_text()
-        combo.set_size_request(width/10, height/10)
+        combo.set_size_request(width, height)
         combo.set_tooltip_text(tooltip)
         if ref_table != "-1":
             list_store = gtk.ListStore(str, str)
@@ -117,7 +118,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 if value == code :
                     list_store.append([name, code])
             combo.set_active(0)
-        self.fixed1.put(combo, left/10, top/10)
+        self.fixed1.put(combo, left, top)
         self.widget_container[number] = combo
         combo.show()
 
@@ -146,18 +147,21 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
         self.widget_container = dict()
 
+        scale       = 10
+        start_top   = 1100
+
         for c in form:
             numero = str(int(c.attrib.get("numero"))) # se eliminan ceros de la izq
-            top = int(c.attrib.get("top")) - 1200
-            left = int(c.attrib.get("left"))
-            width = int(c.attrib.get("width"))
-            height = int(c.attrib.get("height"))
+            top = (int(c.attrib.get("top")) - start_top ) / scale
+            left = int(c.attrib.get("left")) / scale
+            width = int(c.attrib.get("width")) / scale
+            height = int(c.attrib.get("height")) / scale
             label = c.attrib.get("etiqueta")
-            bold = c.attrib.get("fontBold")
             editable = c.attrib.get("editable")
             tablaReferencial = c.attrib.get("tablaReferencial")
             mensajeAyuda = c.attrib.get("mensajeAyuda")
             tipoControl = c.attrib.get("tipoControl")
+            colorLetra = c.attrib.get("colorLetra")
 
             # campos escritos desde la configuracion
             if numero in [ '101', '102', '198', '199', '201', '202', '31', '104' ]:
@@ -181,13 +185,13 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
             if tipoControl == "L": # etiqueta
                 lbl = gtk.Label(label)
-                if bold != "Falso":
-                    lbl.set_markup("<b>"+label+"</b>")
-                self.fixed1.put(lbl, left/10, top/10)
+                color = RGBToHTMLColor(int(colorLetra))
+                lbl.set_markup('<span color="'+color+'">'+label+'</span>');
+                self.fixed1.put(lbl, left, top)
                 lbl.show()
             elif tipoControl in ["T", 'M']: # caja de texto
                 entry = gtk.Entry(max=0)
-                entry.set_size_request(width/10, height/10)
+                entry.set_size_request(width, height)
                 entry.set_tooltip_text(mensajeAyuda)
                 if editable != "SI":
                     entry.set_editable(False)
@@ -197,23 +201,34 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 else:
                     entry.set_text("0")
                 entry.set_property('xalign', 1)
-                self.fixed1.put(entry, left/10, top/10)
+                self.fixed1.put(entry, left, top)
                 entry.connect("key-release-event", self._onTabKeyReleased) # bind TAB event
                 self.widget_container[numero] = entry
                 entry.show()
             elif tipoControl == "C":# combo
                 combo = gtk.combo_box_new_text()
-                combo.set_size_request(width/10, height/10)
+                combo.set_size_request(width, height)
                 combo.set_tooltip_text(mensajeAyuda)
+
+                if numero == '921':
+                    combo.connect("changed", self._cmdBancos_changed) # binds change event
+
                 if tablaReferencial != "-1":
                     list_store = gtk.ListStore(str, str)
                     combo.set_model(list_store)
                     # llenar combo segun datos referenciales
-                    lista_datos = self.ref_data.get_data_list(tablaReferencial)
+                    if numero in ['238', '219', '222', '243'] :
+                        lista_datos = self.ref_data.get_data_list_2(tablaReferencial)
+                    else: 
+                        lista_datos = self.ref_data.get_data_list(tablaReferencial)
+
+                    if not len(lista_datos):
+                        ezGlade.DialogBox("Error al cargar tabla referencial " + str(tablaReferencial) + ' del campo ' + str(numero), "error")
+
                     for code, name in lista_datos:
                         list_store.append([name, code])
                     combo.set_active(0)
-                self.fixed1.put(combo, left/10, top/10)
+                self.fixed1.put(combo, left, top)
                 self.widget_container[numero] = combo
                 combo.show()
 
@@ -223,6 +238,34 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
         ezGlade.DialogBox("Use TAB para desplazarse por las celdas", "info", self.win)
     
+
+    def _cmdBancos_changed(self, widget, *args):
+        """ Metodo disparado al cambiar la seleccion de la forma de pago """
+        if not "922" in self.widget_container:
+            return
+    
+        widget2 = self.widget_container["922"]
+        aiter = widget.get_active_iter()
+        model = widget.get_model()
+
+        if aiter is None:
+            return
+
+        if model.get_value(aiter, 1) != "3":
+            widget2.set_active(0)
+            return
+        # usar item codigo 89 = Declaraciones en cero
+        biter = widget2.get_active_iter()
+        bmodel = widget2.get_model()
+        index = 0
+        biter = bmodel.get_iter_first()
+        while biter :
+            if bmodel.get_value(biter, 1) == "89":
+                break
+            biter = bmodel.iter_next(biter)
+            index += 1
+        widget2.set_active(index)
+
         
     def post_init(self):
         self.ref_data = RefData()

@@ -45,7 +45,25 @@ class RefData:
         for node in nodes:
             codigo = node.find('codigo')
             nombre = node.find('nombre')
-            list.append([codigo.text, nombre.text])
+            if codigo is not None and nombre is not None:
+                list.append([codigo.text, nombre.text])
+
+        return list
+
+
+    def get_data_list_2(self, code):
+        """ Retorna la lista de nodos (codigo, descripcion) """
+        list = []
+        nodes = self.get_xpath_nodes(code)
+    
+        if nodes is None:
+            return None
+    
+        for node in nodes:
+            codigo = node.find('codigo')
+            desc = node.find('descripcion')
+            if codigo is not None and desc is not None:
+                list.append([codigo.text, desc.text])
 
         return list
 
@@ -168,6 +186,7 @@ class RefData:
                 declaracion.set_alias_formulario(alias)
                 return declaracion
         return None
+    
 
 
 # tests

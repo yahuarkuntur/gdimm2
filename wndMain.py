@@ -35,16 +35,10 @@ from ref_data import RefData
 import configuration
 from wndDeclaracion import wndDeclaracion
 from wndContribuyente import wndContribuyente
+from utils import *
+
 
 ezGlade.set_file(configuration.GLADE_FILE)
-
-
-def get_active_text(combobox):
-    iter = combobox.get_active_iter()
-    model = combobox.get_model()
-    if iter is None:
-        return None
-    return str(model.get_value(iter, 1))
 
 
 class wndAcerca(ezGlade.BaseWindow):
