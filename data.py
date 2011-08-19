@@ -21,15 +21,7 @@
 import os
 from lxml import etree
 from exceptions import *
-
-
-class gDimmDocumentException(Exception):
-    def __init__(self, value):
-        self.value = value
-    
-    def __str__(self):
-        return self.value
-
+from doc_validators import *
 
 
 class Declaracion:
@@ -200,103 +192,18 @@ class Contribuyente:
     
     def get_element(self):
         return self._data
-    
+
+
     def verify_documents(self):
         
-        def verify(doc, tipo):
-            if tipo == 'P':
-                print "No se valida el pasaporte!!!"
-                return
-
-            if tipo == 'R':
-                if len ( doc ) != 13:
-                    raise gDimmDocumentException("Longitud del documento no válida")
-                if doc[10:13] == "000":
-                    raise gDimmDocumentException("RUC terminado en 000")
-            else:
-                if len ( doc ) != 10:
-                    raise gDimmDocumentException("Longitud del documento no válida")
-            try:
-                int(doc)
-            except:
-                raise gDimmDocumentException("El documento debe contener sólo caracteres numéricos")
-
-            if ( int ( doc[0:2] ) < 1 or int ( doc[0:2] ) > 24 ):
-                raise gDimmDocumentException("Los primeros caracteres deben contener códigos de provincias válidas")
-        
-            if doc[2] == '6':
-                tipo_ruc = "publico"
-                coeficiente = "32765432"
-                verificador = int ( doc[8] )
-            else:
-                if doc[2] == "9":
-                    tipo_ruc = "juridico"
-                    coeficiente = "432765432"
-                else:
-                    if int ( doc[2] ) < 6:
-                        tipo_ruc = "natural"
-                        coeficiente = "212121212"
-                    else:
-                        raise gDimmDocumentException("Error en el tercer dígito del documento")
-                verificador = int ( doc[9] )
-
-            resultado = 0
-            suma = 0
-            if tipo_ruc == "publico":
-                for i in range(8):
-                    resultado += ( int ( doc[i] ) * int ( coeficiente[i] ) )
-                    residuo = resultado % 11
-                if residuo == 0:
-                    resultado = residuo
-                else:
-                    resultado = 11 - residuo
-                
-            if tipo_ruc == "juridico":
-                for i in range(9):
-                    resultado += ( int ( doc[i] ) * int ( coeficiente[i] ) )
-                    residuo = resultado % 11
-                    if residuo == 0:
-                        resultado = residuo
-                    else:
-                        resultado = 11 - residuo
-        
-            if tipo_ruc == "natural":
-                for i in range(9):
-                    suma = ( int ( doc[i] ) * int ( coeficiente[i] ) )
-                    if suma > 10 :
-                        str_suma = str ( suma )
-                        suma = int ( str_suma[0] ) + int (str_suma [1])
-                    resultado += suma
-                residuo = resultado % 10
-                if residuo == 0:
-                    resultado = residuo
-                else:
-                    resultado = 10 - residuo
-                
-            if resultado == verificador:
-                # El documento es válido ;)
-                return
-            else:
-                raise gDimmDocumentException("El documento no es válido")
-        
-    
-        try:
-            verify(self.get_documento(), self.get_tipo_documento())
-        except gDimmDocumentException as dex:
-            raise gDimmDocumentException("Documento del representante no válido: " + dex.value)
-            
-        if len (self.get_ruc()) == 13:
-            type = 'R'
-        else:
-            if len ( self.get_ruc()) == 10:
-                type = 'C'
-
-        verify(self.get_ruc(), type)        
+        if not cedula_valida(self.get_documento()):
+            raise gDimmDocumentException("Documento del representante no válido")
 
         try:
-            verify(self.get_ruc(), type)
+            ruc_valido(self.get_ruc())
         except gDimmDocumentException as dex:
             raise gDimmDocumentException("Documento R.U.C. no válido: " + dex.value)
+            
 
         
         
@@ -382,4 +289,15 @@ class ListaContribuyentes:
 
     def get_elements(self):
         return self.lista
+
+
+# tests
+if __name__ == '__main__':
+    c = Contribuyente()
+    c.set_documento('1002584074')
+    c.set_ruc('1002584074001')
+    c.set_tipo_documento('C')
+    print c.verify_documents() is None
+
+
         
