@@ -196,7 +196,7 @@ class Contribuyente:
 
     def verify_documents(self):
         
-        if not cedula_valida(self.get_documento()):
+        if not validar_digitos(self.get_documento()):
             raise gDimmDocumentException("Documento del representante no válido")
 
         try:

@@ -17,6 +17,8 @@
 #
 ###
 
+import re
+
 
 class gDimmDocumentException(Exception):
     def __init__(self, value):
@@ -24,6 +26,14 @@ class gDimmDocumentException(Exception):
     
     def __str__(self):
         return self.value
+
+
+def validar_digitos(ced):
+    """ Validacion de cedula solo como digitos """
+    p = re.compile('^\d{10}$')
+    if p.match(ced) is None:
+        return False
+    return True
 
 
 
@@ -40,7 +50,7 @@ def ruc_valido(doc):
         raise gDimmDocumentException("Longitud del documento no válida")
     if doc[10:13] != "001":
         raise gDimmDocumentException("RUC no termina en 001")
-    if not cedula_valida(doc[:10]) :
+    if not validar_digitos(doc[:10]) :
         raise gDimmDocumentException("Primeros 10 digitos inválidos")
 
 
@@ -126,13 +136,19 @@ def verify(doc, tipo):
 
 # tests
 if __name__ == '__main__':
-    print cedula_valida('1002584074')
-    print cedula_valida('1001690237')
-    print cedula_valida('1002003004')
+    #print cedula_valida('1002584074')
+    #print cedula_valida('1001690237')
+    #print cedula_valida('1002003004')
+    #print cedula_valida('1801239680')
 
-    verify('1002584074', 'C')
-    verify('1001690237', 'C')
-    verify('1002003004', 'C')
+    #verify('1002584074', 'C')
+    #verify('1001690237', 'C')
+    #verify('1002003004', 'C')
+    #verify('1801239680', 'C')
+    cedulas = ['1801239680', '1001690237', 'abc1234567', '1234', '12345678901323']
+    for c in cedulas:
+        print c, validar_digitos(c)
+
 
 
     
