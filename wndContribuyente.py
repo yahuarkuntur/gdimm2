@@ -42,6 +42,10 @@ class wndEditContribuyente(ezGlade.BaseWindow):
 
 
     def post_init(self):
+        self.eRazonSocial.connect("changed", self.on_eRazonSocial_changed)
+        self.eRUC.connect("changed", self.on_numericfield_changed)
+        self.eDocumento.connect("changed", self.on_numericfield_changed)
+
         self.modeloTipo = gtk.ListStore(str,str)
 
         self.modeloTipo.append(['Cédula', "C"])
@@ -52,6 +56,16 @@ class wndEditContribuyente(ezGlade.BaseWindow):
 
         if not self.eRUC.get_editable():
             self.eRUC.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse("#cccccc")) # color deshabilitado ;)
+
+
+    def on_numericfield_changed(self, entry):
+        text = entry.get_text().strip()
+        entry.set_text(''.join([i for i in text if i in '0123456789']))
+
+
+    def on_eRazonSocial_changed(self, entry):
+        text = entry.get_text().upper()
+        entry.set_text(text)
 
 
     def set_data(self, oContribuyente):
