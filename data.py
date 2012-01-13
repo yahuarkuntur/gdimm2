@@ -21,7 +21,8 @@
 import os
 from lxml import etree
 from exceptions import *
-from doc_validators import *
+import validators
+from validators.cjp_doc_validator import *
 
 
 class Declaracion:
@@ -195,12 +196,15 @@ class Contribuyente:
 
 
     def verify_documents(self):
-        
-        if not validar_digitos(self.get_documento()):
-            raise gDimmDocumentException("Documento del representante no válido")
-
+        validator = CJPDocValidator(self.get_documento())
         try:
-            ruc_valido(self.get_ruc())
+            validator.check()
+        except gDimmDocumentException as dex:
+            raise gDimmDocumentException("Documento del representante no válido:" + dex.value)
+
+        validator = CJPDocValidator(self.get_ruc())
+        try:
+            validator.check()
         except gDimmDocumentException as dex:
             raise gDimmDocumentException("Documento R.U.C. no válido: " + dex.value)
             

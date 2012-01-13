@@ -32,6 +32,7 @@ except:
 
 from data import *
 import configuration
+from validators.base_document_validator import gDimmDocumentException
 
 ezGlade.set_file(configuration.GLADE_FILE)
 
