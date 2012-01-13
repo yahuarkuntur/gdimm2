@@ -99,6 +99,7 @@ class Calculator:
                 new_val = result.find('value').text
 
                 if new_val is not None:
+                    new_val = new_val.replace(',', '.') # se corrije 2,4 => 2.4
                     new_val = float(new_val) / 100.0
                     if new_val != float(valor): # solo se toma en cuenta calculos nuevos
                         self.calculations.append({'campo': numero, 'valor': valor, 'calculo': str(new_val) })

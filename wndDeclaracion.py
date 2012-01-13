@@ -60,6 +60,11 @@ class wndDeclaracion(ezGlade.BaseWindow):
     validations = None
 
 
+    def on_numericfield_changed(self, entry):
+        text = entry.get_text().strip()
+        entry.set_text(''.join([i for i in text if i in '0123456789.']))
+
+
     def set_declaracion(self, declaracion):
         self.declaracion = declaracion 
         self.calcs = Calculator()
@@ -203,6 +208,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
                 entry.set_property('xalign', 1)
                 self.fixed1.put(entry, left, top)
                 entry.connect("key-release-event", self._onTabKeyReleased) # bind TAB event
+                entry.connect("changed", self.on_numericfield_changed) # validacion solo numeros y punto (.)
                 self.widget_container[numero] = entry
                 entry.show()
             elif tipoControl == "C":# combo
