@@ -207,7 +207,6 @@ class wndDeclaracion(ezGlade.BaseWindow):
                     entry.set_text("0")
                 entry.set_property('xalign', 1)
                 self.fixed1.put(entry, left, top)
-                entry.connect("key-release-event", self._onTabKeyReleased) # bind TAB event
                 entry.connect("changed", self.on_numericfield_changed) # validacion solo numeros y punto (.)
                 entry.connect("focus-out-event", self._onEntryTextFocusOut)
                 self.widget_container[numero] = entry
@@ -242,8 +241,6 @@ class wndDeclaracion(ezGlade.BaseWindow):
         # poner el titulo de la ventana
         title = self.wndDeclaracion.get_title()
         self.wndDeclaracion.set_title(title + self.declaracion.get_alias_formulario())
-        # TODO deprecated
-        #ezGlade.DialogBox("Use TAB para desplazarse por las celdas", "info", self.win)
     
 
     def _cmdBancos_changed(self, widget, *args):
@@ -365,13 +362,6 @@ class wndDeclaracion(ezGlade.BaseWindow):
     def _onEntryTextFocusOut(self, *args):
         self.generate_xml_from_container()
         self.do_calculations()
-
-
-    def _onTabKeyReleased(self, widget, event, *args):
-        if event.keyval == gtk.keysyms.Tab:
-            self.generate_xml_from_container()
-            self.do_calculations()
-            return True
 
 
     def on_btnCancelar_clicked(self, widget, *args):
