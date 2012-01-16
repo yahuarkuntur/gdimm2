@@ -29,19 +29,22 @@ class Validator:
     val_xml     = None
     val_xsl     = None
     validations = None
+    declaration = None
 
     def __init__(self):
         self.parser = etree.XMLParser(remove_comments=True, encoding='utf8')
         self.validations = []
 
 
-    def load_xml(self, version): 
+    def load_xml(self, declaration): 
+        self.declaration = declaration
         files = glob.glob(os.path.join('XSL', 'VAL*.xml'))
         for filename in files:
             xml = etree.parse(filename, self.parser)
             root = xml.getroot()
-            if root.attrib.get('version') == version:
+            if root.attrib.get('version') == self.declaration.get_version():
                 self.val_xml = xml
+                print filename
                 return True
         return False
         
@@ -64,6 +67,9 @@ class Validator:
             return
 
         self.validations = []
+
+        # fecha de declaracion para validar contra fechas vigentes de calculos
+        fecha_declaracion = datetime.strptime(self.declaration.get_fecha_declaracion(), "%Y-%m-%d")
 
         # iteramos los campos de la declaracion
         for node in test_xml.find('detalle'):
@@ -88,12 +94,28 @@ class Validator:
                 mensajeError = formula.attrib.get('mensajeError') 
                 severidad = formula.attrib.get('severidad') 
                 condicionFormulaCalculo = formula.attrib.get('condicionFormulaCalculo') 
-                fecha_vigencia = formula.attrib.get('fechaVigenciaHasta')
-                fecha_vigencia.strip()
+                fecha_vigencia_desde = formula.attrib.get('fechaVigenciaDesde').strip()
+                fecha_vigencia_hasta = formula.attrib.get('fechaVigenciaHasta').strip()
                 
-                # solo calculos vigentes
-                if fecha_vigencia != "" and datetime.today() > datetime.strptime(fecha_vigencia, "%Y%m%d"):
+                # parsear las fechas de vigencia
+                vigencia_desde = datetime.strptime(fecha_vigencia_desde, "%Y%m%d") 
+                
+                if fecha_vigencia_hasta != "" :
+                    vigencia_hasta = datetime.strptime(fecha_vigencia_hasta, "%Y%m%d") 
+                else:
+                    vigencia_hasta = None
+
+                # fuera del rango de vigencia
+                if vigencia_hasta is not None and ( vigencia_hasta < fecha_declaracion or fecha_declaracion < vigencia_desde ) :
+                    #print fecha_vigencia_desde, fecha_vigencia_hasta, ' periodo NO vigente' 
                     continue
+
+                # antes del periodo de vigencia
+                if vigencia_hasta is None and ( vigencia_desde > fecha_declaracion ) :
+                    #print fecha_vigencia_desde, ' NO vigente' 
+                    continue
+                
+                #print '(',fecha_vigencia_desde,',',fecha_vigencia_hasta, ') sigue vigente'
 
                 result = self.val_xsl(test_xml, formula=validacion, condicion=condicionFormulaCalculo)
 

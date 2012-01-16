@@ -68,13 +68,13 @@ class wndDeclaracion(ezGlade.BaseWindow):
     def set_declaracion(self, declaracion):
         self.declaracion = declaracion 
         self.calcs = Calculator()
-        if not self.calcs.load_xml(self.declaracion.get_version()):
+        if not self.calcs.load_xml(self.declaracion):
             ezGlade.DialogBox("ERROR: No se pudo cargar el XML de cálculos para " + self.declaracion.get_version(), "error")
             self.calcs = None
             return
         
         self.validations = Validator()
-        if not self.validations.load_xml(self.declaracion.get_version()):
+        if not self.validations.load_xml(self.declaracion):
             ezGlade.DialogBox("ERROR: No se pudo cargar el XML de validaciones para " + self.declaracion.get_version(), "error")
             self.validations = None
             return
@@ -241,7 +241,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
         # poner el titulo de la ventana
         title = self.wndDeclaracion.get_title()
         self.wndDeclaracion.set_title(title + self.declaracion.get_alias_formulario())
-    
+
 
     def _cmdBancos_changed(self, widget, *args):
         """ Metodo disparado al cambiar la seleccion de la forma de pago """
@@ -322,7 +322,6 @@ class wndDeclaracion(ezGlade.BaseWindow):
             ezGlade.DialogBox("ERROR: El motor de validaciones no fué creado.", "error")
             return
 
-        self.generate_xml_from_container()
         self.do_calculations()
 
         self.validations.validate(self.xml)
@@ -346,21 +345,23 @@ class wndDeclaracion(ezGlade.BaseWindow):
             ezGlade.DialogBox("ERROR: El motor de cálculos no fué creado.", "error")
             return
 
-        self.calcs.calc(self.xml)
-        calculations = self.calcs.get_calculations()
+        self.generate_xml_from_container()
+        self.calcs.calc(self.xml) # actualizar el XML segun los calculos del XSLT
+        self.update_container_from_xml(self.xml) # actualizar el formulario segun los cambios al XML
+        
+        #calculations = self.calcs.get_calculations()
 
         # se modifica el valor del widget y el XML con el valor calculado por la XSLT
-        for item in calculations:
-            widget = self.widget_container[item['campo']]
-            campo = self.xml.find('detalle/campo[@numero="'+item['campo']+'"]')
-            campo.text = item['calculo']
+        #for item in calculations:
+        #    widget = self.widget_container[item['campo']]
+        #    campo = self.xml.find('detalle/campo[@numero="'+item['campo']+'"]')
+        #    campo.text = item['calculo']
             
-            if widget.__class__ is gtk.Entry:
-                widget.set_text(item['calculo'])
+        #    if widget.__class__ is gtk.Entry:
+        #        widget.set_text(item['calculo'])
 
 
     def _onEntryTextFocusOut(self, *args):
-        self.generate_xml_from_container()
         self.do_calculations()
 
 

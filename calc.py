@@ -28,20 +28,24 @@ class Calculator:
     xml_parser  = None
     calc_xml    = None
     calc_xsl    = None
-    calculations  = None
+    #calculations  = None
+    declaration = None
+    
 
     def __init__(self):
         self.parser = etree.XMLParser(remove_comments=True, encoding='utf8')
-        self.calculations = []
+        #self.calculations = []
 
 
-    def load_xml(self, version): 
+    def load_xml(self, declaration): 
+        self.declaration = declaration
         files = glob.glob(os.path.join('XSL', 'CAL*.xml'))
         for filename in files:
             xml = etree.parse(filename, self.parser)
             root = xml.getroot()
-            if root.attrib.get('version') == version:
+            if root.attrib.get('version') == self.declaration.get_version():
                 self.calc_xml = xml
+                print filename
                 return True
         return False
         
@@ -50,8 +54,8 @@ class Calculator:
         self.calc_xsl = etree.XSLT(etree.parse(os.path.join('XSLT', filename), self.parser))
 
 
-    def get_calculations(self):
-        return self.calculations
+    #def get_calculations(self):
+    #    return self.calculations
 
 
     def calc(self, test_xml):
@@ -63,7 +67,10 @@ class Calculator:
             print 'XSL de calculos no definido!'
             return
 
-        self.calculations = []
+        #self.calculations = []
+
+        # fecha de declaracion para validar contra fechas vigentes de calculos
+        fecha_declaracion = datetime.strptime(self.declaration.get_fecha_declaracion(), "%Y-%m-%d")
 
         # iteramos los campos de la declaracion
         for node in test_xml.find('detalle'):
@@ -87,12 +94,28 @@ class Calculator:
                 validacion = formula.attrib.get('validacion') 
                 mensajeError = formula.attrib.get('mensajeError') 
                 condicionFormulaCalculo = formula.attrib.get('condicionFormulaCalculo') 
-                fecha_vigencia = formula.attrib.get('fechaVigenciaHasta')
-                fecha_vigencia.strip()
+                fecha_vigencia_desde = formula.attrib.get('fechaVigenciaDesde').strip()
+                fecha_vigencia_hasta = formula.attrib.get('fechaVigenciaHasta').strip()
                 
-                # solo calculos vigentes
-                if fecha_vigencia != "" and datetime.today() > datetime.strptime(fecha_vigencia, "%Y%m%d"):
+                # parsear las fechas de vigencia
+                vigencia_desde = datetime.strptime(fecha_vigencia_desde, "%Y%m%d") 
+                
+                if fecha_vigencia_hasta != "" :
+                    vigencia_hasta = datetime.strptime(fecha_vigencia_hasta, "%Y%m%d") 
+                else:
+                    vigencia_hasta = None
+
+                # fuera del rango de vigencia
+                if vigencia_hasta is not None and ( vigencia_hasta < fecha_declaracion or fecha_declaracion < vigencia_desde ) :
+                    #print fecha_vigencia_desde, fecha_vigencia_hasta, ' periodo NO vigente' 
                     continue
+
+                # antes del periodo de vigencia
+                if vigencia_hasta is None and ( vigencia_desde > fecha_declaracion ) :
+                    #print fecha_vigencia_desde, ' NO vigente' 
+                    continue
+                
+                #print '(',fecha_vigencia_desde,',',fecha_vigencia_hasta, ') sigue vigente'
 
                 result = self.calc_xsl(test_xml, formula=validacion, condicion=condicionFormulaCalculo)
 
@@ -100,9 +123,12 @@ class Calculator:
 
                 if new_val is not None:
                     new_val = new_val.replace(',', '.') # se corrije 2,4 => 2.4
-                    new_val = float(new_val) / 100.0
+                    new_val = float(new_val) / 100.0 
+
                     if new_val != float(valor): # solo se toma en cuenta calculos nuevos
-                        self.calculations.append({'campo': numero, 'valor': valor, 'calculo': str(new_val) })
+                        #print 'Campo:', numero, 'Valor:', valor, 'Calculo:', str(new_val)
+                        node.text = str(new_val) # se actualiza el valor del XML directamente
+                        #self.calculations.append({'campo': numero, 'valor': valor, 'calculo': str(new_val) })
 
 
 

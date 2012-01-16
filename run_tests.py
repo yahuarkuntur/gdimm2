@@ -9,19 +9,18 @@ from ref_data import RefData
 
 parser = etree.XMLParser(remove_comments=True, encoding='utf8')
 
-xml = etree.parse(os.path.join('tests','104ORI_MAR2011.xml'), parser)
+xml = etree.parse(os.path.join('tests','test.xml'), parser)
 
 def test_calcs(version):
     print 'Prueba de calculos:'
     calcs = Calculator()
     calcs.load_xml(version)
     calcs.load_xsl('calculos.xsl')
-
     calcs.calc(xml)
 
-    for x in calcs.get_calculations():
-        print x
-    print 'Listo'
+    #for x in calcs.get_calculations():
+    #    print x
+    #print 'Listo'
 
 
 def test_vals(version):
@@ -29,7 +28,6 @@ def test_vals(version):
     valid = Validator()
     valid.load_xml(version)
     valid.load_xsl('validaciones.xsl')
-
     valid.validate(xml)
 
     for x in valid.get_validations():
@@ -52,9 +50,8 @@ def test_xml_file_load():
         print str(ex)
         return 
 
-    test_calcs(declaracion.get_version())
-
-    test_vals(declaracion.get_version())
+    test_calcs(declaracion)
+    test_vals(declaracion)
 
 
 
