@@ -248,27 +248,50 @@ class wndDeclaracion(ezGlade.BaseWindow):
         if not "922" in self.widget_container:
             return
     
-        widget2 = self.widget_container["922"]
         aiter = widget.get_active_iter()
         model = widget.get_model()
 
         if aiter is None:
             return
 
-        if model.get_value(aiter, 1) != "3":
-            widget2.set_active(0)
-            return
-        # usar item codigo 89 = Declaraciones en cero
+        widget2 = self.widget_container["922"]
+        widget2.set_sensitive(True)
         biter = widget2.get_active_iter()
         bmodel = widget2.get_model()
-        index = 0
-        biter = bmodel.get_iter_first()
-        while biter :
-            if bmodel.get_value(biter, 1) == "89":
-                break
-            biter = bmodel.iter_next(biter)
-            index += 1
-        widget2.set_active(index)
+
+        # 3 = Declaración Sin Valor a Pagar
+        # 2 = Otras Formas de Pago
+        # 1 = Convenio De Debito
+
+        if model.get_value(aiter, 1) not in ['2', '3']:
+            widget2.set_active(0)
+            return
+
+        # usar item codigo 89 = Declaraciones en cero
+        if model.get_value(aiter, 1) == '3' :
+            index = 0
+            biter = bmodel.get_iter_first()
+            while biter :
+                if bmodel.get_value(biter, 1) == "89":
+                    widget2.set_sensitive(False)
+                    break
+                biter = bmodel.iter_next(biter)
+                index += 1
+            widget2.set_active(index)
+            return
+        # usar item codigo 16 = RED BANCARIA
+        elif model.get_value(aiter, 1) == '2' :
+            index = 0
+            biter = bmodel.get_iter_first()
+            while biter :
+                if bmodel.get_value(biter, 1) == "16":
+                    widget2.set_sensitive(False)
+                    break
+                biter = bmodel.iter_next(biter)
+                index += 1
+            widget2.set_active(index)
+            return
+
 
         
     def post_init(self):
