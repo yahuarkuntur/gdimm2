@@ -325,7 +325,10 @@ class wndDeclaracion(ezGlade.BaseWindow):
             if obj.__class__ is gtk.Entry:
                 campo = etree.SubElement(detalle, "campo")
                 campo.set('numero', num )
-                campo.text = str(obj.get_text())
+                text = obj.get_text().strip()
+                if text is None or text == '':
+                    text = "0.0"
+                campo.text = text
             elif obj.__class__ is gtk.ComboBox:
                 campo = etree.SubElement(detalle, "campo")
                 campo.set('numero', num )
@@ -368,21 +371,12 @@ class wndDeclaracion(ezGlade.BaseWindow):
             ezGlade.DialogBox("ERROR: El motor de cálculos no fué creado.", "error")
             return
 
+        # FIXME debemos recalcular n veces, debido a que ciertos campos dependen de valores calculados
         self.generate_xml_from_container()
-        self.calcs.calc(self.xml) # actualizar el XML segun los calculos del XSLT
+        for x in range(3):
+            self.calcs.calc(self.xml) # actualizar el XML segun los calculos del XSLT
         self.update_container_from_xml(self.xml) # actualizar el formulario segun los cambios al XML
         
-        #calculations = self.calcs.get_calculations()
-
-        # se modifica el valor del widget y el XML con el valor calculado por la XSLT
-        #for item in calculations:
-        #    widget = self.widget_container[item['campo']]
-        #    campo = self.xml.find('detalle/campo[@numero="'+item['campo']+'"]')
-        #    campo.text = item['calculo']
-            
-        #    if widget.__class__ is gtk.Entry:
-        #        widget.set_text(item['calculo'])
-
 
     def _onEntryTextFocusOut(self, *args):
         self.do_calculations()
