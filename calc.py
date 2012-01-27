@@ -54,10 +54,6 @@ class Calculator:
         self.calc_xsl = etree.XSLT(etree.parse(os.path.join('XSLT', filename), self.parser))
 
 
-    #def get_calculations(self):
-    #    return self.calculations
-
-
     def calc(self, test_xml):
         if self.calc_xml is None:
             print 'XML de calculos no definido!'
