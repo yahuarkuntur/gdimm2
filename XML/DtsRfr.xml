@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<datos_referenciales version="Versión 20 (Marzo 2011)">
+<datos_referenciales version="Versión 21 (Febrero 2012)">
 	<!--Versión 0 (01 NOVIEMBRE 2003).- Version con la que se inicio la primera distribución del DIMM
 	     VERSION 1 (08 MARZO 2003) .- Version en la que se registra los siguientes cambios de acuerdo al Memo 
 	     								    93-NACSTR-04:
@@ -56,79 +56,81 @@
 				Se restringe la presentacion del formulario 101 para todos los contribuyentes con ruc cuyo tercer digito de la identificacion no sea '6' o '9'
  VERSION 16 (ABRIL 2010).- Se retiran a los Bancos Amazonas y Territorial por ya no contar con el convenio de debito
  VERSION 17 (JUNIO 2010).- Se modifican los cálculos para los campos 373 y 353 del formulario 103
- VERSION 18 (FEBRERO 2010).- Se modifican los formularios 101, 102, 102A y 103.
- VERSION 19 (MARZO 2010).- Se modifican los mensajes de advertencia para los formularios 101 y 102
- VERSION 20 (MARZO 2010).- Se modifican los calculos y validaciones para los formularios 101 y 102
+ VERSION 18 (FEBRERO 2011).- Se modifican los formularios 101, 102, 102A y 103.
+ VERSION 19 (MARZO 2011).- Se modifican los mensajes de advertencia para los formularios 101 y 102
+ VERSION 20 (ABRIL 2011).- Se modifican los calculos y validaciones para los formularios 101 y 102
+ VERSION 21 (JUNIO 2011).- Se modifican los calculos y validaciones para el formulario 102
+ VERSION 22 (FEBRERO 2012).- Se cambian las versiones de los formularios 101, 102, 103, 104.
 	-->
 	<datosFormularios codigo="5">
-		<formulario codigo="01" nombre="FORMULARIO 101" periodicidad="ANUAL" version="01201101" codigo_impuesto="1021" descripcion_impuesto="Impuesto a la Renta  Sociedades" descripcion_version="FORMULARIO DE RENTA SOCIEDADES VIGENTE DESDE FEBRERO 2011"/>
-		<formulario codigo="02" nombre="FORMULARIO 102" periodicidad="ANUAL" version="02201101" codigo_impuesto="1011" descripcion_impuesto="Impuesto a la Renta  Personas Naturales" descripcion_version="FORMULARIO RENTA PERSONAS NATURALES VIGENTE DESDE FEBRERO 2011"/>
-		<formulario codigo="02" nombre="FORMULARIO 102A" periodicidad="ANUAL" version="02201102" codigo_impuesto="1011" descripcion_impuesto="Impuesto a la Renta  Personas Naturales (No obligados a llevar contabilidad)" descripcion_version="FORMULARIO RENTA PERSONAS NATURALES VIGENTE DESDE FEBRERO 2011"/>
-		<formulario codigo="03" nombre="FORMULARIO 103" periodicidad="MENSUAL" version="03201101" codigo_impuesto="1031" descripcion_impuesto="Retenciones en la Fuente del Impuesto a la Renta" descripcion_version="FORMULARIO DE RETENCIONES EN LA FUENTE VIGENTE DESDE FEBRERO 2011"/>
-		<formulario codigo="04" nombre="FORMULARIO 104" periodicidad="MENSUAL" version="04200901" codigo_impuesto="2011" descripcion_impuesto="Impuesto al Valor Agregado" descripcion_version="FORMULARIO DE IMPUESTO AL VALOR AGREGADO MENSUAL"/>
-		<formulario codigo="04" nombre="FORMULARIO 104A" periodicidad="MENSUAL_SEMESTRAL" version="04200902" codigo_impuesto="2011" descripcion_impuesto="Impuesto al Valor Agregado (No obligados a llevar contabilidad)" descripcion_version="FORMULARIO DE IMPUESTO AL VALOR AGREGADO MENSUAL / SEMESTRAL"/>
-		<formulario codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" version="05200801" codigo_impuesto="3011" descripcion_impuesto="Impuesto a los Consumos Especiales" descripcion_version="IMPUESTO A CONSUMOS ESPECIALES"/>
+		<formulario codigo="01" nombre="FORMULARIO 101" periodicidad="ANUAL" version="01201201" codigo_impuesto="1021" descripcion_impuesto="Impuesto a la Renta  Sociedades" descripcion_version="FORMULARIO DE RENTA SOCIEDADES VIGENTE DESDE FEBRERO 2011"/>
+		<formulario codigo="02" nombre="FORMULARIO 102" periodicidad="ANUAL" version="02201201" codigo_impuesto="1011" descripcion_impuesto="Impuesto a la Renta  Personas Naturales" descripcion_version="FORMULARIO RENTA PERSONAS NATURALES VIGENTE DESDE FEBRERO 2011"/>
+		<formulario codigo="02" nombre="FORMULARIO 102A" periodicidad="ANUAL" version="02201202" codigo_impuesto="1011" descripcion_impuesto="Impuesto a la Renta  Personas Naturales (No obligados a llevar contabilidad)" descripcion_version="FORMULARIO RENTA PERSONAS NATURALES VIGENTE DESDE FEBRERO 2011"/>
+		<formulario codigo="03" nombre="FORMULARIO 103" periodicidad="MENSUAL" version="03201201" codigo_impuesto="1031" descripcion_impuesto="Retenciones en la Fuente del Impuesto a la Renta" descripcion_version="FORMULARIO DE RETENCIONES EN LA FUENTE VIGENTE DESDE FEBRERO 2012"/>
+		<formulario codigo="04" nombre="FORMULARIO 104" periodicidad="MENSUAL" version="04201201" codigo_impuesto="2011" descripcion_impuesto="Impuesto al Valor Agregado" descripcion_version="FORMULARIO DE IMPUESTO AL VALOR AGREGADO MENSUAL"/>
+		<formulario codigo="04" nombre="FORMULARIO 104A" periodicidad="MENSUAL_SEMESTRAL" version="04201202" codigo_impuesto="2011" descripcion_impuesto="Impuesto al Valor Agregado (No obligados a llevar contabilidad)" descripcion_version="FORMULARIO DE IMPUESTO AL VALOR AGREGADO MENSUAL / SEMESTRAL"/>
+		<!--<formulario codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" version="05200801" codigo_impuesto="3011" descripcion_impuesto="Impuesto a los Consumos Especiales" descripcion_version="IMPUESTO A CONSUMOS ESPECIALES"/>-->
 		<!-- formulario codigo="06" nombre="FORMULARIO 106" periodicidad="MENSUAL" version="06200601" codigo_impuesto="4005" descripcion_impuesto="Formulario Múltiple de Pago " descripcion_version="FORMULARIO MULTIPLE DE PAGO"/ -->
 		<formulario codigo="08" nombre="FORMULARIO 108" periodicidad="MENSUAL" version="08200201" codigo_impuesto="1088" descripcion_impuesto="I.R. sobre ingresos de herencias, legados y donaciones" descripcion_version="IMPUESTO A LA RENTA SOBRE INGRESOS PROVENIENTES DE HERENCIAS"/>
 	</datosFormularios>
 	<datosFormulariosVersiones codigo="10">
-		<formularioVersion codigo="01" nombre="FORMULARIO 101" periodicidad="ANUAL" versionVigente="01201101" descripcion_impuesto="Impuesto a la Renta Sociedades">
+		<formularioVersion codigo="01" nombre="FORMULARIO 101" periodicidad="ANUAL" versionVigente="01201201" descripcion_impuesto="Impuesto a la Renta Sociedades">
 			<version_formulario>
-				<codigo_version>01201101</codigo_version>
+				<codigo_version>01201201</codigo_version>
 				<codigo_impuesto>1021</codigo_impuesto>
 				<descripcion_version>FORMULARIO DE RENTA SOCIEDADES VIGENTE DESDE FEBRERO 2011</descripcion_version>
 				<descripcion_impuesto>RENTA SOCIEDADES</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
-		<formularioVersion codigo="02" nombre="FORMULARIO 102" periodicidad="ANUAL" versionVigente="02201101" descripcion_impuesto="Impuesto a la Renta Personas Naturales">
+		<formularioVersion codigo="02" nombre="FORMULARIO 102" periodicidad="ANUAL" versionVigente="02201201" descripcion_impuesto="Impuesto a la Renta Personas Naturales">
 			<version_formulario>
-				<codigo_version>02201101</codigo_version>
+				<codigo_version>02201201</codigo_version>
 				<codigo_impuesto>1011</codigo_impuesto>
 				<descripcion_version>FORMULARIO RENTA PERSONAS NATURALES VIGENTE DESDE FEBRERO 2011</descripcion_version>
 				<descripcion_impuesto>RENTA PERSONAS NATURALES</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
-		<formularioVersion codigo="02" nombre="FORMULARIO 102A" periodicidad="ANUAL" versionVigente="02201102" descripcion_impuesto="Impuesto a la Renta Personas Naturales">
+		<formularioVersion codigo="02" nombre="FORMULARIO 102A" periodicidad="ANUAL" versionVigente="02201202" descripcion_impuesto="Impuesto a la Renta Personas Naturales">
 			<version_formulario>
-				<codigo_version>02201102</codigo_version>
+				<codigo_version>02201202</codigo_version>
 				<codigo_impuesto>1011</codigo_impuesto>
 				<descripcion_version>FORMULARIO RENTA PERSONAS NATURALES VIGENTE DESDE FENRERO 2011</descripcion_version>
 				<descripcion_impuesto>RENTA PERSONAS NATURALES</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
-		<formularioVersion codigo="03" nombre="FORMULARIO 103" periodicidad="MENSUAL" versionVigente="03201101" descripcion_impuesto="Retenciones en la Fuente del Impuesto a la Renta">
+		<formularioVersion codigo="03" nombre="FORMULARIO 103" periodicidad="MENSUAL" versionVigente="03201201" descripcion_impuesto="Retenciones en la Fuente del Impuesto a la Renta">
 			<version_formulario>
-				<codigo_version>03201101</codigo_version>
+				<codigo_version>03201201</codigo_version>
 				<codigo_impuesto>1031</codigo_impuesto>
 				<descripcion_version>FORMULARIO DE RETENCIONES EN LA FUENTE VIGENTE DESDE FEBRERO 2011</descripcion_version>
 				<descripcion_impuesto>RETENCIONES EN LA FUENTE</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
-		<formularioVersion codigo="04" nombre="FORMULARIO 104" periodicidad="MENSUAL" versionVigente="04200901" descripcion_impuesto="Impuesto al Valor Agregado">
+		<formularioVersion codigo="04" nombre="FORMULARIO 104" periodicidad="MENSUAL" versionVigente="04201201" descripcion_impuesto="Impuesto al Valor Agregado">
 			<version_formulario>
-				<codigo_version>04200901</codigo_version>
+				<codigo_version>04201201</codigo_version>
 				<codigo_impuesto>2011</codigo_impuesto>
 				<descripcion_version>FORMULARIO DE IMPUESTO AL VALOR AGREGADO MENSUAL</descripcion_version>
 				<descripcion_impuesto>IVA MENSUAL</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
-		<formularioVersion codigo="04" nombre="FORMULARIO 104A" periodicidad="SEMESTRAL" versionVigente="04200902" descripcion_impuesto="Impuesto al Valor Agregado">
+		<formularioVersion codigo="04" nombre="FORMULARIO 104A" periodicidad="SEMESTRAL" versionVigente="04201202" descripcion_impuesto="Impuesto al Valor Agregado">
 			<version_formulario>
-				<codigo_version>04200902</codigo_version>
+				<codigo_version>04201202</codigo_version>
 				<codigo_impuesto>2011</codigo_impuesto>
 				<descripcion_version>FORMULARIO DE IMPUESTO AL VALOR AGREGADO SEMESTRAL</descripcion_version>
 				<descripcion_impuesto>IVA SEMESTRAL</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
-		<formularioVersion codigo="04" nombre="FORMULARIO 104A" periodicidad="MENSUAL" versionVigente="04200903" descripcion_impuesto="Impuesto al Valor Agregado">
+		<formularioVersion codigo="04" nombre="FORMULARIO 104A" periodicidad="MENSUAL" versionVigente="04201203" descripcion_impuesto="Impuesto al Valor Agregado">
 			<version_formulario>
-				<codigo_version>04200903</codigo_version>
+				<codigo_version>04201203</codigo_version>
 				<codigo_impuesto>2011</codigo_impuesto>
 				<descripcion_version>FORMULARIO DE IMPUESTO AL VALOR AGREGADO MENSUAL</descripcion_version>
 				<descripcion_impuesto>IVA MENSUAL</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
-		<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" descripcion_impuesto="ICE CIGARRILLOS RUBIOS" codigoImpuesto="3011" tasa="150">
+		<!--<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" descripcion_impuesto="ICE CIGARRILLOS RUBIOS" codigoImpuesto="3011" tasa="150">
 			<version_formulario>
 				<codigo_version>05200801</codigo_version>
 				<codigo_impuesto>3011</codigo_impuesto>
@@ -327,7 +329,7 @@
 				<descripcion_version>Ice-Telecomunicaciones y radioelectrónic. ENERO 2008- (VIGENTE)</descripcion_version>
 				<descripcion_impuesto>ICE - Telecomunicaciones y radioelectrónic</descripcion_impuesto>
 			</version_formulario>
-		</formularioVersion>
+		</formularioVersion>-->
 		<!-- formularioVersion codigo="06" nombre="FORMULARIO 106" periodicidad="MENSUAL" versionVigente="06200601" descripcion_impuesto="Impuestos Multiples">
 			<version_formulario>
 				<codigo_version>06200601</codigo_version>
@@ -448,6 +450,10 @@
 			<codigo>2011</codigo>
 			<nombre>2011</nombre>
 		</anio>
+		<anio>
+			<codigo>2012</codigo>
+			<nombre>2012</nombre>
+		</anio>	
 	</datos_anio>
 	<datos_semestre codigo="40">
 		<semestre>

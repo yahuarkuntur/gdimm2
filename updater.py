@@ -103,11 +103,16 @@ class gDimmUpdater:
     def update(self):
         """ Ejecuta la actualizacion de los XML """
         if not self.need_update():
+            print 'Actualizacion no necesaria.'
             return
         
+        print 'Descargando...'
         self.download()
+        print 'Desempaquetando...'
         self.unzip()
+        print 'Copiando archivos...'
         self.copy_files()
+        print 'Actualizando archivo...'
         self._create_last_update_file()
 
 
