@@ -325,10 +325,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
             if obj.__class__ is gtk.Entry:
                 campo = etree.SubElement(detalle, "campo")
                 campo.set('numero', num )
-                text = obj.get_text().strip()
-                if text is None or text == '':
-                    text = "0.0"
-                campo.text = text
+                campo.text = obj.get_text().strip()
             elif obj.__class__ is gtk.ComboBox:
                 campo = etree.SubElement(detalle, "campo")
                 campo.set('numero', num )
