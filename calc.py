@@ -63,6 +63,8 @@ class Calculator:
             print 'XSL de calculos no definido!'
             return
 
+        #FIXME TODO hacer el proceso inverso... iterar las formulas y aplicar a cada campo
+
         #self.calculations = []
 
         # fecha de declaracion para validar contra fechas vigentes de calculos
