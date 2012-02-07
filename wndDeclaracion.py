@@ -154,6 +154,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
         scale       = 10
         start_top   = 1100
+        font_factor = 1000
 
         for c in form:
             numero = str(int(c.attrib.get("numero"))) # se eliminan ceros de la izq
@@ -167,6 +168,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
             mensajeAyuda = c.attrib.get("mensajeAyuda")
             tipoControl = c.attrib.get("tipoControl")
             colorLetra = c.attrib.get("colorLetra")
+            fontSize = str(int(c.attrib.get("fontSize")) * font_factor)
 
             # campos escritos desde la configuracion
             if numero in [ '101', '102', '198', '199', '201', '202', '31', '104' ]:
@@ -191,7 +193,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
             if tipoControl == "L": # etiqueta
                 lbl = gtk.Label(label)
                 color = RGBToHTMLColor(int(colorLetra))
-                lbl.set_markup('<span color="'+color+'">'+label+'</span>');
+                lbl.set_markup('<span color="'+color+'" size="'+fontSize+'">'+label+'</span>');
                 self.fixed1.put(lbl, left, top)
                 lbl.show()
             elif tipoControl in ["T", 'M']: # caja de texto
