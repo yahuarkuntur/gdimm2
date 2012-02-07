@@ -30,6 +30,10 @@ class RefData:
         self.parser = etree.XMLParser(remove_comments=True, encoding='utf8')    
         self.tree = etree.parse(os.path.join('XML','DtsRfr.xml'), self.parser)
 
+    def get_version_dimm(self):
+        root = self.tree.getroot()
+        return root.attrib.get('version')
+
 
     def get_xpath_nodes(self, code):
         return self.tree.find('/*[@codigo="'+str(code)+'"]')
@@ -80,7 +84,7 @@ class RefData:
             nombre = node.attrib.get('nombre')
             version = node.attrib.get('version')
             desc = node.attrib.get('descripcion_impuesto')
-            list.append([version, nombre + ' .- '  + desc])
+            list.append([version, nombre + ' - '  + desc])
 
         return list
 
@@ -192,14 +196,14 @@ class RefData:
 # tests
 if __name__ == '__main__':
     ref = RefData()
-
+    print ref.get_version_dimm()
     #print ref.get_mes_por_codigo('5')
     #print ref.get_semestre_por_codigo('06')
     #print ref.get_ori_sus()
-    declaracion = ref.get_objeto_declaracion('04200902')
-    print 'widgets', declaracion.get_codigo_version()
-    print 'calculos', declaracion.get_version()
-    print 'periodicidad', declaracion.get_periodicidad()
+    #declaracion = ref.get_objeto_declaracion('04200902')
+    #print 'widgets', declaracion.get_codigo_version()
+    #print 'calculos', declaracion.get_version()
+    #print 'periodicidad', declaracion.get_periodicidad()
     
 
 

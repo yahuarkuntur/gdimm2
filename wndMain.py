@@ -60,12 +60,12 @@ class wndMain(ezGlade.BaseWindow):
         "Carga el combobox con la lista de contribuyentes e incluye la opción de editar"
 
         self.lista_contribuyentes.clear()
-        self.lista_contribuyentes.append(['','Editar lista de contribuyentes...'])
+        self.lista_contribuyentes.append(['Editar lista de contribuyentes...', ''])
 
         lstContribuyentes = ListaContribuyentes()
         lstContribuyentes.load()
         for item in lstContribuyentes.get_elements():
-            self.lista_contribuyentes.append([item.get_ruc(), item.get_nombre()])
+            self.lista_contribuyentes.append([item.get_ruc() + ' - ' + item.get_nombre(), item.get_ruc() ])
 
 
     def post_init(self):
@@ -77,16 +77,10 @@ class wndMain(ezGlade.BaseWindow):
         self.load_contribuyentes()
 
         self.cmbContribuyente.set_model(self.lista_contribuyentes)
-
         self.cmbContribuyente.clear()
-        cell_ruc = gtk.CellRendererText()
         cell_nombre = gtk.CellRendererText()
-
         self.cmbContribuyente.pack_start(cell_nombre, False)
-        self.cmbContribuyente.pack_end(cell_ruc, False)
-        
-        self.cmbContribuyente.add_attribute(cell_ruc, 'text', 0)
-        self.cmbContribuyente.add_attribute(cell_nombre, 'text', 1)
+        self.cmbContribuyente.add_attribute(cell_nombre, 'text', 0)
 
         #Combo para el manejo de formularios
         self.cmbFormularios.clear()
@@ -116,6 +110,10 @@ class wndMain(ezGlade.BaseWindow):
         self.cmbAnio.pack_start(cell_anios, False)
         self.cmbAnio.add_attribute(cell_anios, 'text', 0)
         self.cmbAnio.set_active(0)
+        
+        # version del dimm en status bar
+        context_id = self.stGeneral.get_context_id("Statusbar context")
+        self.stGeneral.push(context_id, self.ref_data.get_version_dimm())
 
 
     def destroy(self, *args):
@@ -136,7 +134,7 @@ class wndMain(ezGlade.BaseWindow):
         if not iter:
             return # Para cortar el proceso cuando se vuelva a disparar el evento al desmarcar el item actualmente seleccionado
 
-        codigo_contribuyente = self.lista_contribuyentes.get_value(iter, 0)
+        codigo_contribuyente = self.lista_contribuyentes.get_value(iter, 1)
 
         if codigo_contribuyente == "":
             widget.set_active(-1) #Hace que se deseleccione el item del combobox
