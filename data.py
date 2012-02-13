@@ -111,7 +111,10 @@ class Declaracion:
     # retorna la fecha de declaracion en formato yyyy-mm-dd
     # La fecha de declaracion NO es la fecha actual, sino el periodo ANIO-MES del documento
     def get_fecha_declaracion(self):
-        return self._anio + '-' + self._mes.zfill(2) + '-01'
+        if self._mes is not None:
+            return self._anio + '-' + self._mes.zfill(2) + '-01'
+        else:
+            return self._anio+ '-01-01'
 
 
     def cargar_declaracion_guardada(self, xml, contribuyentes, ref_data):
