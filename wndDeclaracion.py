@@ -152,16 +152,17 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
         self.widget_container = dict()
 
-        scale       = 10
-        start_top   = 1100
+        y_scale     = 10
+        x_scale     = 12
+        start_top   = 1200
         font_factor = 1000
 
         for c in form:
             numero = str(int(c.attrib.get("numero"))) # se eliminan ceros de la izq
-            top = (int(c.attrib.get("top")) - start_top ) / scale
-            left = int(c.attrib.get("left")) / scale
-            width = int(c.attrib.get("width")) / scale
-            height = int(c.attrib.get("height")) / scale
+            top = (int(c.attrib.get("top")) - start_top ) / y_scale
+            left = int(c.attrib.get("left")) / x_scale
+            width = int(c.attrib.get("width")) / x_scale
+            height = int(c.attrib.get("height")) / y_scale
             label = c.attrib.get("etiqueta")
             editable = c.attrib.get("editable")
             tablaReferencial = c.attrib.get("tablaReferencial")
@@ -171,7 +172,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
             fontSize = str(int(c.attrib.get("fontSize")) * font_factor)
 
             # campos escritos desde la configuracion
-            if numero in [ '101', '102', '198', '199', '201', '202', '31', '104' ]:
+            if numero in [ '101', '102', '198', '201', '202', '31', '104' ]:
                 if numero == '202': # razon social
                     self.load_widget_contribuyente(numero, contribuyente.get_nombre(), width, height, left, top, mensajeAyuda)
                 elif numero == '201': # RUC
@@ -182,8 +183,6 @@ class wndDeclaracion(ezGlade.BaseWindow):
                     self.load_combo_contribuyente(numero, self.declaracion.get_anio(), width, height, left, top, mensajeAyuda, tablaReferencial)
                 elif numero == '198': # cedula rep. legal
                     self.load_widget_contribuyente(numero, contribuyente.get_documento(), width, height, left, top, mensajeAyuda)
-                elif numero == '199': # RUC contador NULO
-                    self.load_widget_contribuyente(numero, "", width, height, left, top, mensajeAyuda)
                 elif numero == '31': # original o sustitutiva
                     self.load_combo_custom_data(numero, self.declaracion.get_original(), width, height, left, top, mensajeAyuda, self.ref_data.get_ori_sus())
                 elif numero == '104': # formulario sustituye
