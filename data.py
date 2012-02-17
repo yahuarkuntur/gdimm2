@@ -126,7 +126,10 @@ class Declaracion:
         codigo_version_formulario = cabecera.find('codigo_version_formulario').text
         ruc = cabecera.find('ruc').text
         anio = xml.find('detalle/campo[@numero="102"]').text
-        mes = xml.find('detalle/campo[@numero="101"]').text
+        if xml.find('detalle/campo[@numero="101"]') is not None:
+            mes = xml.find('detalle/campo[@numero="101"]').text
+        else :
+            mes = '01'
         original = xml.find('detalle/campo[@numero="31"]').text
         sustituye = xml.find('detalle/campo[@numero="104"]').text
     
