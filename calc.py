@@ -28,13 +28,11 @@ class Calculator:
     xml_parser  = None
     calc_xml    = None
     calc_xsl    = None
-    #calculations  = None
     declaration = None
     
 
     def __init__(self):
         self.parser = etree.XMLParser(remove_comments=True, encoding='utf8')
-        #self.calculations = []
 
 
     def load_xml(self, declaration): 

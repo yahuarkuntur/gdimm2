@@ -31,6 +31,7 @@ class Validator:
     validations = None
     declaration = None
 
+
     def __init__(self):
         self.parser = etree.XMLParser(remove_comments=True, encoding='utf8')
         self.validations = []
