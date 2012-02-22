@@ -9,7 +9,7 @@ from ref_data import RefData
 
 parser = etree.XMLParser(remove_comments=True, encoding='utf8')
 
-xml = etree.parse(os.path.join('tests','test.xml'), parser)
+xml = etree.parse(os.path.join('tests','test_104A.xml'), parser)
 
 def test_calcs(version):
     print 'Prueba de calculos:'

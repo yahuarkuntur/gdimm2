@@ -369,10 +369,8 @@ class wndDeclaracion(ezGlade.BaseWindow):
             ezGlade.DialogBox("ERROR: El motor de cálculos no fué creado.", "error")
             return
 
-        # FIXME debemos recalcular n veces, debido a que ciertos campos dependen de valores calculados
         self.generate_xml_from_container()
-        for x in range(3):
-            self.calcs.calc(self.xml) # actualizar el XML segun los calculos del XSLT
+        self.calcs.calc(self.xml) # actualizar el XML segun los calculos del XSLT
         self.update_container_from_xml(self.xml) # actualizar el formulario segun los cambios al XML
         
 

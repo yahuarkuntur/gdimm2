@@ -71,32 +71,26 @@ class Validator:
         # fecha de declaracion para validar contra fechas vigentes de calculos
         fecha_declaracion = datetime.strptime(self.declaration.get_fecha_declaracion(), "%Y-%m-%d")
 
-        # iteramos los campos de la declaracion
-        for node in test_xml.find('detalle'):
-            numero  = node.attrib.get('numero')
-            valor   = node.text
+        # iteramos los calculos del XML
+        for campos in self.val_xml.find('/'):
 
-            # obtenemos las formulas de validacion del campo 
-            campos = self.val_xml.find('/campo[@numero="'+numero+'"]')
+            numero  = campos.attrib.get('numero')   
 
-            # no hay validaciones para este campo... continuar
-            if campos is None:
-                continue
-
-            # iterar y aplicar cada formula de calculo
             for formula in campos:
+                
                 tipo    = formula.attrib.get('tipoFormula') 
-
-                if tipo != "V":
-                    continue
-
                 validacion = formula.attrib.get('validacion') 
                 mensajeError = formula.attrib.get('mensajeError') 
                 severidad = formula.attrib.get('severidad') 
                 condicionFormulaCalculo = formula.attrib.get('condicionFormulaCalculo') 
-                fecha_vigencia_desde = formula.attrib.get('fechaVigenciaDesde').strip()
-                fecha_vigencia_hasta = formula.attrib.get('fechaVigenciaHasta').strip()
-                
+                fecha_vigencia_desde = formula.attrib.get('fechaVigenciaDesde')
+                fecha_vigencia_hasta = formula.attrib.get('fechaVigenciaHasta')
+
+                if tipo != "V":
+                    continue       
+
+                campo = test_xml.find('detalle/campo[@numero="'+numero+'"]')
+
                 # parsear las fechas de vigencia
                 vigencia_desde = datetime.strptime(fecha_vigencia_desde, "%Y%m%d") 
                 
@@ -107,15 +101,11 @@ class Validator:
 
                 # fuera del rango de vigencia
                 if vigencia_hasta is not None and ( vigencia_hasta < fecha_declaracion or fecha_declaracion < vigencia_desde ) :
-                    #print fecha_vigencia_desde, fecha_vigencia_hasta, ' periodo NO vigente' 
                     continue
 
                 # antes del periodo de vigencia
                 if vigencia_hasta is None and ( vigencia_desde > fecha_declaracion ) :
-                    #print fecha_vigencia_desde, ' NO vigente' 
                     continue
-                
-                #print '(',fecha_vigencia_desde,',',fecha_vigencia_hasta, ') sigue vigente'
 
                 result = self.val_xsl(test_xml, formula=validacion, condicion=condicionFormulaCalculo)
 
@@ -123,8 +113,5 @@ class Validator:
                 
                 if new_val != 'true':
                     self.validations.append({'campo': numero, 'severidad': severidad, 'error': mensajeError})
-   
-    
-
 
 
