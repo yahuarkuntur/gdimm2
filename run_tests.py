@@ -15,7 +15,7 @@ def test_calcs(version):
     print 'Prueba de calculos:'
     calcs = Calculator()
     calcs.load_xml(version)
-    calcs.load_xsl('calculos.xsl')
+    calcs.load_xsl()
     calcs.calc(xml)
 
     #for x in calcs.get_calculations():
@@ -27,7 +27,7 @@ def test_vals(version):
     print 'Prueba de validaciones:'
     valid = Validator()
     valid.load_xml(version)
-    valid.load_xsl('validaciones.xsl')
+    valid.load_xsl()
     valid.validate(xml)
 
     for x in valid.get_validations():

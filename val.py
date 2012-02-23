@@ -50,7 +50,8 @@ class Validator:
         return False
         
 
-    def load_xsl(self, filename):
+    def load_xsl(self):
+        filename = 'trans.xsl'
         self.val_xsl = etree.XSLT(etree.parse(os.path.join('XSLT', filename), self.parser))
 
 

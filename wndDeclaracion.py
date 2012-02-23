@@ -79,8 +79,8 @@ class wndDeclaracion(ezGlade.BaseWindow):
             self.validations = None
             return
         
-        self.calcs.load_xsl('calculos.xsl')    
-        self.validations.load_xsl('validaciones.xsl')
+        self.calcs.load_xsl()    
+        self.validations.load_xsl()
 
 
     def load_widget_contribuyente(self, number, text, width, height, left, top, tooltip):
