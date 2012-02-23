@@ -163,7 +163,10 @@ V&#xE1;lida para la Rep&#xFA;blica del Ecuador.</property>
     <property name="website_label" translatable="yes">https://github.com/yahuarkuntur/gdimm2</property>
     <property name="license" translatable="yes">GNU Public Licence Version 2</property>
     <property name="authors">Iv&#xE1;n G. Campa&#xF1;a N.
-Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
+Brian Debuire E.
+Jonathan Finlay
+Jorch Mantilla</property>
+    <property name="documenters"></property>
     <property name="translator_credits" translatable="yes" comments="TRANSLATORS: Replace this string with your names, one name per line.">translator-credits</property>
     <property name="logo">intro.png</property>
     <property name="wrap_license">True</property>
@@ -189,7 +192,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
     </child>
   </widget>
   <widget class="GtkWindow" id="wndMain">
-    <property name="title" translatable="yes">gDIMM2</property>
+    <property name="title" translatable="yes">gDIMM2 - Declaraci&#xF3;n de Impuestos en Medio Magn&#xE9;tico</property>
     <property name="window_position">center</property>
     <property name="default_width">780</property>
     <property name="default_height">540</property>
@@ -225,7 +228,7 @@ Brian Debuire E. &lt;https://github.com/yahuarkuntur&gt;</property>
                         <property name="yalign">0</property>
                         <property name="label" translatable="yes">&lt;b&gt;Declaraci&#xF3;n de Impuestos en Medio Magn&#xE9;tico&lt;/b&gt;
 &lt;i&gt;Versi&#xF3;n &lt;b&gt;GTK+&lt;/b&gt;&lt;/i&gt;
-&lt;b&gt;Release&lt;/b&gt; 0.2</property>
+&lt;b&gt;Release&lt;/b&gt; Beta1</property>
                         <property name="use_markup">True</property>
                         <property name="use_underline">True</property>
                         <property name="justify">center</property>
@@ -979,30 +982,51 @@ Ej: N&#xFA;mero de c&#xE9;dula o pasaporte</property>
             <property name="visible">True</property>
             <property name="layout_style">end</property>
             <child>
-              <widget class="GtkButton" id="btnCancelar">
-                <property name="label">gtk-cancel</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="receives_default">False</property>
-                <property name="border_width">3</property>
-                <property name="use_stock">True</property>
-                <signal name="clicked" handler="on_btnCancelar_clicked"/>
-              </widget>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
+              <placeholder/>
             </child>
             <child>
-              <widget class="GtkButton" id="btnInf">
-                <property name="label">gtk-info</property>
+              <widget class="GtkButton" id="btnCancelar">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="receives_default">False</property>
-                <property name="border_width">3</property>
-                <property name="use_stock">True</property>
-                <accelerator key="F1" signal="clicked"/>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_btnCancelar_clicked"/>
+                <child>
+                  <widget class="GtkAlignment" id="alignment1">
+                    <property name="visible">True</property>
+                    <property name="xscale">0</property>
+                    <property name="yscale">0</property>
+                    <child>
+                      <widget class="GtkHBox" id="hbox1">
+                        <property name="visible">True</property>
+                        <property name="spacing">2</property>
+                        <child>
+                          <widget class="GtkImage" id="image1">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-cancel</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="label1">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">_Cancelar</property>
+                            <property name="use_underline">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </widget>
+                    </child>
+                  </widget>
+                </child>
               </widget>
               <packing>
                 <property name="expand">False</property>
@@ -1012,13 +1036,47 @@ Ej: N&#xFA;mero de c&#xE9;dula o pasaporte</property>
             </child>
             <child>
               <widget class="GtkButton" id="btnGuardar">
-                <property name="label">gtk-save</property>
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="receives_default">False</property>
-                <property name="border_width">3</property>
-                <property name="use_stock">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">True</property>
                 <signal name="clicked" handler="on_btnGuardar_clicked"/>
+                <child>
+                  <widget class="GtkAlignment" id="alignment6">
+                    <property name="visible">True</property>
+                    <property name="xscale">0</property>
+                    <property name="yscale">0</property>
+                    <child>
+                      <widget class="GtkHBox" id="hbox10">
+                        <property name="visible">True</property>
+                        <property name="spacing">2</property>
+                        <child>
+                          <widget class="GtkImage" id="image14">
+                            <property name="visible">True</property>
+                            <property name="stock">gtk-save</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="label13">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">_Guardar</property>
+                            <property name="use_underline">True</property>
+                          </widget>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </widget>
+                    </child>
+                  </widget>
+                </child>
               </widget>
               <packing>
                 <property name="expand">False</property>
