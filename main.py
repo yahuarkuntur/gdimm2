@@ -17,7 +17,6 @@
 ###
 
 import sys
-import logging
 from wndMain import *
 
 
@@ -26,6 +25,7 @@ class gDIMM2:
     def __init__(self):
         pass
 
+
     def start(self):
         mainWindow = wndMain()
         mainWindow.show()
@@ -33,9 +33,9 @@ class gDIMM2:
 
 
 def main(argv):
-	logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
-	app = gDIMM2()
-	app.start()
+    app = gDIMM2()
+    app.start()
+
 
 if __name__ == '__main__':
 	main(sys.argv)
