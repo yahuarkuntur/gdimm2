@@ -25,7 +25,7 @@ from datetime import date, datetime
 
 class Calculator:
 
-    xml_parser  = None
+    parser      = None
     calc_xml    = None
     calc_xsl    = None
     declaration = None

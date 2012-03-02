@@ -354,8 +354,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
         return validations
 
 
-    def update_container_from_xml(self, xml):
-        self.xml = xml
+    def update_container_from_xml(self):
         for num, obj in self.widget_container.iteritems():
             if obj.__class__ is gtk.Entry:
                 campo = self.xml.find('detalle/campo[@numero="'+str(num)+'"]')
@@ -371,7 +370,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
         self.generate_xml_from_container()
         self.calcs.calc(self.xml) # actualizar el XML segun los calculos del XSLT
-        self.update_container_from_xml(self.xml) # actualizar el formulario segun los cambios al XML
+        self.update_container_from_xml() # actualizar el formulario segun los cambios al XML
         
 
     def _onEntryTextFocusOut(self, *args):

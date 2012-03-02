@@ -25,7 +25,7 @@ from datetime import date, datetime
 
 class Validator:
 
-    xml_parser  = None
+    parser      = None
     val_xml     = None
     val_xsl     = None
     validations = None
