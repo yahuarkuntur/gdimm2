@@ -74,7 +74,7 @@ class Validator:
         fecha_declaracion = datetime.strptime(self.declaration.get_fecha_declaracion(), "%Y-%m-%d")
 
         # iteramos los calculos del XML
-        for campos in self.val_xml.find('/'):
+        for campos in self.val_xml.getroot():
 
             numero  = campos.attrib.get('numero')   
 

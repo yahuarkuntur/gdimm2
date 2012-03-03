@@ -66,7 +66,7 @@ class Calculator:
         fecha_declaracion = datetime.strptime(self.declaration.get_fecha_declaracion(), "%Y-%m-%d")
 
         # iteramos los calculos del XML
-        for campos in self.calc_xml.find('/'):
+        for campos in self.calc_xml.getroot():
 
             numero  = campos.attrib.get('numero')   
 
