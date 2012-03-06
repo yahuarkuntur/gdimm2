@@ -194,7 +194,8 @@ class wndMain(ezGlade.BaseWindow):
         vDeclaracion = wndDeclaracion()
         vDeclaracion.set_declaracion(self.declaracion)
         vDeclaracion.load_widgets_from_xml()
-        vDeclaracion.update_container_from_xml(xml)
+        vDeclaracion.generate_xml_from_container()
+        vDeclaracion.update_container_from_xml()
         vDeclaracion.push_statusbar_info(filename)
         vDeclaracion.show()
 
