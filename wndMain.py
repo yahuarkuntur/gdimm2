@@ -1,20 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+###
 #
-#      This program is free software; you can redistribute it and/or modify
-#      it under the terms of the GNU General Public License as published by
-#      the Free Software Foundation; either version 2 of the License, or
-#      (at your option) any later version.
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2 as
+# published by the Free Software Foundation
 #
-#      This program is distributed in the hope that it will be useful,
-#      but WITHOUT ANY WARRANTY; without even the implied warranty of
-#      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#      GNU General Public License for more details.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#      You should have received a copy of the GNU General Public License
-#      along with this program; if not, write to the Free Software
-#      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
+###
+
 
 import sys, os
 import ezGlade
@@ -114,6 +116,29 @@ class wndMain(ezGlade.BaseWindow):
         # version del dimm en status bar
         context_id = self.stGeneral.get_context_id("Statusbar context")
         self.stGeneral.push(context_id, self.ref_data.get_version_dimm())
+
+        # tray icon
+        self.statusIcon = gtk.StatusIcon()
+        self.statusIcon.set_from_file(os.path.join('ui', 'intro.png'))
+        self.statusIcon.connect("popup-menu", self.on_statusIcon_right_click)
+        self.statusIcon.set_tooltip("gDimm2")        
+
+
+    def on_statusIcon_right_click(self, icon, button, time):
+        menu = gtk.Menu()
+
+        about = gtk.MenuItem("Acerca de")
+        quit = gtk.MenuItem("Salir")
+        
+        about.connect("activate", self.on_btnAbout_clicked)
+        quit.connect("activate", gtk.main_quit)
+        
+        menu.append(about)
+        menu.append(quit)
+        
+        menu.show_all()
+        
+        menu.popup(None, None, gtk.status_icon_position_menu, button, time, self.statusIcon)
 
 
     def destroy(self, *args):
