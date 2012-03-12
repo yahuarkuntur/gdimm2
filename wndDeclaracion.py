@@ -356,10 +356,21 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
     def update_container_from_xml(self):
         for num, obj in self.widget_container.iteritems():
-            if obj.__class__ is gtk.Entry:
-                campo = self.xml.find('detalle/campo[@numero="'+str(num)+'"]')
-                if campo.text is not None:
-                    obj.set_text(campo.text)
+            campo = self.xml.find('detalle/campo[@numero="'+str(num)+'"]')
+            if campo.text is None:
+                continue
+            if obj.__class__ is gtk.Entry: # actualizar textbox
+                obj.set_text(campo.text)
+            elif obj.__class__ is gtk.ComboBox: # actualizar combos
+                index = 0
+                bmodel = obj.get_model()
+                biter = bmodel.get_iter_first()
+                while biter :
+                    if bmodel.get_value(biter, 1) == campo.text:
+                        break
+                    biter = bmodel.iter_next(biter)
+                    index += 1
+                obj.set_active(index)
                    
 
 
