@@ -16,8 +16,8 @@ gDimm2 está basado en `ezGlade` y `gdimm` de Iván Campaña.
 Dependencias
 ------------
 
-- PyGtk 2.0 ( Ubuntu/Debian sudo aptitude install python-gtk2 )
-- lxml ( Ubuntu/Debian sudo aptitude install python-lxml )
+- PyGtk 2.0 ( Ubuntu/Debian ```sudo aptitude install python-gtk2``` )
+- lxml ( Ubuntu/Debian ```sudo aptitude install python-lxml``` )
 
 Status
 ------
@@ -33,10 +33,10 @@ Ejecución
 ---------
 
 - Arrancar el programa principal:
-  - $ python main.py (método opcional desde el intérprete)
-  - $ ./gdimm2
+  - ```$ python main.py``` (método opcional desde el intérprete)
+  - ```$ ./gdimm2```
 
 - Ejecutar el actualizador:
-  - $ python updater.py (método opcional desde el intérprete)
-  - $ ./update
+  - ```$ python updater.py``` (método opcional desde el intérprete)
+  - ```$ ./update```
 
