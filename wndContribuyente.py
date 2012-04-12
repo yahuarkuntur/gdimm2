@@ -67,7 +67,8 @@ class wndEditContribuyente(ezGlade.BaseWindow):
 
 
     def on_eRazonSocial_changed(self, entry):
-        text = entry.get_text().upper()
+        text = entry.get_text()
+        text = unicode(text).upper()
         entry.set_text(text)
 
 

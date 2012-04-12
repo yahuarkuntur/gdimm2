@@ -178,7 +178,7 @@ class Contribuyente:
         self._data.set("numero", ruc)
     
     def set_nombre(self, nombre):
-        self._nombre.text = str(nombre)
+        self._nombre.text = unicode(str(nombre))
 
     def set_tipo_documento(self, tipo_documento):
         self._tipo_doc_representante.text = tipo_documento
