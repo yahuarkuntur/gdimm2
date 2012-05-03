@@ -17,6 +17,7 @@ Dependencias
 ------------
 
 - PyGtk 2.0 ( Ubuntu/Debian ```sudo aptitude install python-gtk2``` )
+- Glade ( Ubuntu/Debian ```sudo aptitude install python-glade2``` )
 - lxml ( Ubuntu/Debian ```sudo aptitude install python-lxml``` )
 
 Status
