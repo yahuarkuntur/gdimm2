@@ -61,7 +61,8 @@ class wndDeclaracion(ezGlade.BaseWindow):
 
 
     def on_numericfield_changed(self, entry):
-        text = entry.get_text().strip()
+        text = entry.get_text()
+        text = unicode(text).strip()
         entry.set_text(''.join([i for i in text if i in '0123456789.']))
 
 
@@ -326,7 +327,8 @@ class wndDeclaracion(ezGlade.BaseWindow):
             if obj.__class__ is gtk.Entry:
                 campo = etree.SubElement(detalle, "campo")
                 campo.set('numero', num )
-                campo.text = obj.get_text().strip()
+                text = obj.get_text()
+                campo.text = unicode(text).strip()
             elif obj.__class__ is gtk.ComboBox:
                 campo = etree.SubElement(detalle, "campo")
                 campo.set('numero', num )
