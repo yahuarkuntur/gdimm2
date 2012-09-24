@@ -359,7 +359,7 @@ class wndDeclaracion(ezGlade.BaseWindow):
     def update_container_from_xml(self):
         for num, obj in self.widget_container.iteritems():
             campo = self.xml.find('detalle/campo[@numero="'+str(num)+'"]')
-            if campo.text is None:
+            if campo is None or campo.text is None:
                 continue
             if obj.__class__ is gtk.Entry: # actualizar textbox
                 obj.set_text(campo.text)

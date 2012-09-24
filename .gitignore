@@ -3,3 +3,5 @@ tests/
 updates/*.zip
 updates/*.xml
 XML_Declaraciones/*.xml
+XML/DtsRuc.xml
+
