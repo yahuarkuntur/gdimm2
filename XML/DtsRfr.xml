@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<datos_referenciales version="Versión 21 (Febrero 2012)">
+<datos_referenciales version="Versión 23 (Noviembre 2012)">
 	<!--Versión 0 (01 NOVIEMBRE 2003).- Version con la que se inicio la primera distribución del DIMM
 	     VERSION 1 (08 MARZO 2003) .- Version en la que se registra los siguientes cambios de acuerdo al Memo 
 	     								    93-NACSTR-04:
@@ -61,12 +61,13 @@
  VERSION 20 (ABRIL 2011).- Se modifican los calculos y validaciones para los formularios 101 y 102
  VERSION 21 (JUNIO 2011).- Se modifican los calculos y validaciones para el formulario 102
  VERSION 22 (FEBRERO 2012).- Se cambian las versiones de los formularios 101, 102, 103, 104.
+ VERSION 23 (AGOSTO 2012).- Se cambian las versiones de los formularios 103 y se aumenta anio 2013
 	-->
 	<datosFormularios codigo="5">
 		<formulario codigo="01" nombre="FORMULARIO 101" periodicidad="ANUAL" version="01201201" codigo_impuesto="1021" descripcion_impuesto="Impuesto a la Renta  Sociedades" descripcion_version="FORMULARIO DE RENTA SOCIEDADES VIGENTE DESDE FEBRERO 2011"/>
 		<formulario codigo="02" nombre="FORMULARIO 102" periodicidad="ANUAL" version="02201201" codigo_impuesto="1011" descripcion_impuesto="Impuesto a la Renta  Personas Naturales" descripcion_version="FORMULARIO RENTA PERSONAS NATURALES VIGENTE DESDE FEBRERO 2011"/>
 		<formulario codigo="02" nombre="FORMULARIO 102A" periodicidad="ANUAL" version="02201202" codigo_impuesto="1011" descripcion_impuesto="Impuesto a la Renta  Personas Naturales (No obligados a llevar contabilidad)" descripcion_version="FORMULARIO RENTA PERSONAS NATURALES VIGENTE DESDE FEBRERO 2011"/>
-		<formulario codigo="03" nombre="FORMULARIO 103" periodicidad="MENSUAL" version="03201201" codigo_impuesto="1031" descripcion_impuesto="Retenciones en la Fuente del Impuesto a la Renta" descripcion_version="FORMULARIO DE RETENCIONES EN LA FUENTE VIGENTE DESDE FEBRERO 2012"/>
+		<formulario codigo="03" nombre="FORMULARIO 103" periodicidad="MENSUAL" version="03201202" codigo_impuesto="1031" descripcion_impuesto="Retenciones en la Fuente del Impuesto a la Renta" descripcion_version="FORMULARIO DE RETENCIONES EN LA FUENTE VIGENTE DESDE NOVIEMBRE 2012"/>
 		<formulario codigo="04" nombre="FORMULARIO 104" periodicidad="MENSUAL" version="04201201" codigo_impuesto="2011" descripcion_impuesto="Impuesto al Valor Agregado" descripcion_version="FORMULARIO DE IMPUESTO AL VALOR AGREGADO MENSUAL"/>
 		<formulario codigo="04" nombre="FORMULARIO 104A" periodicidad="MENSUAL_SEMESTRAL" version="04201202" codigo_impuesto="2011" descripcion_impuesto="Impuesto al Valor Agregado (No obligados a llevar contabilidad)" descripcion_version="FORMULARIO DE IMPUESTO AL VALOR AGREGADO MENSUAL / SEMESTRAL"/>
 		<!--<formulario codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" version="05200801" codigo_impuesto="3011" descripcion_impuesto="Impuesto a los Consumos Especiales" descripcion_version="IMPUESTO A CONSUMOS ESPECIALES"/>-->
@@ -98,11 +99,11 @@
 				<descripcion_impuesto>RENTA PERSONAS NATURALES</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
-		<formularioVersion codigo="03" nombre="FORMULARIO 103" periodicidad="MENSUAL" versionVigente="03201201" descripcion_impuesto="Retenciones en la Fuente del Impuesto a la Renta">
+		<formularioVersion codigo="03" nombre="FORMULARIO 103" periodicidad="MENSUAL" versionVigente="03201202" descripcion_impuesto="Retenciones en la Fuente del Impuesto a la Renta">
 			<version_formulario>
-				<codigo_version>03201201</codigo_version>
+				<codigo_version>03201202</codigo_version>
 				<codigo_impuesto>1031</codigo_impuesto>
-				<descripcion_version>FORMULARIO DE RETENCIONES EN LA FUENTE VIGENTE DESDE FEBRERO 2011</descripcion_version>
+				<descripcion_version>FORMULARIO DE RETENCIONES EN LA FUENTE VIGENTE DESDE SEPTIEMBRE 2012</descripcion_version>
 				<descripcion_impuesto>RETENCIONES EN LA FUENTE</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
@@ -454,6 +455,10 @@
 			<codigo>2012</codigo>
 			<nombre>2012</nombre>
 		</anio>	
+		<anio>
+			<codigo>2013</codigo>
+			<nombre>2013</nombre>
+		</anio>			
 	</datos_anio>
 	<datos_semestre codigo="40">
 		<semestre>

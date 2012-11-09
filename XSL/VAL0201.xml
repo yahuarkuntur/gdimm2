@@ -194,16 +194,16 @@
 		<formula validacion="round ( (//campo[@numero='571'] + sum(//campo[@numero='572']) + sum(//campo[@numero='573']) + sum(//campo[@numero='574'])+ sum(//campo[@numero='575'])) * 100)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="C" severidad="ERROR" mensajeError="Campo 580. Verifique la sumatoria de los campos 571 al 575" condicionFormulaCalculo="round ( (//campo[@numero='571'] + sum(//campo[@numero='572']) + sum(//campo[@numero='573']) + sum(//campo[@numero='574']) + sum(//campo[@numero='575']) ) * 100)&gt;=0"/>
 	</campo>
 	<campo numero="581">
-		<formula validacion="(sum(//campo[@numero='583']) &gt; 0 and sum(//campo[@numero='581']) &gt; 0) or (sum(//campo[@numero='583']) = 0 and sum(//campo[@numero='581']) = 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ADVERTENCIA" mensajeError="Campo 581. Verifique el valor del impuesto pagado" condicionFormulaCalculo="1=1"/>
+		<formula validacion="(sum(//campo[@numero='583']) &lt;= 0 or sum(//campo[@numero='581']) &gt; 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ADVERTENCIA" mensajeError="Campo 581. Verifique el valor del impuesto pagado" condicionFormulaCalculo="1=1"/>
 	</campo>
 	<campo numero="582">
-		<formula validacion="(sum(//campo[@numero='584']) &gt; 0 and sum(//campo[@numero='582']) &gt; 0) or (sum(//campo[@numero='584']) = 0 and sum(//campo[@numero='582']) = 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ADVERTENCIA" mensajeError="Campo 582. Verifique el valor del impuesto pagado" condicionFormulaCalculo="1=1"/>
+		<formula validacion="(sum(//campo[@numero='584']) &lt;= 0 or sum(//campo[@numero='582']) &gt; 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ADVERTENCIA" mensajeError="Campo 582. Verifique el valor del impuesto pagado" condicionFormulaCalculo="1=1"/>
 	</campo>
 	<campo numero="583">
-		<formula validacion="(sum(//campo[@numero='583']) &gt; 0 and sum(//campo[@numero='581']) &gt; 0) or (sum(//campo[@numero='583']) = 0 and sum(//campo[@numero='581']) &lt;= 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Campo 583. Verifique el valor del ingreso" condicionFormulaCalculo="1=1"/>
+		<formula validacion="(sum(//campo[@numero='581']) &lt;= 0 or sum(//campo[@numero='583']) &gt; 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Campo 583. Verifique el valor del ingreso" condicionFormulaCalculo="1=1"/>
 	</campo>
 	<campo numero="584">
-		<formula validacion="(sum(//campo[@numero='584']) &gt; 0 and sum(//campo[@numero='582']) &gt; 0) or (sum(//campo[@numero='584']) = 0 and sum(//campo[@numero='582']) &lt;= 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Campo 584. Verifique el valor del ingreso" condicionFormulaCalculo="1=1"/>
+		<formula validacion="(sum(//campo[@numero='582']) &lt;= 0 or sum(//campo[@numero='584']) &gt; 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Campo 584. Verifique el valor del ingreso" condicionFormulaCalculo="1=1"/>
 	</campo>
 	<campo numero="589">
 		<formula validacion="(round (sum(//campo[@numero='589']) * 100) = round ((sum(//campo[@numero='583']) + sum(//campo[@numero='584']) + sum(//campo[@numero='586'])+ sum(//campo[@numero='587'])) * 100)) or (sum(//campo[@numero='589']) = 0 and (sum(//campo[@numero='583']) + sum(//campo[@numero='584']) + sum(//campo[@numero='586']) + sum(//campo[@numero='587'])) &lt;= 0)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="V" severidad="ERROR" mensajeError="Campo 589. Verifique la sumatoria de los campos 583 al 587." condicionFormulaCalculo="1=1"/>

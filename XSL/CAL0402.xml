@@ -96,10 +96,9 @@
 		<formula validacion="round ( sum(//campo[@numero='534']) * 14)" fechaVigenciaDesde="20010601" fechaVigenciaHasta="20010831" tipoFormula="C" severidad="ERROR" mensajeError="Error. Impuesto Generado incorrecto" condicionFormulaCalculo="1=1"/>
 	</campo>
 	<campo numero="545">
-		<formula validacion="round ( sum(//campo[@numero='535']) * 12)" fechaVigenciaDesde="20000101" fechaVigenciaHasta="20010531" tipoFormula="C" severidad="ERROR" mensajeError="Error. Impuesto Generado incorrecto" condicionFormulaCalculo="1=1"/>
-		<formula validacion="round ( sum(//campo[@numero='535']) * 10)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="19991231" tipoFormula="C" severidad="ERROR" mensajeError="Error. Impuesto Generado incorrecto" condicionFormulaCalculo="1=1"/>
 		<formula validacion="round ( sum(//campo[@numero='535']) * 14)" fechaVigenciaDesde="20010601" fechaVigenciaHasta="20010831" tipoFormula="C" severidad="ERROR" mensajeError="Error. Impuesto Generado incorrecto" condicionFormulaCalculo="1=1"/>
-		<formula validacion="round ( sum(//campo[@numero='535']) * 12)" fechaVigenciaDesde="20010901" fechaVigenciaHasta="" tipoFormula="C" severidad="ERROR" mensajeError="Error. Impuesto Generado incorrecto" condicionFormulaCalculo="1=1"/>
+		<formula validacion="round ( sum(//campo[@numero='535']) * 10)" fechaVigenciaDesde="19990101" fechaVigenciaHasta="19991231" tipoFormula="C" severidad="ERROR" mensajeError="Error. Impuesto Generado incorrecto" condicionFormulaCalculo="1=1"/>
+		<formula validacion="round ( sum(//campo[@numero='535']) * 12)" fechaVigenciaDesde="20000101" fechaVigenciaHasta="20010531" tipoFormula="C" severidad="ERROR" mensajeError="Error. Impuesto Generado incorrecto" condicionFormulaCalculo="1=1"/>
 	</campo>
 	<campo numero="553">
 		<formula validacion="0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="Operación incorrecta, campo 553 'Opción corregir'" condicionFormulaCalculo="sum(//campo[@numero='419']) = 0"/>

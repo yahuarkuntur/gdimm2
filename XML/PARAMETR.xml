@@ -6,7 +6,7 @@
 		<seleccionFormularios posision_tope_inicial="200" separacion="400"/>
 		<seleccionIce posision_tope_inicial="400" separacion="300"/>
 		<PantallaNavegacion mostrar="SI"/>
-		<PantallaAyuda mostrar="SI"/>
+		<PantallaAyuda mostrar="NO"/>
 		<PantallaRuc mostrar="SI"/>
 		<PantallaImpresion mostrar="SI"/>
 		<!--<Actualizar Url="https://declaraciones.sri.gob.ec/descargas/declaraciones.jsp"/>-->
