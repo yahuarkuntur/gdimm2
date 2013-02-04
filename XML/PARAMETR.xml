@@ -9,8 +9,7 @@
 		<PantallaAyuda mostrar="NO"/>
 		<PantallaRuc mostrar="SI"/>
 		<PantallaImpresion mostrar="SI"/>
-		<!--<Actualizar Url="https://declaraciones.sri.gob.ec/descargas/declaraciones.jsp"/>-->
-		<Actualizar Url="http://descargas.sri.gob.ec/download/declaraciones/ActuDimm.zip"/>
+		<Actualizar Url="https://declaraciones.sri.gob.ec/descargas/declaraciones.jsp"/>
 		<enviarDeclaracion Url="https://declaraciones.sri.gob.ec/tuportal-internet/"/>
 	</pantallas>
 </parametros>
