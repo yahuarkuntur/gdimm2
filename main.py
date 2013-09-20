@@ -17,15 +17,10 @@
 ###
 
 
-import sys
 from wndMain import *
 
 
 class gDIMM2:
-
-    def __init__(self):
-        pass
-
 
     def start(self):
         mainWindow = wndMain()
@@ -33,10 +28,6 @@ class gDIMM2:
         gtk.main()
 
 
-def main(argv):
+if __name__ == '__main__':
     app = gDIMM2()
     app.start()
-
-
-if __name__ == '__main__':
-	main(sys.argv)

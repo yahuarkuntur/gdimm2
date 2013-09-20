@@ -18,8 +18,12 @@
 ###
 
 
-import os
-from lxml import etree
+import os, sys
+try:
+    from lxml import etree
+except:
+    print 'lxml required'
+    sys.exit(1)
 from exceptions import *
 import validators
 from validators.cjp_doc_validator import *

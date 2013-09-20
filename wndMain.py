@@ -25,11 +25,13 @@ try:
     import pygtk
     pygtk.require("2.0")
 except:
-    pass
+    print 'pygtk required'
+    sys.exit(1)
 try:
     import gtk
     import gtk.glade
 except:
+    print 'glade required'
     sys.exit(1)
 
 from data import *

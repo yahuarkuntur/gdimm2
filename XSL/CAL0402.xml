@@ -38,7 +38,9 @@
 	<campo numero="481">
 		<formula validacion="0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="20071231" tipoFormula="C" severidad="ERROR" mensajeError="Operación incorrecta, campo 481 'Opción corregir'" condicionFormulaCalculo="1=1"/>
 		<formula validacion="0" fechaVigenciaDesde="20080101" fechaVigenciaHasta="" tipoFormula="C" severidad="ERROR" mensajeError="Operación incorrecta, campo 481 'Opción corregir'" condicionFormulaCalculo="(sum(//campo[@numero='411']) + sum(//campo[@numero='412']) - sum(//campo[@numero='480']) )&lt;0"/>
+		<!-- [ESPL] Evitar dependencia circular, no importa si no se autocalcula, igualmente es controlado por la validacion en dimm y en linea
 		<formula validacion="round ((sum(//campo[@numero='411']) + sum(//campo[@numero='412']) - sum(//campo[@numero='480'])) * 100)" fechaVigenciaDesde="20080101" fechaVigenciaHasta="" tipoFormula="C" severidad="ERROR" mensajeError="Operación incorrecta, campo 481 'Opción corregir'" condicionFormulaCalculo="(sum(//campo[@numero='411']) + sum(//campo[@numero='412']) - sum(//campo[@numero='480']) )&gt;=0"/>
+		-->
 	</campo>
 	<campo numero="482">
 		<formula validacion="0" fechaVigenciaDesde="19990101" fechaVigenciaHasta="" tipoFormula="C" severidad="ADVERTENCIA" mensajeError="Operación incorrecta, campo 482 'Opción corregir'" condicionFormulaCalculo="sum(//campo[@numero='429']) &lt;= 0"/>
