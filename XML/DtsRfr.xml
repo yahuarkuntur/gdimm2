@@ -74,48 +74,35 @@
 	-->
 	<datosFormularios codigo="5">
 		<formulario codigo="01" nombre="FORMULARIO 101"
-			periodicidad="ANUAL" version="01201301" codigo_impuesto="1021"
+			periodicidad="ANUAL" version="01201401" codigo_impuesto="1021"
 			descripcion_impuesto="Impuesto a la Renta  Sociedades"
-			descripcion_version="FORMULARIO DE RENTA SOCIEDADES VIGENTE DESDE FEBRERO 2011"
+			descripcion_version="FORMULARIO DE RENTA SOCIEDADES VIGENTE DESDE FEBRERO 2014"
 			idSoportada="R" soporteAnticipada="ADV" />
 		<formulario codigo="02" nombre="FORMULARIO 102"
-			periodicidad="ANUAL" version="02201301" codigo_impuesto="1011"
+			periodicidad="ANUAL" version="02201401" codigo_impuesto="1011"
 			descripcion_impuesto="Impuesto a la Renta  Personas Naturales"
 			descripcion_version="FORMULARIO RENTA PERSONAS NATURALES VIGENTE DESDE FEBRERO 2011"
 			idSoportada="R" soporteAnticipada="ADV" />
 		<formulario codigo="02" nombre="FORMULARIO 102A"
-			periodicidad="ANUAL" version="02201302" codigo_impuesto="1011"
+			periodicidad="ANUAL" version="02201402" codigo_impuesto="1011"
 			descripcion_impuesto="Impuesto a la Renta  Personas Naturales (No obligados a llevar contabilidad)"
 			descripcion_version="FORMULARIO RENTA PERSONAS NATURALES VIGENTE DESDE FEBRERO 2011"
-			idSoportada="RC" soporteAnticipada="ADV" />
-		<formulario codigo="03" nombre="FORMULARIO 103"
-			periodicidad="MENSUAL" version="03201202" codigo_impuesto="1031"
-			descripcion_impuesto="Retenciones en la Fuente del Impuesto a la Renta"
-			descripcion_version="FORMULARIO DE RETENCIONES EN LA FUENTE VIGENTE DESDE SEPTIEMBRE 2012"
-			idSoportada="R" soporteAnticipada="ERR" />
-		<!-- [espl] (2012-09-25) aumentado el formulario 104A mensual para mostrarlo 
-			en la lista de formularios y cambidas las periodicidades -->
+			idSoportada="RCP" soporteAnticipada="ADV" />
 		<formulario codigo="04" nombre="FORMULARIO 104"
-			periodicidad="MENSUAL" version="04201201" codigo_impuesto="2011"
+			periodicidad="MENSUAL" version="04201401" codigo_impuesto="2011"
 			descripcion_impuesto="Impuesto al Valor Agregado"
 			descripcion_version="FORMULARIO DE IMPUESTO AL VALOR AGREGADO MENSUAL"
 			idSoportada="R" soporteAnticipada="ERR" />
 		<formulario codigo="04" nombre="FORMULARIO 104A"
-			periodicidad="MENSUAL" version="04201203" codigo_impuesto="2011"
+			periodicidad="MENSUAL" version="04201403" codigo_impuesto="2011"
 			descripcion_impuesto="Impuesto al Valor Agregado (Mensual)(No obligados a llevar contabilidad)"
 			descripcion_version="FORMULARIO DE IMPUESTO AL VALOR AGREGADO MENSUAL"
 			idSoportada="R" soporteAnticipada="ERR" />
 		<formulario codigo="04" nombre="FORMULARIO 104A"
-			periodicidad="SEMESTRAL" version="04201202" codigo_impuesto="2011"
+			periodicidad="SEMESTRAL" version="04201402" codigo_impuesto="2011"
 			descripcion_impuesto="Impuesto al Valor Agregado (Semestral)(No obligados a llevar contabilidad)"
 			descripcion_version="FORMULARIO DE IMPUESTO AL VALOR AGREGADO SEMESTRAL"
 			idSoportada="R" soporteAnticipada="ADV" />
-		<!--<formulario codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" 
-			version="05200801" codigo_impuesto="3011" descripcion_impuesto="Impuesto 
-			a los Consumos Especiales" descripcion_version="IMPUESTO A CONSUMOS ESPECIALES"/> -->
-		<!-- formulario codigo="06" nombre="FORMULARIO 106" periodicidad="MENSUAL" 
-			version="06200601" codigo_impuesto="4005" descripcion_impuesto="Formulario 
-			Múltiple de Pago " descripcion_version="FORMULARIO MULTIPLE DE PAGO"/ -->
 		<formulario codigo="08" nombre="FORMULARIO 108"
 			periodicidad="MENSUAL" version="08200201" codigo_impuesto="1088"
 			descripcion_impuesto="I.R. sobre ingresos de herencias, legados y donaciones"
@@ -124,21 +111,21 @@
 	</datosFormularios>
 	<datosFormulariosVersiones codigo="10">
 		<formularioVersion codigo="01" nombre="FORMULARIO 101"
-			periodicidad="ANUAL" versionVigente="01201301" descripcion_impuesto="Impuesto a la Renta Sociedades">
+			periodicidad="ANUAL" versionVigente="01201401" descripcion_impuesto="Impuesto a la Renta Sociedades">
 			<version_formulario>
-				<codigo_version>01201301</codigo_version>
+				<codigo_version>01201401</codigo_version>
 				<codigo_impuesto>1021</codigo_impuesto>
 				<descripcion_version>FORMULARIO DE RENTA SOCIEDADES VIGENTE DESDE
-					FEBRERO 2011
+					FEBRERO 2014
 				</descripcion_version>
 				<descripcion_impuesto>RENTA SOCIEDADES</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
 		<formularioVersion codigo="02" nombre="FORMULARIO 102"
-			periodicidad="ANUAL" versionVigente="02201301"
+			periodicidad="ANUAL" versionVigente="02201401"
 			descripcion_impuesto="Impuesto a la Renta Personas Naturales">
 			<version_formulario>
-				<codigo_version>02201301</codigo_version>
+				<codigo_version>02201401</codigo_version>
 				<codigo_impuesto>1011</codigo_impuesto>
 				<descripcion_version>FORMULARIO RENTA PERSONAS NATURALES VIGENTE
 					DESDE FEBRERO 2011
@@ -148,10 +135,10 @@
 			</version_formulario>
 		</formularioVersion>
 		<formularioVersion codigo="02" nombre="FORMULARIO 102A"
-			periodicidad="ANUAL" versionVigente="02201302"
+			periodicidad="ANUAL" versionVigente="02201402"
 			descripcion_impuesto="Impuesto a la Renta Personas Naturales">
 			<version_formulario>
-				<codigo_version>02201302</codigo_version>
+				<codigo_version>02201402</codigo_version>
 				<codigo_impuesto>1011</codigo_impuesto>
 				<descripcion_version>FORMULARIO RENTA PERSONAS NATURALES VIGENTE
 					DESDE FENRERO 2011
@@ -160,24 +147,11 @@
 				</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
-		<formularioVersion codigo="03" nombre="FORMULARIO 103"
-			periodicidad="MENSUAL" versionVigente="03201202"
-			descripcion_impuesto="Retenciones en la Fuente del Impuesto a la Renta">
-			<version_formulario>
-				<codigo_version>03201202</codigo_version>
-				<codigo_impuesto>1031</codigo_impuesto>
-				<descripcion_version>FORMULARIO DE RETENCIONES EN LA FUENTE VIGENTE
-					DESDE SEPTIEMBRE 2012
-				</descripcion_version>
-				<descripcion_impuesto>RETENCIONES EN LA FUENTE
-				</descripcion_impuesto>
-			</version_formulario>
-		</formularioVersion>
 		<formularioVersion codigo="04" nombre="FORMULARIO 104"
-			periodicidad="MENSUAL" versionVigente="04201201"
+			periodicidad="MENSUAL" versionVigente="04201401"
 			descripcion_impuesto="Impuesto al Valor Agregado">
 			<version_formulario>
-				<codigo_version>04201201</codigo_version>
+				<codigo_version>04201401</codigo_version>
 				<codigo_impuesto>2011</codigo_impuesto>
 				<descripcion_version>FORMULARIO DE IMPUESTO AL VALOR AGREGADO
 					MENSUAL
@@ -186,10 +160,10 @@
 			</version_formulario>
 		</formularioVersion>
 		<formularioVersion codigo="04" nombre="FORMULARIO 104A"
-			periodicidad="SEMESTRAL" versionVigente="04201202"
+			periodicidad="SEMESTRAL" versionVigente="04201402"
 			descripcion_impuesto="Impuesto al Valor Agregado">
 			<version_formulario>
-				<codigo_version>04201202</codigo_version>
+				<codigo_version>04201402</codigo_version>
 				<codigo_impuesto>2011</codigo_impuesto>
 				<descripcion_version>FORMULARIO DE IMPUESTO AL VALOR AGREGADO
 					SEMESTRAL
@@ -198,10 +172,10 @@
 			</version_formulario>
 		</formularioVersion>
 		<formularioVersion codigo="04" nombre="FORMULARIO 104A"
-			periodicidad="MENSUAL" versionVigente="04201203"
+			periodicidad="MENSUAL" versionVigente="04201403"
 			descripcion_impuesto="Impuesto al Valor Agregado">
 			<version_formulario>
-				<codigo_version>04201203</codigo_version>
+				<codigo_version>04201403</codigo_version>
 				<codigo_impuesto>2011</codigo_impuesto>
 				<descripcion_version>FORMULARIO DE IMPUESTO AL VALOR AGREGADO
 					MENSUAL
@@ -209,182 +183,6 @@
 				<descripcion_impuesto>IVA MENSUAL</descripcion_impuesto>
 			</version_formulario>
 		</formularioVersion>
-		<!--<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" 
-			versionVigente="05200801" descripcion_impuesto="ICE CIGARRILLOS RUBIOS" codigoImpuesto="3011" 
-			tasa="150"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3011</codigo_impuesto> <descripcion_version>ICE CIGARRILLOS 
-			RUBIOS 105. ENERO 2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>ICE 
-			– Cigarrillos Rubios</descripcion_impuesto> </version_formulario> </formularioVersion> 
-			<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" 
-			versionVigente="05200801" descripcion_impuesto="ICE CIGARRILLOS NEGROS" codigoImpuesto="3021" 
-			tasa="150"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3021</codigo_impuesto> <descripcion_version>ICE CIGARRILLOS 
-			NEGROS 105. ENERO 2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>ICE 
-			– Cigarrillos Negros</descripcion_impuesto> </version_formulario> </formularioVersion> 
-			<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" 
-			versionVigente="05200801" descripcion="ICE PRODUCTOS Y SUCEDÁNEOS" codigoImpuesto="3023" 
-			tasa="150"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3023</codigo_impuesto> <descripcion_version>ICE-PRODUCTOS 
-			Y SUCEDÁNEOS. ENERO 2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>ICE 
-			Productos y Sucedáneos del tabaco excepto cigarrillos</descripcion_impuesto> 
-			</version_formulario> </formularioVersion> <formularioVersion codigo="05" 
-			nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE BEBIDAS ALCOHOLICAS Y PRODUCTOS DISTINTOS A LA CERVEZA" 
-			codigoImpuesto="3031" tasa="40"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3031</codigo_impuesto> <descripcion_version>ICE BEBIDAS 
-			ALCOHOLICAS Y PRODUCTOS DISTINTOS A LA CERVEZA. ENERO 2008- (VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE – Bebidas alcoholicas y productos distintos a la 
-			cerveza</descripcion_impuesto> </version_formulario> </formularioVersion> 
-			<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" 
-			versionVigente="05200801" descripcion="ICE CERVEZA" codigoImpuesto="3041" 
-			tasa="30"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3041</codigo_impuesto> <descripcion_version>ICE CERVEZA 
-			105. ENERO 2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>ICE 
-			– Cerveza</descripcion_impuesto> </version_formulario> </formularioVersion> 
-			<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" 
-			versionVigente="05200801" descripcion="ICE GASEOSAS" codigoImpuesto="3051" 
-			tasa="10"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3051</codigo_impuesto> <descripcion_version>ICE GASEOSAS 
-			105. ENERO 2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>ICE 
-			– Bebidas Gaseosas</descripcion_impuesto> </version_formulario> </formularioVersion> 
-			<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" 
-			versionVigente="05200801" descripcion="ICE camionetas y furgonetas cuyo pvp 
-			sea hasta de 30000 usd" codigoImpuesto="3072" tasa="5"> <version_formulario> 
-			<codigo_version>05200801</codigo_version> <codigo_impuesto>3072</codigo_impuesto> 
-			<descripcion_version>Ice - Camionetas y furgonetas cuyo pvp sea hasta de 
-			30000 usd. ENERO 2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>ICE 
-			- Camionetas y furgonetas cuyo pvp sea hasta de 30000 usd</descripcion_impuesto> 
-			</version_formulario> </formularioVersion> <formularioVersion codigo="05" 
-			nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE vehículos motorizados cuyo pvp sea hasta de 20000 usd" codigoImpuesto="3073" 
-			tasa="5"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3073</codigo_impuesto> <descripcion_version>Ice-vehículos 
-			motorizados cuyo pvp sea hasta de 20000 usd. ENERO 2008- (VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE - Vehículos motorizados cuyo pvp sea hasta de 20000 
-			usd</descripcion_impuesto> </version_formulario> </formularioVersion> <formularioVersion 
-			codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE Vehículos motorizados excepto camionetas y furgonetas entre 
-			20000 y 30000" codigoImpuesto="3074" tasa="10"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3074</codigo_impuesto> <descripcion_version>ICE Vehículos 
-			motorizados excepto camionetas y furgonetas entre 20000 y 30000. ENERO 2008- 
-			(VIGENTE)</descripcion_version> <descripcion_impuesto>ICE - Vehículos motorizados 
-			excepto camionetas y furgonetas entre 20000 y 30000</descripcion_impuesto> 
-			</version_formulario> </formularioVersion> <formularioVersion codigo="05" 
-			nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE-Vehículos motorizados entre 30000 y 40000" codigoImpuesto="3075" 
-			tasa="15"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3075</codigo_impuesto> <descripcion_version>ICE-Vehículos 
-			motorizados entre 30000 y 40000. ENERO 2008- (VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE - Vehículos motorizados entre 30000 y 40000</descripcion_impuesto> 
-			</version_formulario> </formularioVersion> <formularioVersion codigo="05" 
-			nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE-Vehículos motorizados entre 40 y 50 mil" codigoImpuesto="3077" 
-			tasa="20"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3077</codigo_impuesto> <descripcion_version>ICE-Vehículos 
-			motorizados entre 40 y 50 mil.AGOSTO 2008(VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE-Vehículos motorizados entre 40 y 50 mil</descripcion_impuesto> 
-			</version_formulario> </formularioVersion> <formularioVersion codigo="05" 
-			nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE-Vehículos motorizados entre 50 y 60 mil" codigoImpuesto="3078" 
-			tasa="25"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3078</codigo_impuesto> <descripcion_version>ICE Vehículos 
-			motorizados entre 50 y 60 mil.AGOSTO 2008(VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE Vehículos motorizados entre 50 y 60 mil</descripcion_impuesto> 
-			</version_formulario> </formularioVersion> <formularioVersion codigo="05" 
-			nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE-Vehículos motorizados entre 60 y 70 mil" codigoImpuesto="3079" 
-			tasa="30"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3079</codigo_impuesto> <descripcion_version>ICE Vehículos 
-			motorizados entre 60 y 70 mil.AGOSTO 2008(VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE Vehículos motorizados entre 60 y 70 mil</descripcion_impuesto> 
-			</version_formulario> </formularioVersion> <formularioVersion codigo="05" 
-			nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE-Vehículos motorizados cuyo pvp sea sup. a 70.000" codigoImpuesto="3080" 
-			tasa="35"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3080</codigo_impuesto> <descripcion_version>ICE Vehículos 
-			motorizados cuyo pvp sea sup. a 70.000.AGOSTO 2008(VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE Vehículos motorizados cuyo pvp sea sup. a 70.000</descripcion_impuesto> 
-			</version_formulario> </formularioVersion> <formularioVersion codigo="05" 
-			nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE SERVICIOS DE TELEVISIÓN PAGADA" codigoImpuesto="3092" tasa="15"> 
-			<version_formulario> <codigo_version>05200801</codigo_version> <codigo_impuesto>3092</codigo_impuesto> 
-			<descripcion_version>ICE-SERVICIOS DE TELEVISIÓN PAGADA. ENERO 2008- (VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE-Servicios de televisión pagada</descripcion_impuesto> 
-			</version_formulario> </formularioVersion> <formularioVersion codigo="05" 
-			nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE-VIDEO JUEGOS" codigoImpuesto="3620" tasa="35"> <version_formulario> 
-			<codigo_version>05200801</codigo_version> <codigo_impuesto>3620</codigo_impuesto> 
-			<descripcion_version>ICE-VIDEO JUEGOS. ENERO 2008- (VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE-Video Juegos</descripcion_impuesto> </version_formulario> 
-			</formularioVersion> <formularioVersion codigo="05" nombre="FORMULARIO 105" 
-			periodicidad="MENSUAL" versionVigente="05200801" descripcion="ICE Aviones, 
-			avionetas, helicópteros, motos acuáticas, tricares, cuadrones, yates y barcos 
-			de recreo)" codigoImpuesto="3081" tasa="15"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3081</codigo_impuesto> <descripcion_version>ICE Aviones, 
-			avionetas, helicópteros, motos acuáticas, tricares, cuadrones, yates y barcos 
-			de recreo. ENERO 2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>ICE 
-			– Aviones, avionetas, helicópteros, motos acuáticas, tricares, cuadrones, 
-			yates y barcos de recreo</descripcion_impuesto> </version_formulario> </formularioVersion> 
-			<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" 
-			versionVigente="05200801" descripcion="ICE PERFUMES Y AGUAS DE TOCADOR" codigoImpuesto="3610" 
-			tasa="20"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3610</codigo_impuesto> <descripcion_version>ICE-PERFUMES 
-			Y AGUAS DE TOCADOR. ENERO 2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>ICE-Perfumes 
-			y aguas de tocador</descripcion_impuesto> </version_formulario> </formularioVersion> 
-			<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" 
-			versionVigente="05200801" descripcion="ICE-SERVICIOS DE CASINOS SALAS DE 
-			JUEGO (BINGO-MECÁNICOS) Y OTROS JUEGOS DE AZAR" codigoImpuesto="3650" tasa="35"> 
-			<version_formulario> <codigo_version>05200801</codigo_version> <codigo_impuesto>3650</codigo_impuesto> 
-			<descripcion_version>ICE-SERVICIOS DE CASINOS SALAS DE JUEGO (BINGO-MECÁNICOS) 
-			Y OTROS JUEGOS DE AZAR. ENERO 2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>Servicio 
-			de Casinos salas de juego y otros juegos de azar</descripcion_impuesto> </version_formulario> 
-			</formularioVersion> <formularioVersion codigo="05" nombre="FORMULARIO 105" 
-			periodicidad="MENSUAL" versionVigente="05200801" descripcion="ICE-CUOTAS 
-			MEMBRESÍAS AFILIACIONES Y SIMILARES" codigoImpuesto="3660" tasa="35"> <version_formulario> 
-			<codigo_version>05200801</codigo_version> <codigo_impuesto>3660</codigo_impuesto> 
-			<descripcion_version>ICE-CUOTAS MEMBRESÍAS AFILIACIONES Y SIMILARES. ENERO 
-			2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>ICE-Cuotas membresías 
-			afiliaciones y similares</descripcion_impuesto> </version_formulario> </formularioVersion> 
-			<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" 
-			versionVigente="05200801" descripcion="ICE-FOCOS INCANDESCENTES" codigoImpuesto="3640" 
-			tasa="100"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3640</codigo_impuesto> <descripcion_version>ICE-FOCOS INCANDESCENTES. 
-			ENERO 2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>ICE-Focos 
-			Incandescentes</descripcion_impuesto> </version_formulario> </formularioVersion> 
-			<formularioVersion codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" 
-			versionVigente="05200801" descripcion="ICE-ARMAS DE FUEGO, ARMAS DEPORTIVAS 
-			Y MUNICIONES" codigoImpuesto="3630" tasa="300"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3630</codigo_impuesto> <descripcion_version>ICE-ARMAS DE 
-			FUEGO, ARMAS DEPORTIVAS Y MUNICIONES. ENERO 2008- (VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE-Armas de fuego,armas deportivas y municiones</descripcion_impuesto> 
-			</version_formulario> </formularioVersion> <formularioVersion codigo="05" 
-			nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE-Vehiculos motorizados de trans. Terrestre - 3.5 ton" codigoImpuesto="3071" 
-			tasa="5.15"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3071</codigo_impuesto> <descripcion_version>ICE Vehiculos 
-			motorizados de trans. Terrestre - 3.5 ton. ENERO 2008- (VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE Vehiculos motorizados de trans. Terrestre - 3.5 
-			ton</descripcion_impuesto> </version_formulario> </formularioVersion> <formularioVersion 
-			codigo="05" nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="ICE Vehículos motorizados cuyo pvp sea superior a 40.000" codigoImpuesto="3076" 
-			tasa="35"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3076</codigo_impuesto> <descripcion_version>ICE Vehículos 
-			motorizados cuyo pvp sea superior a 40.000. ENERO 2008- (VIGENTE)</descripcion_version> 
-			<descripcion_impuesto>ICE Vehículos motorizados cuyo pvp sea superior a 40.000</descripcion_impuesto> 
-			</version_formulario> </formularioVersion> <formularioVersion codigo="05" 
-			nombre="FORMULARIO 105" periodicidad="MENSUAL" versionVigente="05200801" 
-			descripcion="Ice-Telecomunicaciones y radioelectrónic" codigoImpuesto="3091" 
-			tasa="15"> <version_formulario> <codigo_version>05200801</codigo_version> 
-			<codigo_impuesto>3091</codigo_impuesto> <descripcion_version>Ice-Telecomunicaciones 
-			y radioelectrónic. ENERO 2008- (VIGENTE)</descripcion_version> <descripcion_impuesto>ICE 
-			- Telecomunicaciones y radioelectrónic</descripcion_impuesto> </version_formulario> 
-			</formularioVersion> -->
-		<!-- formularioVersion codigo="06" nombre="FORMULARIO 106" periodicidad="MENSUAL" 
-			versionVigente="06200601" descripcion_impuesto="Impuestos Multiples"> <version_formulario> 
-			<codigo_version>06200601</codigo_version> <codigo_impuesto>4005</codigo_impuesto> 
-			<descripcion_version>FORMULARIO MULTIPLE DE PAGO DESDE MARZO 2006</descripcion_version> 
-			<descripcion_impuesto>Impuestos Multiples</descripcion_impuesto> </version_formulario> 
-			</formularioVersion -->
 		<formularioVersion codigo="08" nombre="FORMULARIO 108"
 			periodicidad="MENSUAL" versionVigente="08200201"
 			descripcion_impuesto=" I.R. sobre ingresos de herencias, legados y donaciones">
@@ -451,6 +249,10 @@
 		</mes>
 	</datos_mes>
 	<datos_anio codigo="30">
+		<anio>
+            <codigo>2014</codigo>
+            <nombre>2014</nombre>
+        </anio>
 		<anio>
 			<codigo>2013</codigo>
 			<nombre>2013</nombre>
@@ -559,16 +361,34 @@
 			<codigo>0</codigo>
 			<nombre></nombre>
 		</banco>
-		<!--<banco> <codigo>34</codigo> <nombre>BANCO AMAZONAS</nombre> </banco> -->
+		<banco>
+			<codigo>34</codigo>
+			<nombre>BANCO AMAZONAS S.A.</nombre>
+		</banco>
 		<banco>
 			<codigo>37</codigo>
 			<nombre>BANCO BOLIVARIANO</nombre>
 		</banco>
 		<banco>
+			<codigo>54</codigo>
+			<nombre>BANCO CAPITAL SOCIEDAD ANONIMA</nombre>
+		</banco>
+		<banco>
 			<codigo>01</codigo>
 			<nombre>BANCO CENTRAL DEL ECUADOR</nombre>
 		</banco>
-		<!--<banco> <codigo>08</codigo> <nombre>BANCO CENTRO MUNDO</nombre> </banco> -->
+		<banco>
+			<codigo>73</codigo>
+			<nombre>BANCO COFIEC C.A.</nombre>
+		</banco>
+		<banco>
+			<codigo>71</codigo>
+			<nombre>BANCO COMERCIAL DE MANABI C.A.</nombre>
+		</banco>
+		<banco>
+			<codigo>43</codigo>
+			<nombre>BANCO COOPNACIONAL S.A.</nombre>
+		</banco>
 		<banco>
 			<codigo>02</codigo>
 			<nombre>BANCO DE FOMENTO</nombre>
@@ -602,6 +422,10 @@
 			<nombre>BANCO DEL PICHINCHA</nombre>
 		</banco>
 		<banco>
+			<codigo>53</codigo>
+			<nombre>BANCO DELBANK S.A.</nombre>
+		</banco>
+		<banco>
 			<codigo>42</codigo>
 			<nombre>BANCO GENERAL RUMIÑAHUI</nombre>
 		</banco>
@@ -609,28 +433,134 @@
 			<codigo>32</codigo>
 			<nombre>BANCO INTERNACIONAL</nombre>
 		</banco>
-		<!--<banco> <codigo>76</codigo> <nombre>BANCO M.M. JARAMILLO ARTEAGA</nombre> 
-			</banco> <banco> <codigo>72</codigo> <nombre>BANCO SOLIDARIO</nombre> </banco> -->
-		<!-- Registros incluido con fecha 25 enero del 2005 + -->
 		<banco>
-			<codigo>07</codigo>
-			<nombre>COOP. EL SAGRARIO</nombre>
+			<codigo>56</codigo>
+			<nombre>BANCO PARA LA ASISTENCIA COMUNITARIA FINCA S.A.</nombre>
 		</banco>
 		<banco>
-			<codigo>06</codigo>
-			<nombre>COOP. PABLO MUÑOZ VEGA</nombre>
+			<codigo>52</codigo>
+			<nombre>BANCO PROCREDIT </nombre>
 		</banco>
-		<!-- - -->
-		<!--<banco> <codigo>19</codigo> <nombre>BANCO TERRITORIAL</nombre> </banco> -->
+		<banco>
+			<codigo>04</codigo>
+			<nombre>BANCO SOLIDARIO S.A.</nombre>
+		</banco>
+		<banco>
+			<codigo>55</codigo>
+			<nombre>BANCO-D-MIRO S.A.</nombre>
+		</banco>
 		<banco>
 			<codigo>24</codigo>
 			<nombre>CITIBANK</nombre>
 		</banco>
 		<banco>
+			<codigo>28</codigo>
+			<nombre>COOP. 23 DE JULIO LTDA.</nombre>
+		</banco>
+		<banco>
+			<codigo>75</codigo>
+			<nombre>COOP. 29 DE OCTUBRE</nombre>
+		</banco>
+		<banco>
+			<codigo>46</codigo>
+			<nombre>COOP. ALIANZA DEL VALLE</nombre>
+		</banco>
+		<banco>
+			<codigo>09</codigo>
+			<nombre>COOP. ANDALUCIA</nombre>
+		</banco>
+		<banco>
+			<codigo>49</codigo>
+			<nombre>COOP. ARTESANOS LTDA.</nombre>
+		</banco>
+		<banco>
+			<codigo>31</codigo>
+			<nombre>COOP. ATUNTAQUI LTDA.</nombre>
+		</banco>
+		<banco>
+			<codigo>81</codigo>
+			<nombre>COOP. CONSTRUCCION COMERCIO Y PRODUCCION - COOP CCP</nombre>
+		</banco>
+		<banco>
+			<codigo>77</codigo>
+			<nombre>COOP. COTOCOLLAO LTDA.</nombre>
+		</banco>
+		<banco>
+			<codigo>47</codigo>
+			<nombre>COOP. DE LA PEQUEÑA EMPRESA BIBLIAN - CACPE BIBLIAN</nombre>
+		</banco>
+		<banco>
+			<codigo>40</codigo>
+			<nombre>COOP. DE LA PEQUEÑA EMPRESA DE COTOPAXI - CACPECO</nombre>
+		</banco>
+		<banco>
+			<codigo>07</codigo>
+			<nombre>COOP. EL SAGRARIO</nombre>
+		</banco>
+		<banco>
+			<codigo>78</codigo>
+			<nombre>COOP. GUARANDA</nombre>
+		</banco>
+		<banco>
+			<codigo>76</codigo>
+			<nombre>COOP. JARDIN AZUAYO</nombre>
+		</banco>
+		<banco>
+			<codigo>51</codigo>
+			<nombre>COOP. MUSHUC RUNA</nombre>
+		</banco>
+		<banco>
+			<codigo>83</codigo>
+			<nombre>COOP. OSCUS LTDA.</nombre>
+		</banco>
+		<banco>
+			<codigo>06</codigo>
+			<nombre>COOP. PABLO MUÑOZ VEGA</nombre>
+		</banco>
+		<banco>
+			<codigo>18</codigo>
+			<nombre>COOP. PADRE JULIAN LORENTE</nombre>
+		</banco>
+		<banco>
+			<codigo>48</codigo>
+			<nombre>COOP. POLICIA NACIONAL LTDA.</nombre>
+		</banco>
+		<banco>
+			<codigo>44</codigo>
+			<nombre>COOP. PROGRESO LTDA.</nombre>
+		</banco>
+		<banco>
+			<codigo>80</codigo>
+			<nombre>COOP. SAN FRANCISCO</nombre>
+		</banco>
+		<banco>
+			<codigo>21</codigo>
+			<nombre>COOP. SAN JOSE</nombre>
+		</banco>
+		<banco>
+			<codigo>84</codigo>
+			<nombre>COOP. SANTA ROSA</nombre>
+		</banco>
+		<banco>
+			<codigo>45</codigo>
+			<nombre>COOP. TULCAN</nombre>
+		</banco>
+		<banco>
+			<codigo>86</codigo>
+			<nombre>MUTUALISTA AZUAY</nombre>
+		</banco>
+		<banco>
+			<codigo>79</codigo>
+			<nombre>MUTUALISTA IMBABURA</nombre>
+		</banco>
+		<banco>
+			<codigo>82</codigo>
+			<nombre>MUTUALISTA PICHINCHA</nombre>
+		</banco>
+		<banco>
 			<codigo>36</codigo>
 			<nombre>PRODUBANCO</nombre>
 		</banco>
-		<!--<banco> <codigo>75</codigo> <nombre>UNIBANCO</nombre> </banco> -->
 		<banco>
 			<codigo>27</codigo>
 			<nombre>PROMERICA</nombre>
@@ -646,10 +576,6 @@
 	</datos_bancos>
 	<!--+MP 22/feb/2006 -->
 	<datos_impuesto codigo="65">
-		<!--<impuesto> <codigo>2011</codigo> <nombre>2011</nombre> </impuesto> 
-			<impuesto> <codigo>2021</codigo> <nombre>2021</nombre> </impuesto> <impuesto> 
-			<codigo>1091</codigo> <nombre>1091</nombre> </impuesto> <impuesto> <codigo>2041</codigo> 
-			<nombre>2041</nombre> </impuesto> -->
 		<impuesto>
 			<codigo>1011</codigo>
 			<nombre>1011</nombre>
@@ -659,32 +585,8 @@
 			<nombre>1021</nombre>
 		</impuesto>
 		<impuesto>
-			<codigo>1031</codigo>
-			<nombre>1031</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1041</codigo>
-			<nombre>1041</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1051</codigo>
-			<nombre>1051</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1052</codigo>
-			<nombre>1052</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1053</codigo>
-			<nombre>1053</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1081</codigo>
-			<nombre>1081</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1091</codigo>
-			<nombre>1091</nombre>
+			<codigo>1088</codigo>
+			<nombre>1088</nombre>
 		</impuesto>
 		<impuesto>
 			<codigo>2011</codigo>
@@ -694,625 +596,15 @@
 			<codigo>2021</codigo>
 			<nombre>2021</nombre>
 		</impuesto>
-		<impuesto>
-			<codigo>2031</codigo>
-			<nombre>2031</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3000</codigo>
-			<nombre>3000</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3011</codigo>
-			<nombre>3011</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3021</codigo>
-			<nombre>3021</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3023</codigo>
-			<nombre>3023</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3031</codigo>
-			<nombre>3031</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3041</codigo>
-			<nombre>3041</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3051</codigo>
-			<nombre>3051</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3072</codigo>
-			<nombre>3072</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3073</codigo>
-			<nombre>3073</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3074</codigo>
-			<nombre>3074</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3075</codigo>
-			<nombre>3075</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3077</codigo>
-			<nombre>3077</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3078</codigo>
-			<nombre>3078</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3079</codigo>
-			<nombre>3079</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3080</codigo>
-			<nombre>3080</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3092</codigo>
-			<nombre>3092</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3061</codigo>
-			<nombre>3061</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3071</codigo>
-			<nombre>3071</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3076</codigo>
-			<nombre>3076</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3081</codigo>
-			<nombre>3081</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4005</codigo>
-			<nombre>4005</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4010</codigo>
-			<nombre>4010</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4015</codigo>
-			<nombre>4015</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4020</codigo>
-			<nombre>4020</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4030</codigo>
-			<nombre>4030</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4035</codigo>
-			<nombre>4035</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4040</codigo>
-			<nombre>4040</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4045</codigo>
-			<nombre>4045</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4050</codigo>
-			<nombre>4050</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4055</codigo>
-			<nombre>4055</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4060</codigo>
-			<nombre>4060</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4065</codigo>
-			<nombre>4065</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4071</codigo>
-			<nombre>4071</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4072</codigo>
-			<nombre>4072</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4075</codigo>
-			<nombre>4075</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4080</codigo>
-			<nombre>4080</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8010</codigo>
-			<nombre>8010</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8015</codigo>
-			<nombre>8015</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8020</codigo>
-			<nombre>8020</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8030</codigo>
-			<nombre>8030</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8035</codigo>
-			<nombre>8035</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8040</codigo>
-			<nombre>8040</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8045</codigo>
-			<nombre>8045</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8050</codigo>
-			<nombre>8050</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8055</codigo>
-			<nombre>8055</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8060</codigo>
-			<nombre>8060</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8065</codigo>
-			<nombre>8065</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8070</codigo>
-			<nombre>8070</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8075</codigo>
-			<nombre>8075</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8080</codigo>
-			<nombre>8080</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8085</codigo>
-			<nombre>8085</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8090</codigo>
-			<nombre>8090</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8095</codigo>
-			<nombre>8095</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8100</codigo>
-			<nombre>8100</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8105</codigo>
-			<nombre>8105</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8110</codigo>
-			<nombre>8110</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8115</codigo>
-			<nombre>8115</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8121</codigo>
-			<nombre>8121</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8122</codigo>
-			<nombre>8122</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8125</codigo>
-			<nombre>8125</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8130</codigo>
-			<nombre>8130</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8135</codigo>
-			<nombre>8135</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8141</codigo>
-			<nombre>8141</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8142</codigo>
-			<nombre>8142</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8143</codigo>
-			<nombre>8143</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8144</codigo>
-			<nombre>8144</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9005</codigo>
-			<nombre>9005</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9010</codigo>
-			<nombre>9010</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9020</codigo>
-			<nombre>9020</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9030</codigo>
-			<nombre>9030</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9035</codigo>
-			<nombre>9035</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9040</codigo>
-			<nombre>9040</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9045</codigo>
-			<nombre>9045</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9050</codigo>
-			<nombre>9050</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9015</codigo>
-			<nombre>9015</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8145</codigo>
-			<nombre>8145</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1012</codigo>
-			<nombre>1012</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1022</codigo>
-			<nombre>1022</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1032</codigo>
-			<nombre>1032</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1061</codigo>
-			<nombre>1061</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1071</codigo>
-			<nombre>1071</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>2012</codigo>
-			<nombre>2012</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>2022</codigo>
-			<nombre>2022</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3012</codigo>
-			<nombre>3012</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3022</codigo>
-			<nombre>3022</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3032</codigo>
-			<nombre>3032</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3042</codigo>
-			<nombre>3042</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3052</codigo>
-			<nombre>3052</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3062</codigo>
-			<nombre>3062</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3071</codigo>
-			<nombre>3071</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3092</codigo>
-			<nombre>3092</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3610</codigo>
-			<nombre>3610</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3620</codigo>
-			<nombre>3620</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3630</codigo>
-			<nombre>3630</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3640</codigo>
-			<nombre>3640</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3650</codigo>
-			<nombre>3650</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3660</codigo>
-			<nombre>3660</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4041</codigo>
-			<nombre>4041</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4070</codigo>
-			<nombre>4070</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4580</codigo>
-			<nombre>4580</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8120</codigo>
-			<nombre>8120</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8140</codigo>
-			<nombre>8140</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9060</codigo>
-			<nombre>9060</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9070</codigo>
-			<nombre>9070</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1099</codigo>
-			<nombre>1099</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>2000</codigo>
-			<nombre>2000</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>7100</codigo>
-			<nombre>7100</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3091</codigo>
-			<nombre>3091</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8131</codigo>
-			<nombre>8131</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>2061</codigo>
-			<nombre>2061</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1015</codigo>
-			<nombre>1015</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>2051</codigo>
-			<nombre>2051</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>2500</codigo>
-			<nombre>2500</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>2510</codigo>
-			<nombre>2510</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8003</codigo>
-			<nombre>8003</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8004</codigo>
-			<nombre>8004</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8005</codigo>
-			<nombre>8005</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8006</codigo>
-			<nombre>8006</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8036</codigo>
-			<nombre>8036</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>7510</codigo>
-			<nombre>7510</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1088</codigo>
-			<nombre>1088</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4520</codigo>
-			<nombre>4520</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4510</codigo>
-			<nombre>4510</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4530</codigo>
-			<nombre>4530</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3511</codigo>
-			<nombre>3511</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3531</codigo>
-			<nombre>3531</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3541</codigo>
-			<nombre>3541</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3551</codigo>
-			<nombre>3551</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>3581</codigo>
-			<nombre>3581</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>4025</codigo>
-			<nombre>4025</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9999</codigo>
-			<nombre>9999</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8300</codigo>
-			<nombre>8300</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8301</codigo>
-			<nombre>8301</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1001</codigo>
-			<nombre>1001</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>9001</codigo>
-			<nombre>9001</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>8150</codigo>
-			<nombre>8150</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>6666</codigo>
-			<nombre>6666</nombre>
-		</impuesto>
-		<impuesto>
-			<codigo>1090</codigo>
-			<nombre>1090</nombre>
-		</impuesto>
 	</datos_impuesto>
 	<datos_impuesto_descripcion codigo="66">
-		<impuesto_descripcion>
-			<codigo>1001</codigo>
-			<nombre>1001 - RETENCION EN LA FUENTE A PETROLERAS POR SERVICIOS
-				ESPECIFICOS
-			</nombre>
-		</impuesto_descripcion>
 		<impuesto_descripcion>
 			<codigo>1011</codigo>
 			<nombre>1011 - RENTA PERSONAS NATURALES</nombre>
 		</impuesto_descripcion>
 		<impuesto_descripcion>
-			<codigo>1012</codigo>
-			<nombre>1012 - RENTA NATURALES CONDONACION</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1015</codigo>
-			<nombre>1015 - DONACIONES DE RENTA</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
 			<codigo>1021</codigo>
 			<nombre>1021 - RENTA SOCIEDADES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1022</codigo>
-			<nombre>1022 - RENTA SOCIEDADES CONDONACION</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1031</codigo>
-			<nombre>1031 - RETENCIONES EN LA FUENTE</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1032</codigo>
-			<nombre>1032 - RETENCIONES CONDONACION</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1041</codigo>
-			<nombre>1041 - RENTA SEOG</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1051</codigo>
-			<nombre>1051 - 1% DERIVADOS PETROLEOS IMPORTADORES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1052</codigo>
-			<nombre>1052 - 2X1000 DERIVADOS PETROLEO DISTRIBUIDORES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1053</codigo>
-			<nombre>1053 - 3X1000 DERIVADOS PETROLEO COMERCIALIZADO</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1061</codigo>
-			<nombre>1061 - 1% CAPITAL NETO</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1071</codigo>
-			<nombre>1071 - RENTA ANTICIPOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1081</codigo>
-			<nombre>1081 - AL PATRIMONIO NETO</nombre>
 		</impuesto_descripcion>
 		<impuesto_descripcion>
 			<codigo>1088</codigo>
@@ -1321,549 +613,12 @@
 			</nombre>
 		</impuesto_descripcion>
 		<impuesto_descripcion>
-			<codigo>1090</codigo>
-			<nombre>1090 - VEHICULOS (EMBARCACIONES DE GALA O RECREO, AVIONES,
-				AVIONETAS O HELI. PRIVADOS)
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1091</codigo>
-			<nombre>1091 - PROPIEDAD DE LOS VEHICULOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>1099</codigo>
-			<nombre>1099 - RENTA NATURALES Y JURIDICOS 1990</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>2000</codigo>
-			<nombre>2000 - IVA MENSUAL TRIMESTRAL SEMESTRAL 1990</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
 			<codigo>2011</codigo>
 			<nombre>2011 - IVA MENSUAL</nombre>
 		</impuesto_descripcion>
 		<impuesto_descripcion>
-			<codigo>2012</codigo>
-			<nombre>2012 - IVA MENSUAL CONDONACION</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
 			<codigo>2021</codigo>
 			<nombre>2021 - IVA SEMESTRAL</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>2022</codigo>
-			<nombre>2022 - IVA SEMESTRAL CONDONACION</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>2031</codigo>
-			<nombre>2031 - IVA SEOG</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>2051</codigo>
-			<nombre>2051 - DEVOLUCIONES IVA INTERNO</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>2061</codigo>
-			<nombre>2061 - IVA TRIMESTRAL</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>2500</codigo>
-			<nombre>2500 - IVA EXTERNO</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>2510</codigo>
-			<nombre>2510 - DEVOLUCIONES IVA EXTERNO</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3000</codigo>
-			<nombre>3000 - ICE NO ESPECIFICADO</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3011</codigo>
-			<nombre>3011 - ICE - CIGARRILLOS RUBIOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3012</codigo>
-			<nombre>3012 - ICE - CIGARRILLOS RUBIOS COND</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3021</codigo>
-			<nombre>3021 - ICE-CIGARRILLOS NEGROS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3022</codigo>
-			<nombre>3022 - ICE-CIGARRILLOS NEGROS COND</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3023</codigo>
-			<nombre>3023 - ICE-PRODUCTOS Y SUCEDÁNEOS DEL TABACO EXCEPTO
-				CIGARRILLOS
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3031</codigo>
-			<nombre>3031 - ICE-ALCOHOL Y PRODUCTOS ALCOHÓLICOS DISTINTOS A LA
-				CERVEZA
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3032</codigo>
-			<nombre>3032 - ICE-ALCOHOL CONDONACION</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3041</codigo>
-			<nombre>3041 - ICE-CERVEZA</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3042</codigo>
-			<nombre>3042 - ICE-CERVEZA CONDONACION</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3051</codigo>
-			<nombre>3051 - ICE-BEBIDAS GASEOSAS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3052</codigo>
-			<nombre>3052 - ICE-GASEOSAS CONDONACION</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3071</codigo>
-			<nombre>3071 - ICE-VEHICULOS MOTORIZADOS DE TRANS. TERRESTRE - 3.5
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3072</codigo>
-			<nombre>3072 - ICE-CAMIONETAS, FURGONETAS,ETC. CUYO PVP HASTA DE
-				30.000 USD
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3073</codigo>
-			<nombre>3073 - ICE-VEHÍCULOS MOTORIZADOS CUYO PVP SEA HASTA DE 20.000
-				USD
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3074</codigo>
-			<nombre>3074 - ICE-VEHÍCULOS EXC.CAMIONETAS Y FURGONETAS ETC. ENTRE
-				20.000 Y 30.000
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3075</codigo>
-			<nombre>3075 - ICE-VEHÍCULOS MOTORIZADOS ENTRE 30.000 Y 40.000
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3076</codigo>
-			<nombre>3076 - ICE-VEHÍCULOS MOTORIZADOS CUYO PVP SEA SUPERIOR A
-				40000
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3077</codigo>
-			<nombre>3077 - ICE-VEHÍCULOS MOTORIZADOS ENTRE 40 Y 50 MIL</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3078</codigo>
-			<nombre>3078 - ICE VEHÍCULOS MOTORIZADOS ENTRE 50 Y 60 MIL</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3079</codigo>
-			<nombre>3079 - ICE VEHÍCULOS MOTORIZADOS ENTRE 60 Y 70 MIL</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3080</codigo>
-			<nombre>3080 - ICE VEHÍCULOS MOTORIZADOS CUYO PVP SEA SUP. A 70.000
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3081</codigo>
-			<nombre>3081 - ICE-AVIONES, AVIONETAS, HELICOPTEROS, MOTOS, BARCOS,
-				ETC.
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3091</codigo>
-			<nombre>3091 - ICE-TELECOMUNICACIONES Y RADIOELECTRÓNICOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3092</codigo>
-			<nombre>3092 - ICE-SERVICIOS DE TELEVISIÓN PAGADA</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3610</codigo>
-			<nombre>3610 - ICE-PERFUMES Y AGUAS DE TOCADOR</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3620</codigo>
-			<nombre>3620 - ICE-VIDEOJUEGOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3630</codigo>
-			<nombre>3630 - ICE-ARMAS DE FUEGO, ARMAS DEPORTIVAS Y MUNICIONES
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3640</codigo>
-			<nombre>3640 - ICE-FOCOS INCANDESCENTES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3650</codigo>
-			<nombre>3650 - ICE-SERVICIOS DE CASINOS SALAS DE JUEGO
-				(BINGO-MECÁNICOS) Y OTROS JUEGOS DE AZAR
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3660</codigo>
-			<nombre>3660 - ICE-CUOTAS MEMBRESÍAS AFILIACIONES Y SIMILARES
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3511</codigo>
-			<nombre>3511 - ICE CIGARRILLOS CAE</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3531</codigo>
-			<nombre>3531 - ICE ALCOHOL Y PROD. ALCOHOLICOS CAE</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3541</codigo>
-			<nombre>3541 - ICE CERVEZA CAE</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3551</codigo>
-			<nombre>3551 - ICE BEBIDAS GASEOSAS CAE</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>3581</codigo>
-			<nombre>3581 - ICE SUNTUARIOS CAE</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4005</codigo>
-			<nombre>4005 - MULTAS TRIBUTARIAS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4010</codigo>
-			<nombre>4010 - INTERESES POR MORA TRIBUTARIOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4015</codigo>
-			<nombre>4015 - IMPUESTO A LOS VEHICULOS MOTORIZADOS INTERNOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4020</codigo>
-			<nombre>4020 - 2 % IMPUESTO A LOS VEHICULOS(Def.Nacion)</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4025</codigo>
-			<nombre>4025 - 2 DIAS DE REMUNERACION(Def.Nacional)</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4030</codigo>
-			<nombre>4030 - $25 SALIDA DEL PAIS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4035</codigo>
-			<nombre>4035 - CERTIFICACION DE CHEQUES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4040</codigo>
-			<nombre>4040 - IMP.ESPECIAL A LOS ACTIVOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4041</codigo>
-			<nombre>4041 - IMP.ESPECIAL A LOS ACTIVOS CONDONACION</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4045</codigo>
-			<nombre>4045 - INTERESES X MORA EN TITULOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4050</codigo>
-			<nombre>4050 - DIA REMUNERACION(AUSTRO)</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4055</codigo>
-			<nombre>4055 - IMPUESTO A LA RENTA(AUSTRO)</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4060</codigo>
-			<nombre>4060 - IMPUESTO DEL IVA(AUSTRO)</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4065</codigo>
-			<nombre>4065 - OTROS INGRESOS TRIBUTARIOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4070</codigo>
-			<nombre>4070 - TIT. CRED. X COBRAR (DEROGADOS)</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4071</codigo>
-			<nombre>4071 - TIT. CRED. X COBRAR SI INTERESES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4072</codigo>
-			<nombre>4072 - TIT. CRED. X COBRAR NO INTERESES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4075</codigo>
-			<nombre>4075 - REGALIAS MINERAS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4080</codigo>
-			<nombre>4080 - DERECHOS SUPERFICIARIOS MINEROS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4510</codigo>
-			<nombre>4510 - DEVOLUCION DEL IMPUESTO A LOS VEHICULOS MOTORIZADOS
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4520</codigo>
-			<nombre>4520 - IMPUESTO A LA SALIDA DEL PAIS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4530</codigo>
-			<nombre>4530 - 1% COMPRA DE VEHICULOS USADOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>4580</codigo>
-			<nombre>4580 - IMPUESTO A LA SALIDA DE DIVISAS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>6666</codigo>
-			<nombre>6666 - POR VERIFICAR (JUICIOS)</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>7100</codigo>
-			<nombre>7100 - IMPUESTO A LA CIRCULACION DE CAPITALES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>7510</codigo>
-			<nombre>7510 - DONACIONES ICC</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8003</codigo>
-			<nombre>8003 - MULTAS ANEXOS DE DECLARACIONES IVA</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8004</codigo>
-			<nombre>8004 - MULTAS ANEXOS DE DECLARACIONES ICE</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8005</codigo>
-			<nombre>8005 - MULTAS ANEXOS DE DECLARACIONES IMP.RENTA</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8006</codigo>
-			<nombre>8006 - MULTAS POR NO OBTENCION LICENCIA DE OPERACION ICE
-			</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8010</codigo>
-			<nombre>8010 - DERECHOS CONSULARES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8015</codigo>
-			<nombre>8015 - PERMISOS DE FUNCIONAMIENTO</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8020</codigo>
-			<nombre>8020 - PASAPORTES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8030</codigo>
-			<nombre>8030 - COSTAS PROCESALES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8035</codigo>
-			<nombre>8035 - MULTAS NO TRIBUTARIAS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8036</codigo>
-			<nombre>8036 - MULTAS POR FALTAS REGLAMENTARIA</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8040</codigo>
-			<nombre>8040 - INTERESES NO TRIBUTARIOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8045</codigo>
-			<nombre>8045 - ESPECIES VALORADAS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8050</codigo>
-			<nombre>8050 - ALCANCE DE CUENTAS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8055</codigo>
-			<nombre>8055 - MULTAS INFRAC. CONSUMO DROGAS T. EST.</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8060</codigo>
-			<nombre>8060 - MULTAS LOAAFIC</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8065</codigo>
-			<nombre>8065 - MULTAS INFRAC. LEY JURISDICCIONAL</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8070</codigo>
-			<nombre>8070 - MULTAS REGISTRO CIVIL</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8075</codigo>
-			<nombre>8075 - MULTAS RUC</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8080</codigo>
-			<nombre>8080 - DERECHOS DE PESCA Y MULTAS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8085</codigo>
-			<nombre>8085 - ARRIENDO TIERRAS, EDIF. LOCALES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8090</codigo>
-			<nombre>8090 - MULT. LEY SERV CIVIL Y C ADMIN</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8095</codigo>
-			<nombre>8095 - MULTAS ABOGADOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8100</codigo>
-			<nombre>8100 - MULTAS INFRAC. LEY PROD. ALCOHOLICOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8105</codigo>
-			<nombre>8105 - MULTAS INSCRIP. TARDIA CONT.ARREN.</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8110</codigo>
-			<nombre>8110 - VENTA AGUARDIENTE CONTRABANDO Y DERIVADOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8115</codigo>
-			<nombre>8115 - MULTAS CONTRATISTAS X INCUMPLIMIENTO</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8120</codigo>
-			<nombre>8120 - RECAUDACION DE FONDOS AJENOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8121</codigo>
-			<nombre>8121 - REC.FONDOS AJENOS(INTERES)</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8122</codigo>
-			<nombre>8122 - REC.FONDOS AJENOS(NO INTERES)</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8125</codigo>
-			<nombre>8125 - INGRESOS AVIACION CIVIL</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8130</codigo>
-			<nombre>8130 - DEPOSITOS EN GARANTIA</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8131</codigo>
-			<nombre>8131 - OTROS INTERESADOS Y CRD A TERCEROS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8135</codigo>
-			<nombre>8135 - OTROS INTERESADOS Y CRD. A FAVOR DE TERCEROS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8140</codigo>
-			<nombre>8140 - NO ESPECIFICADOS NO TRIBUTARIOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8141</codigo>
-			<nombre>8141 - NO ESPECIFICADOS NO TRIBUTARIOS SI INTER</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8142</codigo>
-			<nombre>8142 - NO ESPECIFICADOS NO TRIBUTARIOS NO INTE</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8143</codigo>
-			<nombre>8143 - REINTEGRO VALORES PAGADOS INDEBIDAMENTE</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8144</codigo>
-			<nombre>8144 - FODINFA</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8145</codigo>
-			<nombre>8145 - IMP. OPE. CRED. 0.6% (SOLCA)</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8150</codigo>
-			<nombre>8150 - MULTAS POR INFORME DE CUMPLIMIENTO TRIBUTARIO</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8300</codigo>
-			<nombre>8300 - MULTAS CONVENIO IFI'S</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>8301</codigo>
-			<nombre>8301 - INTERESES CONVENIO IFI'S</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9001</codigo>
-			<nombre>9001 - GRAVAMEN A LA ACTIVIDAD PETROLERA</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9005</codigo>
-			<nombre>9005 - MULTAS INFRACCIONES DE TRANSITO</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9010</codigo>
-			<nombre>9010 - 5% CHEQUES PROTESTADOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9015</codigo>
-			<nombre>9015 - MULTA DE HIDROCARBUROS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9020</codigo>
-			<nombre>9020 - PATENTES MINERAS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9030</codigo>
-			<nombre>9030 - MULTAS INFRACCION LEY DE ELECCIONES</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9035</codigo>
-			<nombre>9035 - MULTAS DE TRABAJO</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9040</codigo>
-			<nombre>9040 - HONORARIOS ABOGADOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9045</codigo>
-			<nombre>9045 - PERMISOS SANITARIOS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9050</codigo>
-			<nombre>9050 - MULTAS INFRACCION LEY FORESTAL</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9060</codigo>
-			<nombre>9060 - COMISIONES GANADAS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9070</codigo>
-			<nombre>9070 - RECARGO POR MULTAS</nombre>
-		</impuesto_descripcion>
-		<impuesto_descripcion>
-			<codigo>9999</codigo>
-			<nombre>9999 - IVA-ICE-RET.FUENTE-ANTICIPOS 1990</nombre>
 		</impuesto_descripcion>
 	</datos_impuesto_descripcion>
 	<!--+MP 22/feb/2006 -->
@@ -1980,140 +735,8 @@
 		</rutina_validacion>
 	</datos_rutina_validacion>
 	<datosImpuestosIce codigo="100">
-		<ImpuestoIce version="05200801" descripcion="ICE  Cigarrillos rubios"
-			codigoImpuesto="3011" tasa="150" />
-		<ImpuestoIce version="05200801" descripcion="ICE  Cigarrillos negros"
-			codigoImpuesto="3021" tasa="150" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Productos y sucedáneos del tabaco excepto cigarrillos"
-			codigoImpuesto="3023" tasa="150" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Alcohol y productos alcohólicos distintos a la cerveza"
-			codigoImpuesto="3031" tasa="40" />
-		<ImpuestoIce version="05200801" descripcion="ICE  Cerveza"
-			codigoImpuesto="3041" tasa="30" />
-		<ImpuestoIce version="05200801" descripcion="ICE  Bebidas gaseosas"
-			codigoImpuesto="3051" tasa="10" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Camionetas, furgonetas,etc. cuyo pvp sea hasta de 30 mil"
-			codigoImpuesto="3072" tasa="5" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Vehículos motorizados cuyo pvp sea hasta de 20.000 usd"
-			codigoImpuesto="3073" tasa="5" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Vehículos.  exc. camionetas y furg. etc. entre 20 y 30 mil"
-			codigoImpuesto="3074" tasa="10" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Vehículos motorizados entre 30 y 40 mil"
-			codigoImpuesto="3075" tasa="15" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Vehículos motorizados entre 40 y 50 mil"
-			codigoImpuesto="3077" tasa="20" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Vehículos motorizados entre 50 y 60 mil"
-			codigoImpuesto="3078" tasa="25" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Vehículos motorizados entre 60 y 70 mil"
-			codigoImpuesto="3079" tasa="30" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Vehículos motorizados cuyo pvp sea sup. a 70.000"
-			codigoImpuesto="3080" tasa="35" />
-		<ImpuestoIce version="05200801" descripcion="ICE  Servicios de televisión pagada"
-			codigoImpuesto="3092" tasa="15" />
-		<ImpuestoIce version="05200801" descripcion="ICE  Video Juegos"
-			codigoImpuesto="3620" tasa="35" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Aviones, avionetas, helicópteros, motos, barcis, etc."
-			codigoImpuesto="3081" tasa="15" />
-		<ImpuestoIce version="05200801" descripcion="ICE  Perfumes y aguas de tocador"
-			codigoImpuesto="3610" tasa="20" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Servicio de Casinos, salas de juego y otros juegos de azar"
-			codigoImpuesto="3650" tasa="35" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Cuotas, membresías, afiliaciones y similares"
-			codigoImpuesto="3660" tasa="35" />
-		<ImpuestoIce version="05200801" descripcion="ICE  Focos Incandescentes"
-			codigoImpuesto="3640" tasa="100" />
-		<ImpuestoIce version="05200801"
-			descripcion="ICE  Armas de fuego,armas deportivas y municiones"
-			codigoImpuesto="3630" tasa="300" />
-		<ImpuestoIce version="05200801"
-			descripcion="(N/Vgt) ICE  Vehiculos motorizados de trans. Terrestre - 3.5 ton"
-			codigoImpuesto="3071" tasa="5.15" />
-		<ImpuestoIce version="05200801"
-			descripcion="(N/Vgt) ICE  Vehículos motorizados pvp sea superior a 40.000"
-			codigoImpuesto="3076" tasa="35" />
-		<ImpuestoIce version="05200801"
-			descripcion="(N/Vgt) ICE  Telecomunicaciones y radioelectrónicos"
-			codigoImpuesto="3091" tasa="15" />
 	</datosImpuestosIce>
 	<datosDobleTributacion codigo="110">
-		<dobleTributacion>
-			<codigoPais>0</codigoPais>
-			<Pais>NINGUNO</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>1</codigoPais>
-			<Pais>ALEMANIA</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>17</codigoPais>
-			<Pais>BELGICA</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>13</codigoPais>
-			<Pais>BOLIVIA</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>2</codigoPais>
-			<Pais>BRASIL</Pais>
-			>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>14</codigoPais>
-			<Pais>CANADA</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>16</codigoPais>
-			<Pais>CHILE</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>11</codigoPais>
-			<Pais>COLOMBIA</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>4</codigoPais>
-			<Pais>ESPAÑA</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>5</codigoPais>
-			<Pais>FRANCIA</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>6</codigoPais>
-			<Pais>ITALIA</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>15</codigoPais>
-			<Pais>MEXICO</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>12</codigoPais>
-			<Pais>PERU</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>7</codigoPais>
-			<Pais>RUMANIA</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>8</codigoPais>
-			<Pais>SUIZA</Pais>
-		</dobleTributacion>
-		<dobleTributacion>
-			<codigoPais>10</codigoPais>
-			<Pais>VENEZUELA</Pais>
-		</dobleTributacion>
 	</datosDobleTributacion>
 	<datosSiNo codigo="120">
 		<!-- valor reconocido como vacio -->
